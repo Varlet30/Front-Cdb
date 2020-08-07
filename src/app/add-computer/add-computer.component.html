@@ -1,0 +1,17 @@
+<form
+    [formGroup]="computerForm"
+    (ngSubmit)="submitComputer(computerForm.value)">
+
+    <label for="name">Computer Name</label>
+    <input
+        type="text"
+        formControlName="computer_name">
+
+        <label for="name">Computer Date Introduced</label>
+        <textarea formControlName="introduced"></textarea>
+
+        <label for="name">Computer Date Discontinued</label>
+        <textarea formControlName="discontinued"></textarea>
+
+    <button type="submit">SUBMIT</button>
+</form>

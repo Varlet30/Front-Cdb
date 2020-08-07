@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Front-Cdb"
+    }
+  },
+  "defaultProject": "Front-Cdb",
+  "cli": {
+    "analytics": false
+  }
 }

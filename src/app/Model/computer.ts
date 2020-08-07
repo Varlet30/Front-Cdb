@@ -3,9 +3,9 @@ import { ComponentFactory } from "@angular/core";
 import { Company } from './company';
 
 export class Computer {
-    id : string;
-    name : string;
+    computerId : string;
+    computerName : string;
     introduced: string;
     discontinued : string;
-    company : Company;
+    companyDTO : Company;
 }

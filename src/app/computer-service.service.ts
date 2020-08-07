@@ -8,7 +8,7 @@ import { HttpClient} from '@angular/common/http';
 })
 export class ComputerServiceService {
 
-  private computerUrl = 'http://10.0.1.131:8080/api/computers';
+  private computerUrl = 'http://10.0.1.121:8080/api/computers';
   constructor(private httpClient: HttpClient) { }
 
   getRecipes(): Observable<ComputerComponent[]> {
@@ -19,8 +19,8 @@ export class ComputerServiceService {
     return this.httpClient.get<ComputerComponent>(`${ this.computerUrl }/${ id }`);
 }
 
-  postRecipe(recipe : ComputerComponent): Observable<number>{
-    return this.httpClient.post<number>(this.computerUrl,recipe);
+  postComputer(computer : ComputerComponent): Observable<number>{
+    return this.httpClient.post<number>(this.computerUrl,computer);
   }
 
 

@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="computers" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -6,7 +6,7 @@
     <!-- Position Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.computerName}} </td>
     </ng-container>
   
     <!-- Name Column -->
@@ -24,7 +24,7 @@
     <!-- Symbol Column -->
     <ng-container matColumnDef="companyName">
       <th mat-header-cell *matHeaderCellDef> CompanyName </th>
-      <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+      <td mat-cell *matCellDef="let element"> <div *ngIf="element.companyDTO">{{element.companyDTO.companyName}} </div></td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

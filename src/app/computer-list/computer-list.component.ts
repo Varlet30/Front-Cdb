@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ComputerServiceService } from '../computer-service.service';
+import { Computer } from '../Model/computer';
 
 export interface PeriodicElement {
   name: string;
@@ -19,11 +21,20 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ComputerListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'introduced', 'discontinued', 'companyName'];
-  dataSource = ELEMENT_DATA;
+  computers: Computer[];
 
-  constructor() { }
+  constructor(private computerService : ComputerServiceService) { }
 
   ngOnInit(): void {
+    this.computerService.getComputers().subscribe(
+      (result: Computer[]) => {
+
+        this.computers = result;
+        console.log("gros pd");      },
+      (error) => {
+        console.log("gros pd"); 
+      }
+    )
   }
 
 }

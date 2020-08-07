@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ComputerComponent } from './computer/computer.component';
+import {AppRoutingModule} from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { ComputerListComponent } from './computer-list/computer-list.component';
 
 @NgModule({
@@ -14,7 +16,9 @@ import { ComputerListComponent } from './computer-list/computer-list.component';
     ComputerListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

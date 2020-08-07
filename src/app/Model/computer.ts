@@ -4,7 +4,7 @@ import { Company } from './company';
 
 export class Computer {
     id : string;
-    name : string;
+    computerName : string;
     introduced: string;
     discontinued : string;
     company : Company;

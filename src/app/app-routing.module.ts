@@ -7,18 +7,22 @@ import { ComputerListComponent } from './computer-list/computer-list.component';
 
 const routes: Routes = [
   {
-      path: '/computers',
+      path: 'computers',
       component: ComputerListComponent,
       pathMatch: 'full'
   },
   {
-
-  }
+    path: '**',
+    redirectTo: 'computers',
+    pathMatch: 'full'
+}
 ]
 @NgModule({
-  declarations: [],
+  exports: [
+      RouterModule
+  ],
   imports: [
-    CommonModule
+      RouterModule.forRoot(routes)
   ]
 })
 export class AppRoutingModule { }

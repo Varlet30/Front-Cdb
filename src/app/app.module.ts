@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ComputerComponent } from './computer/computer.component';
 import { ComputerListComponent } from './computer-list/computer-list.component';
+import { CustomMaterialModule } from './custom-material/custom-material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ComputerListComponent } from './computer-list/computer-list.component';
     ComputerListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CustomMaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,13 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComputerListComponent } from './computer-list/computer-list.component';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ComputerPutComponent } from './computer-put/computer-put.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ComputerComponent,
-    ComputerListComponent
+    ComputerListComponent,
+    ComputerPutComponent
   ],
   imports: [
     BrowserModule,

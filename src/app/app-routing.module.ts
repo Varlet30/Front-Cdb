@@ -7,30 +7,32 @@ import { AddComputerComponent } from './add-computer/add-computer.component';
 
 
 const routes: Routes = [
-  
+
   {
     path: 'addComputer',
     component: AddComputerComponent,
     pathMatch: 'full'
-},
+  },
   {
-      path: 'computers',
-      component: ComputerListComponent,
-      pathMatch: 'full'
+    path: 'computers',
+    component: ComputerListComponent,
+    pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo:'computers',
+    redirectTo: 'computers',
     pathMatch: 'full'
-}
+  }
 ]
+
 @NgModule({
   declarations: [],
   exports: [
     RouterModule
-],
+  ],
   imports: [
     RouterModule.forRoot(routes)
   ]
 })
+
 export class AppRoutingModule { }

@@ -1,4 +1,4 @@
-import { ComputerComponent } from './computer/computer.component';
+import { Computer } from './Model/computer';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
@@ -11,15 +11,15 @@ export class ComputerServiceService {
   private computerUrl = 'http://10.0.1.121:8080/api/computers';
   constructor(private httpClient: HttpClient) { }
 
-  getRecipes(): Observable<ComputerComponent[]> {
-    return this.httpClient.get<ComputerComponent[]>(this.computerUrl);
+  getComputers(): Observable<Computer[]> {
+    return this.httpClient.get<Computer[]>(this.computerUrl);
 }
 
-  getRecipe(id: number): Observable<ComputerComponent> {
-    return this.httpClient.get<ComputerComponent>(`${ this.computerUrl }/${ id }`);
+  getComputer(id: number): Observable<Computer> {
+    return this.httpClient.get<Computer>(`${ this.computerUrl }/${ id }`);
 }
 
-  postComputer(computer : ComputerComponent): Observable<number>{
+  postComputer(computer : Computer): Observable<number>{
     return this.httpClient.post<number>(this.computerUrl,computer);
   }
 

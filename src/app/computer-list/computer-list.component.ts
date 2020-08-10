@@ -29,10 +29,9 @@ export class ComputerListComponent implements OnInit {
     this.computerService.getComputers().subscribe(
       (result: Computer[]) => {
 
-        this.computers = result;
-        console.log("gros pd");      },
+        this.computers = result;     },
       (error) => {
-        console.log("gros pd"); 
+        console.log("List Computer does not work"); 
       }
     )
   }

@@ -1,7 +1,8 @@
 import { Computer } from './Model/computer';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,11 @@ export class ComputerServiceService {
   putComputer(computer : Computer): Observable<number>{
     console.log(computer);
     return this.httpClient.put<number>(this.computerUrl,computer);
+  }
+
+  
+  postComputer(computer : Computer): Observable<String>{
+    return this.httpClient.post<String>(this.computerUrl,computer);
   }
 
 

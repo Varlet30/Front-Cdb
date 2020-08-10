@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Computer } from './../Model/computer';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-computer',

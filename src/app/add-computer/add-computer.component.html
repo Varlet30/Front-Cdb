@@ -1,17 +1,30 @@
-<form
-    [formGroup]="computerForm"
-    (ngSubmit)="submitComputer(computerForm.value)">
+<h1> New Computer ! </h1>
+<p>
+    <mat-form-field appearance="fill">
+        <label>Name</label>
+        <input matInput [(ngModel)]="computer.computerName" placeholder="Name">
+    </mat-form-field>
+</p>
 
-    <label for="name">Computer Name</label>
-    <input
-        type="text"
-        formControlName="computer_name">
+<p>
+    <mat-form-field appearance="fill">
+        <label>Introduced Date</label>
+        <input matInput [(ngModel)]="computer.introduced" placeholder="Introduced">
+    </mat-form-field>
+</p>
 
-        <label for="name">Computer Date Introduced</label>
-        <textarea formControlName="introduced"></textarea>
+<p>
+    <mat-form-field appearance="fill">
+        <label>Discontinued Date</label>
+        <input matInput [(ngModel)]="computer.discontinued" placeholder="Discontinued">
+    </mat-form-field>
+</p>
 
-        <label for="name">Computer Date Discontinued</label>
-        <textarea formControlName="discontinued"></textarea>
+<p>
+    <label>Company</label>
+  
+</p>
 
-    <button type="submit">SUBMIT</button>
-</form>
+<p>
+    <button mat-raised-button color="primary" (click)="addComputer()">Add</button>
+</p>

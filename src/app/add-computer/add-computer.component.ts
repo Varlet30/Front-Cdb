@@ -1,8 +1,7 @@
+import { Computer } from './../Model/computer';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { FormGroup } from '@angular/forms';
 import { ComputerServiceService } from '../computer-service.service';
-import { ComputerComponent } from '../computer/computer.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-computer',
@@ -12,21 +11,23 @@ import { ComputerComponent } from '../computer/computer.component';
 
 export class AddComputerComponent implements OnInit {
 
-  constructor(private computerServiceService : ComputerServiceService) { }
+  computer: Computer;
 
-  computerForm = new FormGroup({
-      computer_name: new FormControl(),
-      introduced: new FormControl(),
-      discontinued: new FormControl(),
-      //company: new FormGroup({
-      //  company_id: new FormControl(),
-      //  company_name: new FormControl(),
-      //})
-  });
+  constructor(private computerService : ComputerServiceService, private router: Router) { }
 
-  submitComputer(computerComponent : ComputerComponent){
-    this.computerServiceService.postComputer(computerComponent).subscribe();
-  }
   ngOnInit(): void {
+    this.computer = new Computer(); 
+  }
+
+  addComputer():void{
+    this.computerService.postComputer(this.computer).subscribe(
+      (result: String) => { 
+        this.router.navigate(["/computers"]);
+    },
+    (error) => {
+        console.log(this.computer);
+        console.log("Add recipe not working!!!");
+    }
+    );
   }
 }

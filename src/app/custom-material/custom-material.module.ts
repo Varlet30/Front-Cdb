@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select'; 
-   
+import {MatToolbarModule} from '@angular/material/toolbar';    
 
 @NgModule({
   declarations: [],
@@ -18,7 +18,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     FormsModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule
   ],
   exports:[
     MatTableModule,
@@ -26,7 +27,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     FormsModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule
   ]
 })
 export class CustomMaterialModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ComputerServiceService } from '../computer-service.service';
+import { ComputerService } from '../computer.service';
 import { Computer } from '../Model/computer';
 
 export interface PeriodicElement {
@@ -23,12 +23,11 @@ export class ComputerListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'introduced', 'discontinued', 'companyName'];
   computers: Computer[];
 
-  constructor(private computerService : ComputerServiceService) { }
+  constructor(private computerService : ComputerService) { }
 
   ngOnInit(): void {
     this.computerService.getComputers().subscribe(
       (result: Computer[]) => {
-
         this.computers = result;     },
       (error) => {
         console.log("List Computer does not work"); 

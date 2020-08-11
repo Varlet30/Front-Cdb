@@ -20,11 +20,18 @@
     </mat-form-field>
 </p>
 
-<p>
-    <label>Company</label>
-  
-</p>
+<form>
+    <mat-form-field appearance="fill">
+        <label>Company</label>
+        <mat-select [(ngModel)]="computer.companyDTO.companyId" name="company">
+            <mat-option *ngFor="let company of companies" [value]="company.companyId">
+                {{company.companyName}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
 
 <p>
     <button mat-raised-button color="primary" (click)="addComputer()">Add</button>
+    <button mat-raised-button routerLink="/computers">Cancel</button>
 </p>

@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select'; 
    
 
 @NgModule({
@@ -16,14 +17,16 @@ import {MatButtonModule} from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ],
   exports:[
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ]
 })
 export class CustomMaterialModule { }

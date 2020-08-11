@@ -1,7 +1,9 @@
+import { CompanyService } from './../company.service';
 import { Computer } from './../Model/computer';
 import { Component, OnInit } from '@angular/core';
-import { ComputerServiceService } from '../computer-service.service';
+import { ComputerService } from '../computer.service';
 import { Router } from '@angular/router';
+import { Company } from '../Model/company';
 
 @Component({
   selector: 'app-add-computer',
@@ -12,11 +14,25 @@ import { Router } from '@angular/router';
 export class AddComputerComponent implements OnInit {
 
   computer: Computer;
+  companies: Company[];
 
-  constructor(private computerService : ComputerServiceService, private router: Router) { }
+  constructor(private computerService : ComputerService, private companyService : CompanyService, private router: Router) { }
 
   ngOnInit(): void {
-    this.computer = new Computer(); 
+    this.computer = new Computer();
+    this.computer.companyDTO = new Company();
+    this.getCompanies();
+  }
+
+  getCompanies():void{
+    this.companyService.getCompanies().subscribe(
+      (result: Company[]) => { 
+        this.companies=result;
+    },
+    (error) => {
+        console.log("getCompanies not working!!!");
+    }
+    );
   }
 
   addComputer():void{
@@ -30,4 +46,5 @@ export class AddComputerComponent implements OnInit {
     }
     );
   }
+
 }

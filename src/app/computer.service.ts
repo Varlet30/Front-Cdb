@@ -7,9 +7,9 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ComputerServiceService {
+export class ComputerService {
 
-  private computerUrl = 'http://10.0.1.60:8082/api/computers';
+  private computerUrl = 'http://10.0.1.121:8080/api/computers';
   constructor(private httpClient: HttpClient) { }
 
   getComputers(): Observable<Computer[]> {
@@ -25,10 +25,8 @@ export class ComputerServiceService {
     return this.httpClient.put<number>(this.computerUrl,computer);
   }
 
-  
   postComputer(computer : Computer): Observable<String>{
     return this.httpClient.post<String>(this.computerUrl,computer);
   }
-
 
 }

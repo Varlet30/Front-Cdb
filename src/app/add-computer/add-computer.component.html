@@ -1,0 +1,30 @@
+<h1> New Computer ! </h1>
+<p>
+    <mat-form-field appearance="fill">
+        <label>Name</label>
+        <input matInput [(ngModel)]="computer.computerName" placeholder="Name">
+    </mat-form-field>
+</p>
+
+<p>
+    <mat-form-field appearance="fill">
+        <label>Introduced Date</label>
+        <input matInput [(ngModel)]="computer.introduced" placeholder="Introduced">
+    </mat-form-field>
+</p>
+
+<p>
+    <mat-form-field appearance="fill">
+        <label>Discontinued Date</label>
+        <input matInput [(ngModel)]="computer.discontinued" placeholder="Discontinued">
+    </mat-form-field>
+</p>
+
+<p>
+    <label>Company</label>
+  
+</p>
+
+<p>
+    <button mat-raised-button color="primary" (click)="addComputer()">Add</button>
+</p>

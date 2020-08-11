@@ -36,9 +36,9 @@ export class ComputerListComponent implements OnInit {
     console.log(ComputerListComponent);
     this.computerService.getComputersPage(this.dashboard).subscribe(
       (result: Computer[]) => {
-        this.computers = result;
-      },
+        this.computers = result;     },
       (error) => {
+        console.log("List Computer does not work"); 
       }
     )
   }

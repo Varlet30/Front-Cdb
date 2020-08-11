@@ -1,0 +1,19 @@
+<div class="example-container">
+    <br>
+    <mat-form-field >
+      <label>Name of the computer</label>
+      <input matInput [(ngModel)]="computer.computerName">
+    </mat-form-field>
+    <br>
+    <br>
+    <mat-form-field >
+      <label>Computer introduced in?</label>
+      <input matInput  [(ngModel)]="computer.introduced">
+    </mat-form-field>
+    <br>
+    <mat-form-field >
+      <label>Computer discontinued in?</label>
+      <input matInput [(ngModel)]="computer.discontinued">
+    </mat-form-field>
+    <button (click)=updateComputer()> Send </button>
+  </div>

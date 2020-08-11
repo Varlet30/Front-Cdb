@@ -23,4 +23,18 @@ export class ComputerService {
   getComputersNumber(dashbaord: Dashboard): Observable<number> {
     return this.httpClient.post<number>(`${ this.computerUrl }/number`, dashbaord);
   }
+
+  getComputer(id: number): Observable<Computer> {
+    return this.httpClient.get<Computer>(`${ this.computerUrl }/${ id }`);
+  }
+
+  putComputer(computer : Computer): Observable<number>{
+    console.log(computer);
+    return this.httpClient.put<number>(this.computerUrl,computer);
+  }
+
+  
+  postComputer(computer : Computer): Observable<String>{
+    return this.httpClient.post<String>(this.computerUrl,computer);
+  }
 }

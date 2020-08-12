@@ -1,6 +1,7 @@
 export class Dashboard {
     search : string;
-    order : string;
+    ascOrder : string;
+    column : string;
     pageNb : string;
     linesNb : string;
 }

@@ -1,8 +1,10 @@
+import { PaginationComponent } from './../pagination/pagination.component';
 import { Dashboard } from './../Model/dashboard.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ComputerService } from '../computer.service';
 import { Computer } from '../Model/computer.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-computer-list',
@@ -15,33 +17,66 @@ export class ComputerListComponent implements OnInit {
   dashboard: Dashboard;
   edited = false; 
 
+  @ViewChild(PaginationComponent) pagination:PaginationComponent;
+
   constructor(
-    private route: ActivatedRoute, 
-    private computerService : ComputerService) { }
+    private computerService : ComputerService) { 
+  }
 
   ngOnInit(): void {
-    this.route.queryParams
-    .subscribe((params) => {
-      this.dashboard = {
-        search: "",
-        order: "",
-        pageNb: params.pageNb,
-        linesNb: params.linesNb
-      };
-      }
-    );
-    if(this.dashboard.pageNb === undefined){
-      this.dashboard.pageNb = "1";
-      this.dashboard.linesNb = "10";
-    }
-    console.log(ComputerListComponent);
+    this.dashboard = {
+      search: "",
+      ascOrder: "true",
+      column: "id",
+      pageNb: "1",
+      linesNb: "10"
+    };
+    this.requestComputers();
+  }
+
+  requestComputers(){
+    console.log(this.dashboard);
     this.computerService.getComputersPage(this.dashboard).subscribe(
       (result: Computer[]) => {
-        this.computers = result;     },
+        this.computers = result;
+        this.pagination.refresh();
+      },
       (error) => {
         console.log("List Computer does not work"); 
       }
-    )
+    );
+  }
+
+  sortData(sort: Sort){
+    let column: string;
+    let ascOrder: string; 
+    switch (sort.direction) {
+      case "asc":
+        ascOrder = "true";
+        column = sort.active;
+        break;
+      case "desc":
+        ascOrder = "false";
+        column = sort.active;
+        break;
+    
+      default:
+        ascOrder = "true";
+        column = "id";
+        break;
+    }
+    this.dashboard = {
+      search: "",
+      ascOrder: ascOrder,
+      column: column,
+      pageNb: "1",
+      linesNb: this.dashboard.linesNb
+    };
+    this.requestComputers();
+  }
+
+  changePageEvent(){
+    this.requestComputers();
   }
 
 }

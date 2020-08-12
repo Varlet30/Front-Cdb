@@ -10,8 +10,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import {MatMenuModule} from '@angular/material/menu'; 
+import {MatSortModule} from '@angular/material/sort';
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
-import {MatNativeDateModule} from '@angular/material/core'; 
+import {MatNativeDateModule} from '@angular/material/core';
+   
 
 @NgModule({
   declarations: [],
@@ -30,7 +32,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatSortModule
+
   ],
   exports:[
     MatTableModule,
@@ -45,7 +48,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSortModule
   ]
 })
 export class CustomMaterialModule { }

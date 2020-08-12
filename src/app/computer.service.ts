@@ -28,9 +28,9 @@ export class ComputerService {
     return this.httpClient.get<Computer>(`${ this.computerUrl }/${ id }`);
   }
 
-  putComputer(computer : Computer): Observable<number>{
+  putComputer(computer : Computer): Observable<Computer>{
     console.log(computer);
-    return this.httpClient.put<number>(this.computerUrl,computer);
+    return this.httpClient.put<Computer>(this.computerUrl,computer);
   }
 
   postComputer(computer : Computer): Observable<String>{

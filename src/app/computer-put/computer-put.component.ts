@@ -1,8 +1,11 @@
-import { ComputerService } from '../computer.service';
+import { CompanyService } from './../company.service';
+import { ComputerService } from './../computer.service';
 import { Component, OnInit } from '@angular/core';
 import { Computer } from '../Model/computer.model';
 import { ActivatedRoute } from '@angular/router';
 import { Company } from '../Model/company.model';
+import { FormControl, FormGroup } from '@angular/forms';
+import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-computer-put',
@@ -11,14 +14,38 @@ import { Company } from '../Model/company.model';
 })
 export class ComputerPutComponent implements OnInit {
   computer : Computer;
-  constructor(private computerService : ComputerService, private route : ActivatedRoute) { }
+  companies : Company[];
+  editedComputer: Computer;
+  idSearch : number;
+  constructor(private computerService : ComputerService, private route : ActivatedRoute, private companyService : CompanyService , private calendar : NgbCalendar) { }
 
+  editForm = new FormGroup({
+    computerName: new FormControl(''),
+    introduced: new FormControl(''),
+    discontinued: new FormControl(''),
+    companyDTO : new FormControl('')
+  });
+
+  get name() { return this.editForm.get('name'); }
+  get introduced() { return this.editForm.get('introduced'); }
+  get discontinued() { return this.editForm.get('discontinued'); }
   ngOnInit(): void {
-    this.computer = new Computer();
+    this.idSearch= Number (this.route.snapshot.paramMap.get('id'));
+    this.editedComputer = new Computer();
+    this.computerService.getComputer(this.idSearch).subscribe((data : Computer) =>{
+      this.editedComputer= data;
+      console.log(this.editedComputer);
+     });
+    this.companyService.getCompanies().subscribe(
+      (result: Company[]) => {
+          this.companies = result;
+      },
+      (error) => {
+          // Traiter l'erreur
+      });
   }
 
-  updateComputer(){ 
-    this.computer.computerId = this.route.snapshot.paramMap.get('id');
-    this.computerService.putComputer(this.computer).subscribe(result => console.log(result));
+  onSubmit(){
+    this.computerService.putComputer(this.editedComputer).subscribe(result => console.log(result));
   }
 }

@@ -15,6 +15,7 @@ import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 export class ComputerPutComponent implements OnInit {
   computer : Computer;
   companies : Company[];
+  editedComputer: Computer;
   constructor(private computerService : ComputerServiceService, private route : ActivatedRoute, private companyService : CompanyService , private calendar : NgbCalendar) { }
 
   editForm = new FormGroup({
@@ -29,6 +30,7 @@ export class ComputerPutComponent implements OnInit {
   get discontinued() { return this.editForm.get('discontinued'); }
   ngOnInit(): void {
     this.computer = new Computer();
+    this.editedComputer = new Computer();
     this.computer.companyDTO = new Company();
     this.companyService.getCompanies().subscribe(
       (result: Company[]) => {

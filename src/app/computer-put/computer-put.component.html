@@ -1,19 +1,36 @@
-<div class="example-container">
-    <br>
-    <mat-form-field >
-      <label>Name of the computer</label>
-      <input matInput [(ngModel)]="computer.computerName">
-    </mat-form-field>
-    <br>
-    <br>
-    <mat-form-field >
-      <label>Computer introduced in?</label>
-      <input matInput  [(ngModel)]="computer.introduced">
-    </mat-form-field>
-    <br>
-    <mat-form-field >
-      <label>Computer discontinued in?</label>
-      <input matInput [(ngModel)]="computer.discontinued">
-    </mat-form-field>
-    <button (click)=updateComputer()> Send </button>
-  </div>
+<form [formGroup]="editForm"  (ngSubmit)="onSubmit()">
+
+<label>
+  Computer Name:
+  <input name="computerName" type="text" formControlName="computerName" [(ngModel)]="editedComputer.computerName" required>
+</label>
+<br>
+<label>
+  Introduced Date :
+  <input name="introduced" type="date" [(ngModel)]="editedComputer.introduced" formControlName="introduced">
+</label>
+<br>
+<label>
+  Discontinued Date :
+  <input name="discontinued" type="date" [(ngModel)]="editedComputer.discontinued" formControlName="discontinued">
+</label>
+<br>
+<mat-form-field appearance="fill">
+  <mat-label>Company</mat-label>
+  
+  <mat-select name="computer.companyDTO.companyId" [(ngModel)]="editedComputer.companyDTO" formControlName="companyDTO" >
+    <div>
+      <mat-option *ngIf="editedComputer.companyDTO" [value]=editedComputer.companyDTO>
+        {{editedComputer.companyDTO.companyName}} 
+      </mat-option>
+      <mat-option [value]="null">no company</mat-option>
+      <mat-option *ngFor="let c of companies" [value]="c">
+        {{c.companyName}}
+      </mat-option>
+    </div>
+  </mat-select>
+</mat-form-field>
+  <br>
+<button type="submit" [disabled]="!editForm.valid">Update Computer</button>
+
+</form> 

@@ -1,0 +1,99 @@
+[1mdiff --git a/src/app/app.module.ts b/src/app/app.module.ts[m
+[1mindex 08a3349..026860e 100644[m
+[1m--- a/src/app/app.module.ts[m
+[1m+++ b/src/app/app.module.ts[m
+[36m@@ -1,29 +1,18 @@[m
+ import { BrowserModule } from '@angular/platform-browser';[m
+[31m-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';[m
+ import { NgModule } from '@angular/core';[m
+[31m-[m
+ import { AppComponent } from './app.component';[m
+ import { HeaderComponent } from './header/header.component';[m
+ import { ComputerComponent } from './computer/computer.component';[m
+ import { ComputerListComponent } from './computer-list/computer-list.component';[m
+ import { AddComputerComponent } from './add-computer/add-computer.component';[m
+[31m-[m
+[31m-import { ReactiveFormsModule } from '@angular/forms';[m
+[32m+[m[32mimport { ReactiveFormsModule, FormsModule } from '@angular/forms';[m
+ import { HttpClientModule } from '@angular/common/http';[m
+ import { AppRoutingModule } from './app-routing.module';[m
+ import { CustomMaterialModule } from './custom-material/custom-material.module';[m
+[31m-<<<<<<< HEAD[m
+ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';[m
+ import { ComputerPutComponent } from './computer-put/computer-put.component';[m
+[31m-<<<<<<< edit[m
+[31m-=======[m
+ import { ComputerServiceService } from './computer-service.service';[m
+[31m-import { FormsModule } from '@angular/forms';[m
+[31m->>>>>>> 53528a55d3d5f42509581660ad68c8a7a4466f5e[m
+[31m-=======[m
+[31m-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';[m
+ [m
+[31m->>>>>>> local[m
+ [m
+ @NgModule({[m
+   declarations: [[m
+[36m@@ -31,25 +20,17 @@[m [mimport { NgbModule } from '@ng-bootstrap/ng-bootstrap';[m
+     HeaderComponent,[m
+     ComputerComponent,[m
+     ComputerListComponent,[m
+[31m-<<<<<<< HEAD[m
+[31m-    ComputerPutComponent[m
+[31m-=======[m
+[32m+[m[32m    ComputerPutComponent,[m
+     AddComputerComponent[m
+[31m->>>>>>> 53528a55d3d5f42509581660ad68c8a7a4466f5e[m
+   ],[m
+   imports: [[m
+     BrowserModule,[m
+     BrowserAnimationsModule,[m
+     ReactiveFormsModule,[m
+     AppRoutingModule,[m
+[31m-<<<<<<< edit[m
+     CustomMaterialModule,[m
+     HttpClientModule,[m
+     FormsModule[m
+[31m-=======[m
+[31m-    HttpClientModule,[m
+[31m-    NgbModule[m
+[31m->>>>>>> local[m
+   ],[m
+   providers: [ComputerServiceService],[m
+   bootstrap: [AppComponent][m
+[1mdiff --git a/src/app/computer-put/computer-put.component.html b/src/app/computer-put/computer-put.component.html[m
+[1mindex 08af60e..778651a 100644[m
+[1m--- a/src/app/computer-put/computer-put.component.html[m
+[1m+++ b/src/app/computer-put/computer-put.component.html[m
+[36m@@ -18,7 +18,7 @@[m
+ <mat-form-field appearance="fill">[m
+   <mat-label>Company</mat-label>[m
+   [m
+[31m-  <mat-select name="computer.companyDTO.companyId" matInput [(ngModel)]="computer.companyDTO" formControlName="companyDTO" >[m
+[32m+[m[32m  <mat-select name="computer.companyDTO.companyId" [(ngModel)]="computer.companyDTO" formControlName="companyDTO" >[m
+     <div>[m
+       <mat-option *ngIf="editedComputer.companyDTO" [value]=editedComputer.companyDTO>[m
+         {{editedComputer.companyDTO.companyName}} [m
+[1mdiff --git a/src/app/custom-material/custom-material.module.ts b/src/app/custom-material/custom-material.module.ts[m
+[1mindex 889d828..d9ef3cd 100644[m
+[1m--- a/src/app/custom-material/custom-material.module.ts[m
+[1m+++ b/src/app/custom-material/custom-material.module.ts[m
+[36m@@ -21,7 +21,9 @@[m [mimport {MatNativeDateModule} from '@angular/material/core';[m
+     MatSelectModule,[m
+     MatDatepickerModule,[m
+     MatNativeDateModule,[m
+[31m-    ReactiveFormsModule[m
+[32m+[m[32m    ReactiveFormsModule,[m
+[32m+[m[32m    MatFormFieldModule[m
+[32m+[m
+   ],[m
+   exports:[[m
+     MatTableModule,[m
+[36m@@ -31,7 +33,7 @@[m [mimport {MatNativeDateModule} from '@angular/material/core';[m
+     MatButtonModule,[m
+     MatSelectModule,[m
+     MatDatepickerModule,[m
+[31m-    ReactiveFormsModule[m
+[32m+[m[32m    ReactiveFormsModule,[m
+   ][m
+ })[m
+ export class CustomMaterialModule { }[m

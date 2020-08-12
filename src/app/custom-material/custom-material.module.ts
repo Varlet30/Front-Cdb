@@ -5,9 +5,12 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatFormFieldModule} from '@angular/material/form-field'; 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select'; 
 import {MatInputModule} from '@angular/material/input';
 import {MatSortModule} from '@angular/material/sort';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import {MatNativeDateModule} from '@angular/material/core';
    
 
 @NgModule({
@@ -15,10 +18,18 @@ import {MatSortModule} from '@angular/material/sort';
   imports: [
     CommonModule,
     MatTableModule,
+    MatInputModule,
+    FormsModule,
     MatButtonModule,
     MatToolbarModule,
     MatButtonToggleModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatFormFieldModule
+
   ],
   exports:[
     MatTableModule,
@@ -28,7 +39,11 @@ import {MatSortModule} from '@angular/material/sort';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatSortModule
+    MatSortModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    ReactiveFormsModule
   ]
 })
 export class CustomMaterialModule { }

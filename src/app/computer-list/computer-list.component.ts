@@ -13,6 +13,7 @@ export class ComputerListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'introduced', 'discontinued', 'companyName'];
   computers: Computer[];
   dashboard: Dashboard;
+  edited = false; 
 
   constructor(
     private route: ActivatedRoute, 

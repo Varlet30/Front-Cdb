@@ -11,6 +11,7 @@ import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { PaginationComponent } from './pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
 import { ComputerPutComponent } from './computer-put/computer-put.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ComputerPutComponent } from './computer-put/computer-put.component';
     PaginationComponent,
     ComputerListComponent,
     ComputerPutComponent,
-    AddComputerComponent
+    AddComputerComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,27 @@
 .button-row {
-  display: table-cell;
+  text-align: center;
 }
 
-.button-row .mat-button-base,.linesNb {
-  margin: 8px 8px 8px 0;
+.button-row, .mat-button-base, .linesNb { 
+  border-radius: 20px;
 }
-  
+
+.mat-raised-button.mat-primary{
+  background-color: rgb(67, 173, 223);
+  color:white;
+  margin-bottom: 2%;
+  border-radius: 20px;
+}
+
+.mat-raised-button.mat-warn{
+  background-color: rgba(10, 8, 153, 0.849);
+  color:white;
+  margin-bottom: 2%;
+  border-radius: 20px;
+}
+
+.right {
+  text-align: right;
+  margin-right: 13%;
+}
+

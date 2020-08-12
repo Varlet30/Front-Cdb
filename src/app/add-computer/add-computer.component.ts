@@ -2,49 +2,51 @@ import { CompanyService } from './../company.service';
 import { Computer } from './../Model/computer.model';
 import { Component, OnInit } from '@angular/core';
 import { ComputerService } from '../computer.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Company } from '../Model/company.model';
+import { FormControl, FormGroup } from '@angular/forms';
+import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-computer',
   templateUrl: './add-computer.component.html',
   styleUrls: ['./add-computer.component.scss']
 })
-
 export class AddComputerComponent implements OnInit {
+  computer : Computer;
+  companies : Company[];
+  addedComputer: Computer;
+  constructor(private computerService : ComputerService, private route : ActivatedRoute, private companyService : CompanyService , private calendar : NgbCalendar) { }
 
-  computer: Computer;
-  companies: Company[];
+  addForm = new FormGroup({
+    computerName: new FormControl(''),
+    introduced: new FormControl(''),
+    discontinued: new FormControl(''),
+    companyDTO : new FormControl('')
+  });
 
-  constructor(private computerService : ComputerService, private companyService : CompanyService, private router: Router) { }
+  get name() { return this.addForm.get('name'); }
+  get introduced() { return this.addForm.get('introduced'); }
+  get discontinued() { return this.addForm.get('discontinued'); }
 
   ngOnInit(): void {
     this.computer = new Computer();
+    this.addedComputer = new Computer();
     this.computer.companyDTO = new Company();
-    this.getCompanies();
-  }
-
-  getCompanies():void{
     this.companyService.getCompanies().subscribe(
-      (result: Company[]) => { 
-        this.companies=result;
-    },
-    (error) => {
-        console.log("getCompanies not working!!!");
-    }
-    );
+      (result: Company[]) => {
+          this.companies = result;
+      },
+      (error) => {
+          // Traiter l'erreur
+      });
   }
-
-  addComputer():void{
-    this.computerService.postComputer(this.computer).subscribe(
-      (result: String) => { 
-        this.router.navigate(["/computers"]);
-    },
-    (error) => {
-        console.log(this.computer);
-        console.log("Add recipe not working!!!");
-    }
-    );
+  onSubmit(){
+    this.computer.computerId = this.route.snapshot.paramMap.get('id');
+    this.computer.computerName = this.addForm.get('computerName').value;
+    this.computer.introduced = this.addForm.get('introduced').value;
+    this.computer.discontinued = this.addForm.get('discontinued').value;
+    this.computer.computerId = this.route.snapshot.paramMap.get('id');
+    this.computerService.postComputer(this.computer).subscribe(result => console.log(result));
   }
-
 }

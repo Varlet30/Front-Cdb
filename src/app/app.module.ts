@@ -9,8 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComputerListComponent } from './computer-list/computer-list.component';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { PaginationComponent } from './pagination/pagination.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComputerPutComponent } from './computer-put/computer-put.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -24,10 +26,13 @@ import { ComputerPutComponent } from './computer-put/computer-put.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     CustomMaterialModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

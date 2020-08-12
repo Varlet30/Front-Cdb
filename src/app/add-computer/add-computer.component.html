@@ -1,37 +1,36 @@
-<h1> New Computer ! </h1>
-<p>
-    <mat-form-field appearance="fill">
-        <label>Name</label>
-        <input matInput [(ngModel)]="computer.computerName">
-    </mat-form-field>
-</p>
+<form [formGroup]="addForm"  (ngSubmit)="onSubmit()">
 
-<p>
+    <label>
+      Computer Name:
+      <input name="computerName" type="text" formControlName="computerName" required>
+    </label>
+    <br>
+    <label>
+      Date when the computer has been introduced:
+      <input name="introduced" type="date" formControlName="introduced">
+    </label>
+    <br>
+    <label>
+      Date when the computer has been discontinued:
+      <input name="discontinued" type="date" formControlName="discontinued">
+    </label>
+    <br>
     <mat-form-field appearance="fill">
-        <label>Introduced Date</label>
-        <input matInput [(ngModel)]="computer.introduced">
+      <mat-label>Company</mat-label>
+      
+      <mat-select name="computer.companyDTO.companyId" [(ngModel)]="computer.companyDTO" formControlName="companyDTO" >
+        <div>
+          <mat-option *ngIf="addedComputer.companyDTO" [value]=addedComputer.companyDTO>
+            {{addedComputer.companyDTO.companyName}} 
+          </mat-option>
+          <mat-option [value]="null">no company</mat-option>
+          <mat-option *ngFor="let c of companies" [value]="c">
+            {{c.companyName}}
+          </mat-option>
+        </div>
+      </mat-select>
     </mat-form-field>
-</p>
-
-<p>
-    <mat-form-field appearance="fill">
-        <label>Discontinued Date</label>
-        <input matInput [(ngModel)]="computer.discontinued">
-    </mat-form-field>
-</p>
-
-<form>
-    <mat-form-field appearance="fill">
-        <label>Company</label>
-        <mat-select [(ngModel)]="computer.companyDTO.companyId" name="company">
-            <mat-option *ngFor="let company of companies" [value]="company.companyId">
-                {{company.companyName}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-</form>
-
-<p>
-    <button mat-raised-button color="primary" (click)="addComputer()">Add</button>
-    <button mat-raised-button routerLink="/computers">Cancel</button>
-</p>
+      <br>
+    <button type="submit" [disabled]="!addForm.valid">Update Computer</button>
+    
+    </form> 

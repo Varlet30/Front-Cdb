@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class CompanyService {
 
-  private companyUrl = 'http://localhost:8080/api/companies';
+  private companyUrl = 'http://10.0.1.109:8080/api/companies';
   constructor(private httpClient: HttpClient) { }
 
   getCompanies(): Observable<Company[]> {

@@ -1,0 +1,21 @@
+.logo{
+    height: 75px;
+    width: 75px;
+}
+
+.mat-toolbar.mat-primary{
+    background-image: linear-gradient(rgba(19, 111, 197, 0.993),rgb(105, 212, 231));
+    color: #fff;
+}
+
+.spacer {
+    flex: 1 1 auto;
+  }
+  
+.button{
+    font-weight:bold;  
+}
+
+.search{
+    display: center;
+}

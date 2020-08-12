@@ -1,9 +1,9 @@
 import { CompanyService } from './../company.service';
-import { Computer } from './../Model/computer';
+import { Computer } from './../Model/computer.model';
 import { Component, OnInit } from '@angular/core';
 import { ComputerService } from '../computer.service';
 import { Router } from '@angular/router';
-import { Company } from '../Model/company';
+import { Company } from '../Model/company.model';
 
 @Component({
   selector: 'app-add-computer',

@@ -1,6 +1,6 @@
 import { ComponentFactory } from "@angular/core";
 
-import { Company } from './company';
+import { Company } from './company.model';
 
 export class Computer {
     computerId : string;

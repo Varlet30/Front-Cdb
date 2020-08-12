@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ComputerComponent } from './computer/computer.component';
 import {AppRoutingModule} from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ComputerListComponent } from './computer-list/computer-list.component';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaginationComponent } from './pagination/pagination.component';
+import { FormsModule } from '@angular/forms';
 import { ComputerPutComponent } from './computer-put/computer-put.component';
 
 
@@ -17,7 +17,7 @@ import { ComputerPutComponent } from './computer-put/computer-put.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    ComputerComponent,
+    PaginationComponent,
     ComputerListComponent,
     ComputerPutComponent,
     AddComputerComponent
@@ -25,9 +25,9 @@ import { ComputerPutComponent } from './computer-put/computer-put.component';
   imports: [
     BrowserModule,
     CustomMaterialModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

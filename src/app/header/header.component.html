@@ -1,10 +1,17 @@
 <mat-toolbar color="primary">
     <span>
-      <img src="assets/img/lion.png" class="angular-logo">
-      Computer-database
+      <img src="assets/img/lion.png" class="logo">
     </span>
-    <span class="fill-remaining-space"></span>
-    <button mat-button routerLink="/addComputer">Add</button>
-    <button mat-button>Login</button>
-    <button mat-button>Logout</button>
+    <h2>
+        Computer-database
+    </h2>
+    <div>
+        <img src="assets/img/search.png"> 
+        <input type="text" placeholder="Search &amp; enter" class="search">
+    </div>
+
+    <span class="spacer"></span>
+    <button mat-button routerLink="/addComputer" class="button">Add</button>
+    <button mat-button style='width:70px'>Logout</button>
+    <img src="assets/img/logout.png"> 
 </mat-toolbar>

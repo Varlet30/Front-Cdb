@@ -1,18 +1,8 @@
+import { Dashboard } from './../Model/dashboard.model';
 import { Component, OnInit } from '@angular/core';
 import { ComputerService } from '../computer.service';
-import { Computer } from '../Model/computer';
-
-export interface PeriodicElement {
-  name: string;
-  introduced: string;
-  discontinued: string;
-  companyName: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {name: 'Mac', introduced: '01-01-1999', discontinued: '01-01-2000', companyName: 'Apple.'},
-  {name: 'Game boy', introduced: '01-01-1997', discontinued: '01-01-2010', companyName: 'Nintendo'},
-];
+import { Computer } from '../Model/computer.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-computer-list',
@@ -22,11 +12,29 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ComputerListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'introduced', 'discontinued', 'companyName'];
   computers: Computer[];
+  dashboard: Dashboard;
 
-  constructor(private computerService : ComputerService) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private computerService : ComputerService) { }
 
   ngOnInit(): void {
-    this.computerService.getComputers().subscribe(
+    this.route.queryParams
+    .subscribe((params) => {
+      this.dashboard = {
+        search: "",
+        order: "",
+        pageNb: params.pageNb,
+        linesNb: params.linesNb
+      };
+      }
+    );
+    if(this.dashboard.pageNb === undefined){
+      this.dashboard.pageNb = "1";
+      this.dashboard.linesNb = "10";
+    }
+    console.log(ComputerListComponent);
+    this.computerService.getComputersPage(this.dashboard).subscribe(
       (result: Computer[]) => {
         this.computers = result;     },
       (error) => {

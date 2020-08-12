@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Company } from './Model/company';
+import { Company } from './Model/company.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class CompanyService {
 
-  private companyUrl = 'http://10.0.1.121:8080/api/companies';
+  private companyUrl = 'http://localhost:8080/api/companies';
   constructor(private httpClient: HttpClient) { }
 
   getCompanies(): Observable<Company[]> {

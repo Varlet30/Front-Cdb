@@ -1,8 +1,8 @@
 import { ComputerService } from '../computer.service';
 import { Component, OnInit } from '@angular/core';
-import { Computer } from '../Model/computer';
+import { Computer } from '../Model/computer.model';
 import { ActivatedRoute } from '@angular/router';
-import { Company } from '../Model/company';
+import { Company } from '../Model/company.model';
 
 @Component({
   selector: 'app-computer-put',

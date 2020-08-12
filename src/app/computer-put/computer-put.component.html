@@ -18,7 +18,7 @@
 <mat-form-field appearance="fill">
   <mat-label>Company</mat-label>
   
-  <mat-select name="computer.companyDTO.companyId" matInput [(ngModel)]="computer.companyDTO" formControlName="companyDTO" >
+  <mat-select name="computer.companyDTO.companyId" [(ngModel)]="computer.companyDTO" formControlName="companyDTO" >
     <div>
       <mat-option *ngIf="editedComputer.companyDTO" [value]=editedComputer.companyDTO>
         {{editedComputer.companyDTO.companyName}} 

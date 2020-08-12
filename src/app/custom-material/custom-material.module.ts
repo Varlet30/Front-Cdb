@@ -15,14 +15,15 @@ import {MatNativeDateModule} from '@angular/material/core';
   imports: [
     CommonModule,
     MatTableModule,
-    MatFormFieldModule,
     MatInputModule,
     FormsModule,
     MatButtonModule,
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule
+
   ],
   exports:[
     MatTableModule,
@@ -32,7 +33,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatButtonModule,
     MatSelectModule,
     MatDatepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class CustomMaterialModule { }

@@ -1,6 +1,6 @@
 import { ComputerService } from './../computer.service';
 import { Dashboard } from './../Model/dashboard.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
 
@@ -12,16 +12,21 @@ import { ThemePalette } from '@angular/material/core';
 export class PaginationComponent implements OnInit {
   @Input()
   dashboard: Dashboard;
+  @Output()
+  changePageEvent = new EventEmitter();
+
   pages: number[]= new Array(5);  
   next: boolean;
   prev: boolean;
   buttonColors: ThemePalette[] = new Array(5);
   linesNb: String;
 
-  constructor(private computerService: ComputerService, private router: Router) { }
+  constructor(private computerService: ComputerService) { }
 
   ngOnInit(): void {
-    console.log("PaginationComponent");
+    this.refresh();
+  }
+  refresh(){
     if(+this.dashboard.pageNb === 1){
       this.prev = false;
     }
@@ -61,42 +66,22 @@ export class PaginationComponent implements OnInit {
     this.linesNb = this.dashboard.linesNb;
   }
   changePage(pageNb: number){
-    this.router.navigate(['/products'], { 
-      queryParams: { 
-        pageNb: pageNb+"" , 
-        linesNb: this.linesNb
-      } 
-      }).then(
-        ()=>window.location.reload());
+    this.dashboard.pageNb = pageNb+"";
+    this.refresh();
+    this.changePageEvent.emit();
   }
   previousPage(){
-    var pageNb = +this.dashboard.pageNb -1 +"";
-    this.router.navigate(['/products'], { 
-      queryParams: { 
-        pageNb: pageNb+"" , 
-        linesNb: this.linesNb
-      } 
-      }).then(
-        ()=>window.location.reload());
+    var pageNb = +this.dashboard.pageNb -1;
+    this.changePage(pageNb);
   }
   nextPage(){
-    var pageNb = +this.dashboard.pageNb +1 + "";
-    this.router.navigate(['/products'], { 
-      queryParams: { 
-        pageNb: pageNb+"" , 
-        linesNb: this.linesNb
-      } 
-      }).then(
-        ()=>window.location.reload());
+    var pageNb = +this.dashboard.pageNb +1;
+    this.changePage(pageNb);
   }
   changeLinesNb(){
-    console.log(this.dashboard.linesNb);
-    this.router.navigate(['/products'], { 
-      queryParams: { 
-        pageNb: "1", 
-        linesNb: this.linesNb
-      } 
-      }).then(
-        ()=>window.location.reload());
+    this.dashboard.pageNb = "1";
+    this.dashboard.linesNb = this.linesNb +"";
+    this.refresh();
+    this.changePageEvent.emit();
   }
 }

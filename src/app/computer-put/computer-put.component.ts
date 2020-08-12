@@ -1,8 +1,7 @@
-import { ComputerServiceService } from './../computer-service.service';
+import { ComputerService } from './../computer.service';
 import { Component, OnInit } from '@angular/core';
-import { Computer } from '../Model/computer';
+import { Computer } from '../Model/computer.model';
 import { ActivatedRoute } from '@angular/router';
-import { Company } from '../Model/company';
 
 @Component({
   selector: 'app-computer-put',
@@ -11,7 +10,7 @@ import { Company } from '../Model/company';
 })
 export class ComputerPutComponent implements OnInit {
   computer : Computer;
-  constructor(private computerService : ComputerServiceService, private route : ActivatedRoute) { }
+  constructor(private computerService : ComputerService, private route : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.computer = new Computer();

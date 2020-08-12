@@ -11,7 +11,7 @@ import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { PaginationComponent } from './pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
 import { ComputerPutComponent } from './computer-put/computer-put.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { ComputerPutComponent } from './computer-put/computer-put.component';
     CustomMaterialModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class ComputerServiceService {
 
-  private computerUrl = 'http://10.0.1.60:8082/api/computers';
+  private computerUrl = 'http://10.0.1.109:8080/api/computers';
   constructor(private httpClient: HttpClient) { }
 
   getComputers(): Observable<Computer[]> {
@@ -20,9 +20,9 @@ export class ComputerServiceService {
     return this.httpClient.get<Computer>(`${ this.computerUrl }/${ id }`);
 }
 
-  putComputer(computer : Computer): Observable<number>{
+  putComputer(computer : Computer): Observable<Computer>{
     console.log(computer);
-    return this.httpClient.put<number>(this.computerUrl,computer);
+    return this.httpClient.put<Computer>(this.computerUrl,computer);
   }
 
   

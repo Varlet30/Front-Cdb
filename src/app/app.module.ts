@@ -15,10 +15,15 @@ import { CustomMaterialModule } from './custom-material/custom-material.module';
 <<<<<<< HEAD
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComputerPutComponent } from './computer-put/computer-put.component';
+<<<<<<< edit
 =======
 import { ComputerServiceService } from './computer-service.service';
 import { FormsModule } from '@angular/forms';
 >>>>>>> 53528a55d3d5f42509581660ad68c8a7a4466f5e
+=======
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+>>>>>>> local
 
 @NgModule({
   declarations: [
@@ -37,9 +42,14 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+<<<<<<< edit
     CustomMaterialModule,
     HttpClientModule,
     FormsModule
+=======
+    HttpClientModule,
+    NgbModule
+>>>>>>> local
   ],
   providers: [ComputerServiceService],
   bootstrap: [AppComponent]

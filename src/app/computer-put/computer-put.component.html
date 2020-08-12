@@ -1,24 +1,24 @@
 <form [formGroup]="editForm"  (ngSubmit)="onSubmit()">
 
 <label>
-  First Name:
-  <input name="computerName" type="text" formControlName="computerName" required>
+  Computer Name:
+  <input name="computerName" type="text" formControlName="computerName" [(ngModel)]="editedComputer.computerName" required>
 </label>
 <br>
 <label>
-  the date the computer has been introduced:
-  <input name="introduced" type="date" formControlName="introduced">
+  Introduced Date :
+  <input name="introduced" type="date" [(ngModel)]="editedComputer.introduced" formControlName="introduced">
 </label>
 <br>
 <label>
-  the date the computer has been discontinued:
-  <input name="discontinued" type="date" formControlName="discontinued">
+  Discontinued Date :
+  <input name="discontinued" type="date" [(ngModel)]="editedComputer.discontinued" formControlName="discontinued">
 </label>
 <br>
 <mat-form-field appearance="fill">
   <mat-label>Company</mat-label>
   
-  <mat-select name="computer.companyDTO.companyId" [(ngModel)]="computer.companyDTO" formControlName="companyDTO" >
+  <mat-select name="computer.companyDTO.companyId" [(ngModel)]="editedComputer.companyDTO" formControlName="companyDTO" >
     <div>
       <mat-option *ngIf="editedComputer.companyDTO" [value]=editedComputer.companyDTO>
         {{editedComputer.companyDTO.companyName}} 

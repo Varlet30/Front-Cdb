@@ -1,9 +1,9 @@
 import { CompanyService } from './../company.service';
-import { ComputerServiceService } from './../computer-service.service';
+import { ComputerService } from './../computer.service';
 import { Component, OnInit } from '@angular/core';
-import { Computer } from '../Model/computer';
+import { Computer } from '../Model/computer.model';
 import { ActivatedRoute } from '@angular/router';
-import { Company } from '../Model/company';
+import { Company } from '../Model/company.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
@@ -16,7 +16,8 @@ export class ComputerPutComponent implements OnInit {
   computer : Computer;
   companies : Company[];
   editedComputer: Computer;
-  constructor(private computerService : ComputerServiceService, private route : ActivatedRoute, private companyService : CompanyService , private calendar : NgbCalendar) { }
+  idSearch : number;
+  constructor(private computerService : ComputerService, private route : ActivatedRoute, private companyService : CompanyService , private calendar : NgbCalendar) { }
 
   editForm = new FormGroup({
     computerName: new FormControl(''),
@@ -29,9 +30,12 @@ export class ComputerPutComponent implements OnInit {
   get introduced() { return this.editForm.get('introduced'); }
   get discontinued() { return this.editForm.get('discontinued'); }
   ngOnInit(): void {
-    this.computer = new Computer();
+    this.idSearch= Number (this.route.snapshot.paramMap.get('id'));
     this.editedComputer = new Computer();
-    this.computer.companyDTO = new Company();
+    this.computerService.getComputer(this.idSearch).subscribe((data : Computer) =>{
+      this.editedComputer= data;
+      console.log(this.editedComputer);
+     });
     this.companyService.getCompanies().subscribe(
       (result: Company[]) => {
           this.companies = result;
@@ -40,12 +44,8 @@ export class ComputerPutComponent implements OnInit {
           // Traiter l'erreur
       });
   }
+
   onSubmit(){
-    this.computer.computerId = this.route.snapshot.paramMap.get('id');
-    this.computer.computerName = this.editForm.get('computerName').value;
-    this.computer.introduced = this.editForm.get('introduced').value;
-    this.computer.discontinued = this.editForm.get('discontinued').value;
-    this.computer.computerId = this.route.snapshot.paramMap.get('id');
-    this.computerService.putComputer(this.computer).subscribe(result => console.log(result));
+    this.computerService.putComputer(this.editedComputer).subscribe(result => console.log(result));
   }
 }

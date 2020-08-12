@@ -1,6 +1,6 @@
-import { Computer } from './../Model/computer';
+import { Computer } from './../Model/computer.model';
 import { Component, OnInit } from '@angular/core';
-import { ComputerServiceService } from '../computer-service.service';
+import { ComputerService } from '../computer.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class AddComputerComponent implements OnInit {
 
   computer: Computer;
 
-  constructor(private computerService : ComputerServiceService, private router: Router) { }
+  constructor(private computerService : ComputerService, private router: Router) { }
 
   ngOnInit(): void {
     this.computer = new Computer(); 

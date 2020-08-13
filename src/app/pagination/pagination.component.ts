@@ -1,7 +1,6 @@
 import { ComputerService } from './../computer.service';
 import { Dashboard } from './../Model/dashboard.model';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
 
 @Component({
@@ -14,17 +13,19 @@ export class PaginationComponent implements OnInit {
   dashboard: Dashboard;
   @Output()
   changePageEvent = new EventEmitter();
+  @Output()
+  changeComputerNumber = new EventEmitter();
 
-  pages: number[]= new Array(5);  
   next: boolean;
   prev: boolean;
+  pages: number[] = new Array(5);
   buttonColors: ThemePalette[] = new Array(5);
+  buttonDisplay: boolean[] = new Array(5);
   linesNb: String;
 
   constructor(private computerService: ComputerService) { }
 
   ngOnInit(): void {
-    this.refresh();
   }
   refresh(){
     if(+this.dashboard.pageNb === 1){
@@ -35,7 +36,8 @@ export class PaginationComponent implements OnInit {
     }
     this.computerService.getComputersNumber(this.dashboard).subscribe(
       (totalComputers: number)=>{
-        var totalPages = Math.ceil( +totalComputers/ + this.dashboard.linesNb);
+        this.changeComputerNumber.emit(totalComputers);
+        var totalPages = Math.ceil( +totalComputers/ +this.dashboard.linesNb);
         var pageIterator = +this.dashboard.pageNb -2;
         if(pageIterator < 2){
           pageIterator = 1;
@@ -46,16 +48,20 @@ export class PaginationComponent implements OnInit {
           }
         }
         for (let i = 0; i < this.pages.length; i++) {
-          if ((pageIterator +1) <= totalPages +1) {
-              this.pages[i] = pageIterator+i;
-              if (pageIterator +i === +this.dashboard.pageNb) {
-                this.buttonColors[i] = "warn";
-              } else {
-                this.buttonColors[i] = "primary";
-              }            
+          if ((pageIterator +i) <= totalPages) {
+            this.pages[i] = pageIterator+i;
+            if (pageIterator +i === +this.dashboard.pageNb) {
+              this.buttonColors[i] = "warn";
+            } else {
+              this.buttonColors[i] = "primary";
+            }
+            this.buttonDisplay[i] = true;
           } 
+          else{
+            this.buttonDisplay[i] = false;
+          }
         }
-        if(+this.dashboard.pageNb === totalPages){
+        if(+this.dashboard.pageNb >= totalPages){
           this.next = false;
         }
         else{
@@ -67,7 +73,6 @@ export class PaginationComponent implements OnInit {
   }
   changePage(pageNb: number){
     this.dashboard.pageNb = pageNb+"";
-    this.refresh();
     this.changePageEvent.emit();
   }
   previousPage(){
@@ -81,7 +86,6 @@ export class PaginationComponent implements OnInit {
   changeLinesNb(){
     this.dashboard.pageNb = "1";
     this.dashboard.linesNb = this.linesNb +"";
-    this.refresh();
     this.changePageEvent.emit();
   }
 }

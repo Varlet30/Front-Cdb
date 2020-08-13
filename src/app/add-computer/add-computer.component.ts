@@ -1,3 +1,4 @@
+import { MatDialogModule } from '@angular/material/dialog';
 import { CompanyService } from './../company.service';
 import { Computer } from './../Model/computer.model';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,7 @@ export class AddComputerComponent implements OnInit {
   computer : Computer;
   companies : Company[];
   addedComputer: Computer;
-  constructor(private computerService : ComputerService, private route : ActivatedRoute, private companyService : CompanyService , private calendar : NgbCalendar) { }
+  constructor(private computerService : ComputerService, private companyService : CompanyService , private calendar : NgbCalendar) { }
 
   addForm = new FormGroup({
     computerName: new FormControl(''),
@@ -33,20 +34,24 @@ export class AddComputerComponent implements OnInit {
     this.computer = new Computer();
     this.addedComputer = new Computer();
     this.computer.companyDTO = new Company();
-    this.companyService.getCompanies().subscribe(
-      (result: Company[]) => {
-          this.companies = result;
-      },
-      (error) => {
-          // Traiter l'erreur
-      });
+    this.getCompanies();
   }
+  
+  getCompanies(): void{
+  this.companyService.getCompanies().subscribe(
+    (result: Company[]) => {
+        this.companies = result;
+    },
+    (error) => {
+        console.log("List companies does not work");
+    });
+  }
+
   onSubmit(){
-    this.computer.computerId = this.route.snapshot.paramMap.get('id');
     this.computer.computerName = this.addForm.get('computerName').value;
     this.computer.introduced = this.addForm.get('introduced').value;
     this.computer.discontinued = this.addForm.get('discontinued').value;
-    this.computer.computerId = this.route.snapshot.paramMap.get('id');
     this.computerService.postComputer(this.computer).subscribe(result => console.log(result));
   }
+
 }

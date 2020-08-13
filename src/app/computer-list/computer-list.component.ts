@@ -1,3 +1,5 @@
+import { AddComputerComponent } from './../add-computer/add-computer.component';
+import { MatDialog } from '@angular/material/dialog';
 import { PaginationComponent } from './../pagination/pagination.component';
 import { Dashboard } from './../Model/dashboard.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -20,7 +22,12 @@ export class ComputerListComponent implements OnInit {
   @ViewChild(PaginationComponent) pagination:PaginationComponent;
 
   constructor(
-    private computerService : ComputerService) { 
+    private computerService : ComputerService, private dialog:MatDialog) { 
+  }
+
+  addComputer():void{
+    const dialogRef = this.dialog.open(AddComputerComponent, {
+      width: '250px'});
   }
 
   ngOnInit(): void {

@@ -14,12 +14,6 @@ const routes: Routes = [
     pathMatch : 'full'
   },
   {
-     
-    path: 'addComputer',
-    component: AddComputerComponent,
-    pathMatch: 'full'
-  },
-  {
     path: 'computers',
     component: ComputerListComponent,
     pathMatch: 'full'

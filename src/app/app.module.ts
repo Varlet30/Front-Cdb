@@ -23,13 +23,10 @@ import { ComputerDeleteDialogComponent } from './computer-delete-dialog/computer
     ComputerListComponent,
     ComputerPutComponent,
     AddComputerComponent,
-<<<<<<< HEAD
     PaginationComponent,
-    ComputerDeleteDialogComponent
-=======
+    ComputerDeleteDialogComponent,
     FooterComponent,
     PaginationComponent
->>>>>>> b6fd992baad6b6c30d1e1ccbe52e29defaedc8b6
   ],
   imports: [
     BrowserModule,

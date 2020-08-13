@@ -4,10 +4,6 @@ body {
     margin: 0;
     padding: 0;
     background: linear-gradient(rgb(192, 189, 189),white);
+    min-height:100vh;
 }
 
-footer{
-    position: absolute;
-    bottom:0;
-    width:100%;
-}

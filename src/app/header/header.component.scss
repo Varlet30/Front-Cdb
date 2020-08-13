@@ -6,6 +6,25 @@
     flex: 1 1 auto;
   }
   
-.mat-menu{
-    background-color: black;
+.white-icon {
+    color: white;
 }
+
+button.mat-menu-item{
+    background-color: black;
+    color: white;
+}
+  
+button.mat-menu-item:hover {
+    background-color: rgb(182, 182, 182);
+}
+
+button.mat-icon-button{
+    margin-right: 2%;
+}
+
+.menu-panel {
+    background-color:black;
+    margin: -8px 0; 
+    padding: 8px 0;
+  }

@@ -1,9 +1,20 @@
 .button-row {
-  text-align: center;
+  margin:auto;
+  margin-left:40%;
+}
+
+.right {
+  float:right;
+  margin-right: 15%;
+  margin-top:3%;
+  
 }
 
 .button-row, .mat-button-base, .linesNb { 
   border-radius: 20px;
+  margin-bottom: 5%;
+  position:relative;
+  top:-15px;
 }
 
 .mat-raised-button.mat-primary{
@@ -14,14 +25,10 @@
 }
 
 .mat-raised-button.mat-warn{
-  background-color: rgba(10, 8, 153, 0.849);
+  background-color: rgba(14, 2, 80, 0.849);
   color:white;
   margin-bottom: 2%;
   border-radius: 20px;
 }
 
-.right {
-  text-align: right;
-  margin-right: 13%;
-}
 

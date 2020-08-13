@@ -3,18 +3,20 @@
         Computer-database
     </h2>
     <span class="spacer"></span>
-    <button mat-icon-button [matMenuTriggerFor]="menu" > 
-        <img src="assets/img/user.png">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>supervisor_account</mat-icon>
         User
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-            <span>Profile</span> 
-        </button>
-        <button mat-menu-item>
-            <span>Logout</span>
-            <img src="assets/img/logout.png"> 
-        </button>
+        <div class="menu-panel">
+            <button mat-menu-item>
+                <mat-icon class="white-icon">settings</mat-icon>
+                <span>Profile</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon class="white-icon">exit_to_app</mat-icon>
+                <span>Logout</span>
+            </button>
+        </div>
     </mat-menu>
-      
 </mat-toolbar>

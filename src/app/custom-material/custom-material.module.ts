@@ -13,7 +13,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSortModule} from '@angular/material/sort';
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
 import {MatNativeDateModule} from '@angular/material/core';
-   
+import {MatIconModule} from '@angular/material/icon'; 
 
 @NgModule({
   declarations: [],
@@ -32,7 +32,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule
 
   ],
   exports:[
@@ -49,7 +50,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatNativeDateModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule
   ]
 })
 export class CustomMaterialModule { }

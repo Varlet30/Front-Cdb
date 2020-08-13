@@ -2,13 +2,10 @@
   <div>
     <h2>
       Computers found  
-      <img src="assets/img/search.png" (click)="edited=!edited">
+      <mat-icon (click)="edited=!edited">search</mat-icon>
       <input *ngIf="edited" type="text" placeholder="Search &amp; enter">
+      <button mat-raised-button routerLink="/addComputer" class="button">Add</button>
     </h2>
-  </div>
-
-  <div class="right">
-    <button mat-raised-button routerLink="/addComputer" class="button">Add</button>
   </div>
 
 </div>

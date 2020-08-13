@@ -3,7 +3,6 @@ import { Dashboard } from './../Model/dashboard.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ComputerService } from '../computer.service';
 import { Computer } from '../Model/computer.model';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Sort } from '@angular/material/sort';
 
 @Component({
@@ -15,7 +14,8 @@ export class ComputerListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'introduced', 'discontinued', 'companyName'];
   computers: Computer[];
   dashboard: Dashboard;
-  edited = false; 
+  edited = false;
+  computerNumber: string; 
 
   @ViewChild(PaginationComponent) pagination:PaginationComponent;
 
@@ -35,7 +35,6 @@ export class ComputerListComponent implements OnInit {
   }
 
   requestComputers(){
-    console.log(this.dashboard);
     this.computerService.getComputersPage(this.dashboard).subscribe(
       (result: Computer[]) => {
         this.computers = result;
@@ -65,13 +64,10 @@ export class ComputerListComponent implements OnInit {
         column = "id";
         break;
     }
-    this.dashboard = {
-      search: "",
-      ascOrder: ascOrder,
-      column: column,
-      pageNb: "1",
-      linesNb: this.dashboard.linesNb
-    };
+    this.dashboard.ascOrder = ascOrder;
+    this.dashboard.column = column;
+    this.dashboard.pageNb = "1";
+    this.dashboard.linesNb = this.dashboard.linesNb;
     this.requestComputers();
   }
 
@@ -79,4 +75,24 @@ export class ComputerListComponent implements OnInit {
     this.requestComputers();
   }
 
+  onKeydownSearch(event: any){
+    if (event.key === "Enter") {
+      this.dashboard.search = event.target.value;
+      this.dashboard.pageNb = "1";
+      this.requestComputers();
+    }
+  }
+
+  search(){
+    this.edited=!this.edited;
+    if(!this.edited){
+      this.dashboard.search = "";
+      this.dashboard.pageNb = "1";
+      this.requestComputers();
+    }
+  }
+
+  changeComputerNumber(event){
+    this.computerNumber = event;
+  }
 }

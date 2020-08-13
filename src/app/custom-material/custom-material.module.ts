@@ -6,12 +6,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select'; 
 import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import {MatMenuModule} from '@angular/material/menu'; 
+import {MatSortModule} from '@angular/material/sort';
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
-import {MatNativeDateModule} from '@angular/material/core'; 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
+import {MatNativeDateModule} from '@angular/material/core';
    
 
 @NgModule({
@@ -19,16 +21,22 @@ import {MatIconModule} from '@angular/material/icon';
   imports: [
     CommonModule,
     MatTableModule,
+    MatFormFieldModule,
     MatInputModule,
     FormsModule,
     MatButtonModule,
     MatSelectModule,
+    MatToolbarModule,
+    MatButtonToggleModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatSortModule
 
   ],
   exports:[
@@ -36,15 +44,18 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatToolbarModule,
     MatButtonToggleModule,
-    MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule,
     MatSelectModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatSortModule
   ]
 })
 export class CustomMaterialModule { }

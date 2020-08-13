@@ -1,11 +1,18 @@
-<div class="button-row">
-    <button mat-stroked-button *ngIf="prev" (click)="previousPage()">Prev</button>
-    <button mat-raised-button *ngFor="let page of pages; let indexOfelement=index;" [color]="buttonColors[indexOfelement]" (click)="changePage(page)">{{page}}</button>
-    <button mat-stroked-button *ngIf="next" (click)="nextPage()">Next</button> 
+<div>
+    <div class="button-row">
+        <button mat-stroked-button *ngIf="prev" (click)="previousPage()"><</button>
+        <span *ngFor="let page of pages; let indexOfelement=index;">
+            <button mat-raised-button  [color]="buttonColors[indexOfelement]" (click)="changePage(page)" *ngIf="buttonDisplay[indexOfelement]">{{page}}</button>
+        </span>
+        <button mat-stroked-button *ngIf="next" (click)="nextPage()">></button> 
+    </div>
 
+    <div class=right>
     <mat-button-toggle-group class="linesNb" [(ngModel)]="linesNb">
         <mat-button-toggle value="10" (change)="changeLinesNb()" ngDefaultControl>10</mat-button-toggle>
         <mat-button-toggle value="50" (change)="changeLinesNb()">50</mat-button-toggle>
         <mat-button-toggle value="100" (change)="changeLinesNb()">100</mat-button-toggle>
     </mat-button-toggle-group>
+
+    </div>
 </div>

@@ -1,9 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
-body{
-    margin :0;
-    padding:0;
-}
-/* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(rgb(192, 189, 189),white);
+}
+
+footer{
+    position: absolute;
+    bottom:0;
+    width:100%;
+}

@@ -4,12 +4,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ComputerListComponent } from './computer-list/computer-list.component';
 import { AddComputerComponent } from './add-computer/add-computer.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ComputerPutComponent } from './computer-put/computer-put.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComputerPutComponent } from './computer-put/computer-put.component';
+import { FooterComponent } from './footer/footer.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ComputerDeleteDialogComponent } from './computer-delete-dialog/computer-delete-dialog.component';
 
@@ -21,14 +23,22 @@ import { ComputerDeleteDialogComponent } from './computer-delete-dialog/computer
     ComputerListComponent,
     ComputerPutComponent,
     AddComputerComponent,
+<<<<<<< HEAD
     PaginationComponent,
     ComputerDeleteDialogComponent
+=======
+    FooterComponent,
+    PaginationComponent
+>>>>>>> b6fd992baad6b6c30d1e1ccbe52e29defaedc8b6
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     CustomMaterialModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
     FormsModule
   ],
   providers: [],

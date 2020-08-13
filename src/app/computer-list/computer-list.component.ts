@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ComputerService } from '../computer.service';
 import { Computer } from '../Model/computer.model';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ComputerDeleteDialogComponent } from '../computer-delete-dialog/computer-delete-dialog.component';
 
 @Component({
   selector: 'app-computer-list',
@@ -16,7 +18,7 @@ export class ComputerListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, 
-    private computerService : ComputerService) { }
+    private computerService : ComputerService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.route.queryParams
@@ -43,4 +45,25 @@ export class ComputerListComponent implements OnInit {
     )
   }
 
-}
+  openDeleteDialog(computer: Computer) {
+    const id = this.dialog.open(ComputerDeleteDialogComponent).id;
+
+    this.dialog.getDialogById(id).afterClosed().subscribe (
+      result => {
+      if (result) {
+        this.deleteComputer(computer);
+      }
+    }
+    )
+  }
+
+  deleteComputer(computer: Computer) {
+      this.computerService.deleteComputer(Number (computer.computerId)).subscribe(
+        () => {
+          var index = this.computers.indexOf(computer);
+          this.computers.splice(index, 1);
+        },
+        (error) => {
+        })
+    }
+  }

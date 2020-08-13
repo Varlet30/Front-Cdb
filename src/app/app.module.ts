@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComputerPutComponent } from './computer-put/computer-put.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ComputerDeleteDialogComponent } from './computer-delete-dialog/computer-delete-dialog.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
     ComputerListComponent,
     ComputerPutComponent,
     AddComputerComponent,
-    PaginationComponent
+    PaginationComponent,
+    ComputerDeleteDialogComponent
   ],
   imports: [
     BrowserModule,

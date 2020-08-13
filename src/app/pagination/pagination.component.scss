@@ -1,20 +1,20 @@
 .button-row {
   margin:auto;
-  margin-left:40%;
+  margin-left:38%;
 }
 
 .right {
   float:right;
   margin-right: 15%;
-  margin-top:3%;
+  position:relative;
+  top: -30px;
   
 }
 
 .button-row, .mat-button-base, .linesNb { 
   border-radius: 20px;
-  margin-bottom: 5%;
   position:relative;
-  top:-15px;
+  top:-90px;
 }
 
 .mat-raised-button.mat-primary{

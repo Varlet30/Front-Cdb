@@ -5,6 +5,7 @@ import { Dashboard } from './../Model/dashboard.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ComputerService } from '../computer.service';
 import { Computer } from '../Model/computer.model';
+import { ComputerDeleteDialogComponent } from '../computer-delete-dialog/computer-delete-dialog.component';
 import { Sort } from '@angular/material/sort';
 
 @Component({
@@ -21,6 +22,7 @@ export class ComputerListComponent implements OnInit {
 
   @ViewChild(PaginationComponent) pagination:PaginationComponent;
 
+
   constructor(
     private computerService : ComputerService, private dialog:MatDialog) { 
   }
@@ -29,6 +31,7 @@ export class ComputerListComponent implements OnInit {
     const dialogRef = this.dialog.open(AddComputerComponent, {
       width: '250px'});
   }
+    
 
   ngOnInit(): void {
     this.dashboard = {
@@ -78,6 +81,26 @@ export class ComputerListComponent implements OnInit {
     this.requestComputers();
   }
 
+  openDeleteDialog(computer: Computer) {
+    const id = this.dialog.open(ComputerDeleteDialogComponent).id;
+
+    this.dialog.getDialogById(id).afterClosed().subscribe (
+      result => {
+      if (result) {
+        this.deleteComputer(computer);
+      }
+    }
+    )
+  }
+
+  deleteComputer(computer: Computer) {
+      this.computerService.deleteComputer(Number (computer.computerId)).subscribe(
+        () => {
+          this.requestComputers();
+        },
+        (error) => {
+        })
+    }
   changePageEvent(){
     this.requestComputers();
   }

@@ -33,7 +33,12 @@ export class ComputerService {
     return this.httpClient.put<Computer>(this.computerUrl,computer);
   }
 
+  deleteComputer(id: number): Observable<void> {
+        return this.httpClient.delete<void>( `${ this.computerUrl }/${ id }`);
+}
   postComputer(computer : Computer): Observable<String>{
     return this.httpClient.post<String>(this.computerUrl,computer);
   }
+
+
 }

@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { ComputerDeleteDialogComponent } from './computer-delete-dialog/computer-delete-dialog.component';
 
 
 @NgModule({
@@ -22,6 +23,8 @@ import { AppRoutingModule } from './app-routing.module';
     ComputerListComponent,
     ComputerPutComponent,
     AddComputerComponent,
+    PaginationComponent,
+    ComputerDeleteDialogComponent,
     FooterComponent,
     PaginationComponent
   ],

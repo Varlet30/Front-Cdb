@@ -1,12 +1,11 @@
-import { MatDialogModule } from '@angular/material/dialog';
+import { ComputerListComponent } from './../computer-list/computer-list.component';
+import { MatDialogRef } from '@angular/material/dialog';
 import { CompanyService } from './../company.service';
 import { Computer } from './../Model/computer.model';
 import { Component, OnInit } from '@angular/core';
 import { ComputerService } from '../computer.service';
-import { ActivatedRoute } from '@angular/router';
 import { Company } from '../Model/company.model';
 import { FormControl, FormGroup } from '@angular/forms';
-import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-computer',
@@ -17,7 +16,7 @@ export class AddComputerComponent implements OnInit {
   computer : Computer;
   companies : Company[];
   addedComputer: Computer;
-  constructor(private computerService : ComputerService, private companyService : CompanyService , private calendar : NgbCalendar) { }
+  constructor(private computerService : ComputerService, private companyService : CompanyService ,public dialogRef: MatDialogRef<ComputerListComponent>) { }
 
   addForm = new FormGroup({
     computerName: new FormControl(''),
@@ -52,6 +51,10 @@ export class AddComputerComponent implements OnInit {
     this.computer.introduced = this.addForm.get('introduced').value;
     this.computer.discontinued = this.addForm.get('discontinued').value;
     this.computerService.postComputer(this.computer).subscribe(result => console.log(result));
+    this.dialogRef.close(true);
   }
 
+  onNoClick(): void {
+    this.dialogRef.close(false);
+  }
 }

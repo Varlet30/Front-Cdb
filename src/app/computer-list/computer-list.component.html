@@ -5,7 +5,7 @@
       <mat-icon *ngIf="!edited" (click)="edited=!edited">search</mat-icon>
       <mat-icon *ngIf="edited" (click)="search()" >close</mat-icon>
       <input *ngIf="edited" type="text" placeholder="Search &amp; enter" (keydown)="onKeydownSearch($event)">
-      <button mat-raised-button (click)="addComputer()" class="button">Add</button>
+      <button mat-raised-button (click)="openAddDialog()" class="button">Add</button>
     </h2>
   </div>
 

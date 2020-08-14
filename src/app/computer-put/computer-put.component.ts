@@ -1,24 +1,30 @@
 import { CompanyService } from './../company.service';
 import { ComputerService } from './../computer.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Computer } from '../Model/computer.model';
 import { ActivatedRoute } from '@angular/router';
 import { Company } from '../Model/company.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ComputerListComponent, DialogData } from '../computer-list/computer-list.component';
+
 
 @Component({
   selector: 'app-computer-put',
   templateUrl: './computer-put.component.html',
   styleUrls: ['./computer-put.component.scss']
 })
+
 export class ComputerPutComponent implements OnInit {
   computer : Computer;
   companies : Company[];
   editedComputer: Computer;
   idSearch : number;
-  constructor(private computerService : ComputerService, private route : ActivatedRoute, private companyService : CompanyService , private calendar : NgbCalendar) { }
-
+  constructor(private computerService : ComputerService, private route : ActivatedRoute, private companyService : CompanyService , private calendar : NgbCalendar, 
+    public dialogRef: MatDialogRef<ComputerListComponent>,
+    @Inject(MAT_DIALOG_DATA) public datadialog: DialogData ) {}
+  
   editForm = new FormGroup({
     computerName: new FormControl(''),
     introduced: new FormControl(''),
@@ -47,5 +53,9 @@ export class ComputerPutComponent implements OnInit {
 
   onSubmit(){
     this.computerService.putComputer(this.editedComputer).subscribe(result => console.log(result));
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

@@ -7,6 +7,11 @@ import { ComputerService } from '../computer.service';
 import { Computer } from '../Model/computer.model';
 import { ComputerDeleteDialogComponent } from '../computer-delete-dialog/computer-delete-dialog.component';
 import { Sort } from '@angular/material/sort';
+import { ComputerPutComponent } from '../computer-put/computer-put.component';
+
+export interface DialogData {
+  [x: string]: any;
+}
 
 @Component({
   selector: 'app-computer-list',
@@ -43,6 +48,14 @@ export class ComputerListComponent implements OnInit {
     };
     this.requestComputers();
   }
+
+  update(element):void{
+    const dialogRef = this.dialog.open(ComputerPutComponent, {
+      width: '250px',
+    data: {name: element.computerName}
+    });
+  }
+
 
   requestComputers(){
     this.computerService.getComputersPage(this.dashboard).subscribe(

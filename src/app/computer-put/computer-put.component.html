@@ -1,8 +1,8 @@
 <form [formGroup]="editForm"  (ngSubmit)="onSubmit()">
 
 <label>
-  Computer Name:
-  <input name="computerName" type="text" formControlName="computerName" [(ngModel)]="editedComputer.computerName" required>
+  Computer Name :
+  <input placeholder={{datadialog.name}} type="text" formControlName="computerName" [(ngModel)]="editedComputer.computerName" required>
 </label>
 <br>
 <label>

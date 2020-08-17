@@ -1,36 +1,57 @@
-<form [formGroup]="editForm"  (ngSubmit)="onSubmit()">
-
-<label>
-  Computer Name :
-  <input  type="text" formControlName="computerName" [(ngModel)]="editedComputer.computerName" required>
-</label>
-<br>
-<label>
-  Introduced Date :
-  <input name="introduced" type="date" [(ngModel)]="editedComputer.introduced" formControlName="introduced">
-</label>
-<br>
-<label>
-  Discontinued Date :
-  <input name="discontinued" type="date" [(ngModel)]="editedComputer.discontinued" formControlName="discontinued">
-</label>
-<br>
-<mat-form-field appearance="fill">
-  <mat-label>Company {{datadialog.companyName}}</mat-label>
-  
-  <mat-select name="computer.companyDTO.companyId" [(ngModel)]="editedComputer.companyDTO" formControlName="companyDTO" >
-    <div>
-      <mat-option *ngIf="editedComputer.companyDTO" [value]=editedComputer.companyDTO>
-        {{editedComputer.companyDTO.companyName}} 
-      </mat-option>
-      <mat-option [value]="null">no company</mat-option>
-      <mat-option *ngFor="let c of companies" [value]="c">
-        {{c.companyName}}
-      </mat-option>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Update Computer</h4>
     </div>
-  </mat-select>
-</mat-form-field>
-  <br>
-<button type="submit" [disabled]="!editForm.valid">Update Computer</button>
+    <div class="modal-body">
+      <form [formGroup]="editForm">
+        <div>
+          <mat-form-field>
+            <mat-label>Computer Name</mat-label>
+            <input matInput type="text" [(ngModel)]="editedComputer.computerName" formControlName="computerName" required>
+          </mat-form-field>
+        </div>
 
-</form> 
+
+        <div>
+          <mat-form-field>
+            <mat-label>Introduced Date</mat-label>
+            <input matInput name="introduced" type="date" [(ngModel)]="editedComputer.introduced" formControlName="introduced">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Discontinued Date</mat-label>
+            <input matInput name="discontinued" type="date" [(ngModel)]="editedComputer.discontinued" formControlName="discontinued">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Company {{datadialog.companyName}}</mat-label>
+            <mat-select name="computer.companyDTO.companyId" [(ngModel)]="editedComputer.companyDTO"
+              formControlName="companyDTO">
+              <div>
+                <mat-option *ngIf="editedComputer.companyDTO" [value]=editedComputer.companyDTO>
+                  {{editedComputer.companyDTO.companyName}}
+                </mat-option>
+                <mat-option [value]="null">-No company-</mat-option>
+                <mat-option *ngFor="let c of companies" [value]="c">
+                  {{c.companyName}}
+                </mat-option>
+              </div>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      
+        <p>* Field mandatory</p>
+
+        <div class="modal-footer">
+          <button mat-button [disabled]="!editForm.valid" (click)="onSubmit()" color="primary">Update</button>
+          <button mat-button (click)="onNoClick()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

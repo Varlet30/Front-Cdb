@@ -15,8 +15,10 @@
 
   <ng-container matColumnDef="name" >
     <th mat-header-cell *matHeaderCellDef mat-sort-header > Name </th>
-    <td class="name" mat-cell *matCellDef="let element" (click)="update(element)"> 
-      <mat-icon (click)="openDeleteDialog(element)"> delete </mat-icon> {{element.computerName}} </td>
+    <td class="name" mat-cell *matCellDef="let element"> 
+      <mat-icon (click)="openDeleteDialog(element)"> delete </mat-icon> 
+      <text (click)="openUpdateDialog(element)"> {{element.computerName}}  </text>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="introduced">

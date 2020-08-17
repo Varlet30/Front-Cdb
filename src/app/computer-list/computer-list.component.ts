@@ -43,17 +43,6 @@ export class ComputerListComponent implements OnInit {
     this.requestComputers();
   }
 
-  update(element):void{
-    const dialogRef = this.dialog.open(ComputerPutComponent, {
-      width: '250px',
-    data: {name: element.computerName, introduced: element.introduced, discontinued: element.discontinued, companyDTO: element.companyDTO, computerId: element.computerId}
-    }).afterClosed().subscribe(result => {
-      this.changePageEvent()
-    });
-  }
-
-  
-
   requestComputers() : void{
     this.computerService.getComputersPage(this.dashboard).subscribe(
       (result: Computer[]) => {
@@ -92,10 +81,10 @@ export class ComputerListComponent implements OnInit {
   }
 
   openAddDialog():void{
+    this.dialog.closeAll();
     const dialogRef = this.dialog.open(AddComputerComponent, {
       width:'30%',
     });
-
     dialogRef.afterClosed().subscribe(
       result => {
         this.requestComputers();
@@ -103,9 +92,19 @@ export class ComputerListComponent implements OnInit {
     )
   }
 
-  openDeleteDialog(computer: Computer) {
-    const id = this.dialog.open(ComputerDeleteDialogComponent).id;
+  openUpdateDialog(element):void{
+    this.dialog.closeAll();
+    const dialogRef = this.dialog.open(ComputerPutComponent, {
+      width:'30%',
+    data: {name: element.computerName, introduced: element.introduced, discontinued: element.discontinued, companyDTO: element.companyDTO, computerId: element.computerId}
+    }).afterClosed().subscribe(result => {
+      this.changePageEvent()
+    });
+  }
 
+  openDeleteDialog(computer: Computer) {
+    this.dialog.closeAll();
+    const id = this.dialog.open(ComputerDeleteDialogComponent).id;
     this.dialog.getDialogById(id).afterClosed().subscribe (
       result => {
       if (result) {
@@ -121,6 +120,7 @@ export class ComputerListComponent implements OnInit {
           this.requestComputers();
         },
         (error) => {
+          console.log("Delete omputer not working")
         })
     }
   changePageEvent(){

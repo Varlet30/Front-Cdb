@@ -5,7 +5,7 @@ import { Computer } from './../Model/computer.model';
 import { Component, OnInit } from '@angular/core';
 import { ComputerService } from '../computer.service';
 import { Company } from '../Model/company.model';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-computer',
@@ -15,25 +15,19 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AddComputerComponent implements OnInit {
   computer : Computer;
   companies : Company[];
-  addedComputer: Computer;
   constructor(private computerService : ComputerService, private companyService : CompanyService ,public dialogRef: MatDialogRef<ComputerListComponent>) { }
 
   addForm = new FormGroup({
     computerName: new FormControl(''),
     introduced: new FormControl(''),
-    discontinued: new FormControl(''),
+    discontinued: new FormControl('', [Validators.email]),
     companyDTO : new FormControl('')
   });
 
-  get name() { return this.addForm.get('name'); }
-  get introduced() { return this.addForm.get('introduced'); }
-  get discontinued() { return this.addForm.get('discontinued'); }
-
   ngOnInit(): void {
     this.computer = new Computer();
-    this.addedComputer = new Computer();
-    this.computer.companyDTO = new Company();
     this.getCompanies();
+    this.computer.companyDTO.companyName='null';
   }
   
   getCompanies(): void{
@@ -42,14 +36,14 @@ export class AddComputerComponent implements OnInit {
         this.companies = result;
     },
     (error) => {
-        console.log("List companies does not work");
+        console.log("Add a computer : List companies does not work");
     });
   }
 
   onSubmit(){
     this.computer.computerName = this.addForm.get('computerName').value;
     this.computer.introduced = this.addForm.get('introduced').value;
-    this.computer.discontinued = this.addForm.get('discontinued').value;
+    this.computer.discontinued = this.addForm.get('discontinued').value;    
     this.computerService.postComputer(this.computer).subscribe(result => console.log(result));
     this.dialogRef.close(true);
   }
@@ -57,4 +51,13 @@ export class AddComputerComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close(false);
   }
+
+  validateDate(){
+    console.log("HEY");
+    if(Date.parse(this.computer.introduced)<Date.parse(this.computer.discontinued)){
+      console.log("ICIIII");
+      return 'Must be after introduced date'
+    }
+  }
+
 }

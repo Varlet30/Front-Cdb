@@ -36,28 +36,31 @@ export class ComputerPutComponent implements OnInit {
   get introduced() { return this.editForm.get('introduced'); }
   get discontinued() { return this.editForm.get('discontinued'); }
   ngOnInit(): void {
-    //this.idSearch= Number (this.route.snapshot.paramMap.get('id'));
     this.editedComputer = new Computer();
     this.editedComputer.computerName = this.datadialog.name;
     this.editedComputer.introduced = this.datadialog.introduced;
     this.editedComputer.discontinued = this.datadialog.discontinued;
     this.editedComputer.companyDTO = this.datadialog.companyDTO;
     this.editedComputer.computerId = this.datadialog.computerId;
-    this.computerService.getComputer(this.idSearch).subscribe((data : Computer) =>{
-      this.editedComputer= data;
-      console.log(this.editedComputer);
-     });
+    this.getCompanies();
+  }
+
+  getCompanies(): void{
     this.companyService.getCompanies().subscribe(
       (result: Company[]) => {
           this.companies = result;
       },
       (error) => {
-          // Traiter l'erreur
+          console.log("Update: List companies does not work");
       });
-  }
+    }
 
   onSubmit(){
     this.computerService.putComputer(this.editedComputer).subscribe(result => console.log(result));
-    this.dialogRef.close();
+    this.dialogRef.close(true);
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close(false);
   }
 }

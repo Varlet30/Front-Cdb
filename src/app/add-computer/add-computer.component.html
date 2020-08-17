@@ -4,7 +4,7 @@
       <h4 class="modal-title">New Computer</h4>
     </div>
     <div class="modal-body">
-      <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="addForm">
         <div>
           <mat-form-field>
             <mat-label>Computer Name</mat-label>
@@ -23,6 +23,7 @@
           <mat-form-field>
             <mat-label>Discontinued Date</mat-label>
             <input matInput name="discontinued" type="date" formControlName="discontinued">
+            <mat-error *ngIf="validateDate()"></mat-error>
           </mat-form-field>
         </div>
 
@@ -41,7 +42,7 @@
         <p>* Field mandatory</p>
 
         <div class="modal-footer">
-          <button mat-button type="submit" [disabled]="!addForm.valid" color="primary">Add</button>
+          <button mat-button [disabled]="!addForm.valid" (click)="onSubmit()" color="primary">Add</button>
           <button mat-button (click)="onNoClick()">Cancel</button>
         </div>
       </form>

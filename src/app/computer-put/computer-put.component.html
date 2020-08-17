@@ -25,6 +25,7 @@
             <mat-label>Discontinued Date</mat-label>
             <input matInput name="discontinued" type="date" [(ngModel)]="editedComputer.discontinued" formControlName="discontinued">
           </mat-form-field>
+          <h3>{{editForm.errors?.date}}</h3>
         </div>
 
         <div>

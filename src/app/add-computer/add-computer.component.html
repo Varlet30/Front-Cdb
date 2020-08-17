@@ -23,15 +23,15 @@
           <mat-form-field>
             <mat-label>Discontinued Date</mat-label>
             <input matInput name="discontinued" type="date" formControlName="discontinued">
-            <mat-error *ngIf="validateDate()"></mat-error>
           </mat-form-field>
+          <h3>{{addForm.errors?.date}}</h3>
         </div>
 
         <div>
           <mat-form-field>
             <mat-label>Company</mat-label>
             <mat-select name="computer.companyDTO.companyId" [(ngModel)]="computer.companyDTO" formControlName="companyDTO">
-                <mat-option [value]="null">-No company-</mat-option>
+                <mat-option [value]="">-No company-</mat-option>
                 <mat-option *ngFor="let c of companies" [value]="c">
                   {{c.companyName}}
                 </mat-option>

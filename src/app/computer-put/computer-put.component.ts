@@ -4,7 +4,7 @@ import { Component, OnInit, Inject} from '@angular/core';
 import { Computer } from '../Model/computer.model';
 import { ActivatedRoute } from '@angular/router';
 import { Company } from '../Model/company.model';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ComputerListComponent, DialogData } from '../computer-list/computer-list.component';
@@ -21,20 +21,22 @@ export class ComputerPutComponent implements OnInit {
   companies : Company[];
   editedComputer: Computer;
   idSearch : number;
-  constructor(private computerService : ComputerService, private route : ActivatedRoute, private companyService : CompanyService , private calendar : NgbCalendar, 
-    public dialogRef: MatDialogRef<ComputerListComponent>,
-    @Inject(MAT_DIALOG_DATA) public datadialog: DialogData ) {}
-  
-  editForm = new FormGroup({
-    computerName: new FormControl(''),
-    introduced: new FormControl(''),
-    discontinued: new FormControl(''),
-    companyDTO : new FormControl('')
-  });
+  editForm : FormGroup;
 
-  get name() { return this.editForm.get('name'); }
-  get introduced() { return this.editForm.get('introduced'); }
-  get discontinued() { return this.editForm.get('discontinued'); }
+  constructor(private fb : FormBuilder, private computerService : ComputerService, private companyService : CompanyService, 
+    public dialogRef: MatDialogRef<ComputerListComponent>, @Inject(MAT_DIALOG_DATA) public datadialog: DialogData ) {
+      this.createForm();
+    }
+
+    createForm(){
+      this.editForm = this.fb.group({
+        computerName: new FormControl(''),
+        introduced: new FormControl(''),
+        discontinued: new FormControl(''),
+        companyDTO : new FormControl('')
+      }, {validator: this.dateValidator} );
+    }
+
   ngOnInit(): void {
     this.editedComputer = new Computer();
     this.editedComputer.computerName = this.datadialog.name;
@@ -63,4 +65,14 @@ export class ComputerPutComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close(false);
   }
+
+  dateValidator(form: FormGroup){
+    const condition = Date.parse(form.get('introduced').value) > Date.parse(form.get('discontinued').value);
+    if(condition){
+      return {
+        date: "Must be after introduced date"
+      }
+    }
+  }
+
 }

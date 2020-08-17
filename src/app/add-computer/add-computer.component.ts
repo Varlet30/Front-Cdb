@@ -5,7 +5,7 @@ import { Computer } from './../Model/computer.model';
 import { Component, OnInit } from '@angular/core';
 import { ComputerService } from '../computer.service';
 import { Company } from '../Model/company.model';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-add-computer',
@@ -15,19 +15,27 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddComputerComponent implements OnInit {
   computer : Computer;
   companies : Company[];
-  constructor(private computerService : ComputerService, private companyService : CompanyService ,public dialogRef: MatDialogRef<ComputerListComponent>) { }
+  addForm : FormGroup;
+  
+  constructor(private fb : FormBuilder, private computerService : ComputerService, private companyService : CompanyService, public dialogRef: MatDialogRef<ComputerListComponent>) {
+    this.createForm();
+   }
 
-  addForm = new FormGroup({
-    computerName: new FormControl(''),
-    introduced: new FormControl(''),
-    discontinued: new FormControl('', [Validators.email]),
-    companyDTO : new FormControl('')
-  });
+  createForm(){
+    this.addForm = this.fb.group({
+      computerName: new FormControl(''),
+      introduced: new FormControl(''),
+      discontinued: new FormControl(''),
+      companyDTO : new FormControl('')
+    }, {validator: this.dateValidator} );
+  }
+ 
 
   ngOnInit(): void {
     this.computer = new Computer();
+    this.computer.companyDTO = new Company();
     this.getCompanies();
-    this.computer.companyDTO.companyName='null';
+    this.computer.companyDTO.companyName='';
   }
   
   getCompanies(): void{
@@ -52,11 +60,12 @@ export class AddComputerComponent implements OnInit {
     this.dialogRef.close(false);
   }
 
-  validateDate(){
-    console.log("HEY");
-    if(Date.parse(this.computer.introduced)<Date.parse(this.computer.discontinued)){
-      console.log("ICIIII");
-      return 'Must be after introduced date'
+  dateValidator(form: FormGroup){
+    const condition = Date.parse(form.get('introduced').value) > Date.parse(form.get('discontinued').value);
+    if(condition){
+      return {
+        date: "Must be after introduced date"
+      }
     }
   }
 

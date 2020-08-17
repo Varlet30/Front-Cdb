@@ -1,6 +1,3 @@
-import { CompanyService } from './company.service';
-import { ActivatedRoute } from '@angular/router';
-import { ComputerService } from './computer.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -17,6 +14,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ComputerDeleteDialogComponent } from './computer-delete-dialog/computer-delete-dialog.component';
+import { LoginComponent } from './login/login.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -29,7 +28,8 @@ import { ComputerDeleteDialogComponent } from './computer-delete-dialog/computer
     PaginationComponent,
     ComputerDeleteDialogComponent,
     FooterComponent,
-    PaginationComponent
+    PaginationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +41,7 @@ import { ComputerDeleteDialogComponent } from './computer-delete-dialog/computer
     NgbModule,
     FormsModule
   ],
+  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -23,6 +23,10 @@ describe('PaginationComponent', () => {
     computerService = TestBed.get(ComputerService);
   });
 
+  afterAll(()=> {
+    computerService = null;
+  })
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });

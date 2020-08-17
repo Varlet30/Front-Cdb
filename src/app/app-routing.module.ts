@@ -3,7 +3,7 @@ import { ComputerPutComponent } from './computer-put/computer-put.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ComputerListComponent } from './computer-list/computer-list.component';
-import { AddComputerComponent } from './add-computer/add-computer.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -19,8 +19,13 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'login',
+    component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
     path: '**',
-    redirectTo: 'computers',
+    redirectTo: 'login',
     pathMatch: 'full'
   }
 ]

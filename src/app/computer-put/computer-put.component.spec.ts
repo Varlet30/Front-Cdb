@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CompanyService } from './../company.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ComputerService } from './../computer.service';
@@ -14,15 +14,12 @@ describe('ComputerPutComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ComputerPutComponent ],
       imports: [HttpClientModule],
-      providers:[ComputerService, CompanyService, {
-        provide: ActivatedRoute,
-        useValue: {
-          snapshot: {
-            paramMap: {
-              get: () => 1,
-            },
-          },
-        },
+      providers:[ComputerService, CompanyService,  {
+        provide: MatDialogRef,
+        useValue: {}
+      }, {
+        provide: MAT_DIALOG_DATA,
+        useValue: {}
       }]
     })
     .compileComponents();

@@ -14,11 +14,12 @@ import { Sort } from '@angular/material/sort';
   styleUrls: ['./computer-list.component.scss']
 })
 export class ComputerListComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'introduced', 'discontinued', 'companyName'];
+  displayedColumns: string[] = ['idComputer','name', 'introduced', 'discontinued', 'companyName'];
   computers: Computer[];
   dashboard: Dashboard;
   edited = false;
   computerNumber: string; 
+  editMode = false;
 
   @ViewChild(PaginationComponent) pagination:PaginationComponent;
 
@@ -91,6 +92,35 @@ export class ComputerListComponent implements OnInit {
       }
     }
     )
+  }
+
+  openDeleteAllDialog(computers: Computer[]) {
+    const id = this.dialog.open(ComputerDeleteDialogComponent).id;
+
+    this.dialog.getDialogById(id).afterClosed().subscribe (
+      result => {
+      if (result) {
+        this.deleteAllComputer(computers);
+      }
+    }
+    )
+  }
+
+  editedMode(){
+
+  }
+
+  deleteAllComputer(computers: Computer[]) {
+    computers.forEach ( computer =>
+    this.computerService.deleteComputer(Number (computer.computerId)).subscribe(
+      () => {
+        var index=this.computers.indexOf(computer);
+        this.computers.splice(index, 1);
+        this.requestComputers();
+      },
+      (error) => {
+      })
+    );
   }
 
   deleteComputer(computer: Computer) {

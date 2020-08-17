@@ -15,6 +15,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatIconModule} from '@angular/material/icon';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [],
@@ -35,7 +37,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     ReactiveFormsModule,
     MatSortModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule,
+    MatRadioModule
 
   ],
   exports:[
@@ -54,7 +58,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatIconModule,
     MatFormFieldModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule,
+    MatRadioModule
   ]
 })
 export class CustomMaterialModule { }

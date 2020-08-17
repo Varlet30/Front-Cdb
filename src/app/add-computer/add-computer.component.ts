@@ -1,12 +1,10 @@
-import { MatDialogModule } from '@angular/material/dialog';
 import { CompanyService } from './../company.service';
 import { Computer } from './../Model/computer.model';
 import { Component, OnInit } from '@angular/core';
 import { ComputerService } from '../computer.service';
-import { ActivatedRoute } from '@angular/router';
 import { Company } from '../Model/company.model';
 import { FormControl, FormGroup } from '@angular/forms';
-import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-computer',
@@ -17,7 +15,7 @@ export class AddComputerComponent implements OnInit {
   computer : Computer;
   companies : Company[];
   addedComputer: Computer;
-  constructor(private computerService : ComputerService, private companyService : CompanyService , private calendar : NgbCalendar) { }
+  constructor(private computerService : ComputerService, private companyService : CompanyService) { }
 
   addForm = new FormGroup({
     computerName: new FormControl(''),

@@ -1,3 +1,6 @@
+import { CompanyService } from './company.service';
+import { ActivatedRoute } from '@angular/router';
+import { ComputerService } from './computer.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -38,7 +41,6 @@ import { ComputerDeleteDialogComponent } from './computer-delete-dialog/computer
     NgbModule,
     FormsModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,12 +1,17 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
 import { ComputerService } from './computer.service';
 
-describe('ComputerServiceService', () => {
+describe('ComputerService', () => {
   let service: ComputerService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule(
+      {
+        imports:[HttpClientModule]
+      }
+    );
     service = TestBed.inject(ComputerService);
   });
 

@@ -5,7 +5,6 @@ import { Computer } from '../Model/computer.model';
 import { ActivatedRoute } from '@angular/router';
 import { Company } from '../Model/company.model';
 import { FormControl, FormGroup } from '@angular/forms';
-import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-computer-put',
@@ -17,7 +16,7 @@ export class ComputerPutComponent implements OnInit {
   companies : Company[];
   editedComputer: Computer;
   idSearch : number;
-  constructor(private computerService : ComputerService, private route : ActivatedRoute, private companyService : CompanyService , private calendar : NgbCalendar) { }
+  constructor(private computerService : ComputerService, private route : ActivatedRoute, private companyService : CompanyService) { }
 
   editForm = new FormGroup({
     computerName: new FormControl(''),

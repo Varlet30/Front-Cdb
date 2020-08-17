@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -10,11 +10,11 @@ export class ComputerDeleteDialogComponent  {
 
   constructor(public dialogRef: MatDialogRef<ComputerDeleteDialogComponent>) {}
 
-    onNoClick(): void {
-      this.dialogRef.close(false);
-    }
-    closeOk(): void {
-      this.dialogRef.close(true);
-    }
+  onNoClick(): void {
+    this.dialogRef.close(false);
   }
+  closeOk(): void {
+    this.dialogRef.close(true);
+  }
+}
 

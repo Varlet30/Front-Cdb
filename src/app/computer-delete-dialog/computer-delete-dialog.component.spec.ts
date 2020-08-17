@@ -1,3 +1,4 @@
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ComputerDeleteDialogComponent } from './computer-delete-dialog.component';
@@ -8,7 +9,8 @@ describe('ComputerDeleteDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ComputerDeleteDialogComponent ]
+      declarations: [ ComputerDeleteDialogComponent ],
+      providers:[{ provide: MatDialogRef, useValue: {} }]
     })
     .compileComponents();
   }));

@@ -7,6 +7,11 @@ import { ComputerService } from '../computer.service';
 import { Computer } from '../Model/computer.model';
 import { ComputerDeleteDialogComponent } from '../computer-delete-dialog/computer-delete-dialog.component';
 import { Sort } from '@angular/material/sort';
+import { ComputerPutComponent } from '../computer-put/computer-put.component';
+
+export interface DialogData {
+  [x: string]: any;
+}
 
 @Component({
   selector: 'app-computer-list',
@@ -25,14 +30,8 @@ export class ComputerListComponent implements OnInit {
 
 
   constructor(
-    private computerService : ComputerService, private dialog:MatDialog) { 
+    private computerService : ComputerService, public dialog:MatDialog) { 
   }
-
-  addComputer():void{
-    const dialogRef = this.dialog.open(AddComputerComponent, {
-      width: '250px'});
-  }
-    
 
   ngOnInit(): void {
     this.dashboard = {
@@ -45,7 +44,18 @@ export class ComputerListComponent implements OnInit {
     this.requestComputers();
   }
 
-  requestComputers(){
+  update(element):void{
+    const dialogRef = this.dialog.open(ComputerPutComponent, {
+      width: '250px',
+    data: {name: element.computerName, introduced: element.introduced, discontinued: element.discontinued, companyDTO: element.companyDTO, computerId: element.computerId}
+    }).afterClosed().subscribe(result => {
+      this.changePageEvent()
+    });
+  }
+
+  
+
+  requestComputers() : void{
     this.computerService.getComputersPage(this.dashboard).subscribe(
       (result: Computer[]) => {
         this.computers = result;
@@ -80,6 +90,18 @@ export class ComputerListComponent implements OnInit {
     this.dashboard.pageNb = "1";
     this.dashboard.linesNb = this.dashboard.linesNb;
     this.requestComputers();
+  }
+
+  openAddDialog():void{
+    const dialogRef = this.dialog.open(AddComputerComponent, {
+      width:'30%',
+    });
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        this.requestComputers();
+    }
+    )
   }
 
   openDeleteDialog(computer: Computer) {

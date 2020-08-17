@@ -1,8 +1,8 @@
 <form [formGroup]="editForm"  (ngSubmit)="onSubmit()">
 
 <label>
-  Computer Name:
-  <input name="computerName" type="text" formControlName="computerName" [(ngModel)]="editedComputer.computerName" required>
+  Computer Name :
+  <input  type="text" formControlName="computerName" [(ngModel)]="editedComputer.computerName" required>
 </label>
 <br>
 <label>
@@ -16,7 +16,7 @@
 </label>
 <br>
 <mat-form-field appearance="fill">
-  <mat-label>Company</mat-label>
+  <mat-label>Company {{datadialog.companyName}}</mat-label>
   
   <mat-select name="computer.companyDTO.companyId" [(ngModel)]="editedComputer.companyDTO" formControlName="companyDTO" >
     <div>

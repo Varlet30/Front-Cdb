@@ -28,48 +28,55 @@ export class PaginationComponent implements OnInit {
   ngOnInit(): void {
   }
   refresh(){
+    this.updatePrev();
+    this.computerService.getComputersNumber(this.dashboard).subscribe(
+      (totalComputers: number)=>{
+        this.changeComputerNumber.emit(totalComputers);
+        let totalPages = Math.ceil( +totalComputers/ +this.dashboard.linesNb);
+        for (let i = 0; i < this.pages.length; i++) {
+          let pageIterator = this.adjustPageIterator(totalPages);
+          if ((pageIterator +i) > totalPages) {
+            this.buttonDisplay[i] = false;
+            continue;
+          }
+          this.buttonDisplay[i] = true;
+          this.pages[i] = pageIterator+i;
+          if (pageIterator +i === +this.dashboard.pageNb) {
+            this.buttonColors[i] = "warn";
+          } else {
+            this.buttonColors[i] = "primary";
+          }
+        }
+        this.updateNext(totalPages);
+      }
+    );
+    this.linesNb = this.dashboard.linesNb;
+  }
+  updateNext(totalPages: number){
+    if(+this.dashboard.pageNb >= totalPages){
+      this.next = false;
+    }
+    else{
+      this.next = true;
+    }
+  }
+  updatePrev(){
     if(+this.dashboard.pageNb === 1){
       this.prev = false;
     }
     else{
       this.prev = true;
     }
-    this.computerService.getComputersNumber(this.dashboard).subscribe(
-      (totalComputers: number)=>{
-        this.changeComputerNumber.emit(totalComputers);
-        var totalPages = Math.ceil( +totalComputers/ +this.dashboard.linesNb);
-        var pageIterator = +this.dashboard.pageNb -2;
-        if(pageIterator < 2){
-          pageIterator = 1;
-        }
-        if(totalPages >= 5){
-          if(pageIterator >= (totalPages - 4)){
-            pageIterator = totalPages -4;
-          }
-        }
-        for (let i = 0; i < this.pages.length; i++) {
-          if ((pageIterator +i) <= totalPages) {
-            this.pages[i] = pageIterator+i;
-            if (pageIterator +i === +this.dashboard.pageNb) {
-              this.buttonColors[i] = "warn";
-            } else {
-              this.buttonColors[i] = "primary";
-            }
-            this.buttonDisplay[i] = true;
-          } 
-          else{
-            this.buttonDisplay[i] = false;
-          }
-        }
-        if(+this.dashboard.pageNb >= totalPages){
-          this.next = false;
-        }
-        else{
-          this.next = true;
-        }
-      }
-    );
-    this.linesNb = this.dashboard.linesNb;
+  }
+  adjustPageIterator(totalPages: number): number{
+    let pageIterator = +this.dashboard.pageNb -2;
+    if(pageIterator < 2){
+      pageIterator = 1;
+    }
+    if(totalPages >= 5 && pageIterator >= (totalPages - 4)){
+      pageIterator = totalPages -4;
+    }
+    return pageIterator;
   }
   changePage(pageNb: number){
     this.dashboard.pageNb = pageNb+"";

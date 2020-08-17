@@ -1,0 +1,36 @@
+.modal-body{
+    margin: auto;
+}
+
+.modal-content{
+    border-color: rgb(0, 116, 194) !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    color: rgb(67, 173, 223) !important;
+}
+  
+::ng-deep.mat-form-field-underline {
+    background-color: rgb(67, 173, 223) !important;
+} 
+  
+::ng-deep.mat-form-field-ripple {
+   background-color: rgb(67, 173, 223) !important;
+}
+
+.mat-button.mat-primary{
+    background: rgb(67, 173, 223);
+    color:white;
+    border-radius: 20px;
+  }
+
+  .mat-button{
+    background: rgb(167, 167, 167);
+    color:white;
+    border-radius: 20px;
+  }
+
+p{
+    color:grey;
+    font-size: 0.8em;
+}

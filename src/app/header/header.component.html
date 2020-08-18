@@ -5,26 +5,26 @@
 
     <span class="spacer"></span>
     <div class="languageEn">
-        <img src="../../assets/img/englishFlag.png">
+        <img src="../../assets/img/englishFlag.png" (click)="translate.use('en')">
     </div>
     |
     <div class="languageFr">
-        <img src="../../assets/img/frenchFlag.png">
+        <img src="../../assets/img/frenchFlag.png" (click)="translate.use('fr')">
     </div>
 
     <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>person</mat-icon>
-        User
+        {{'HEADER.USER' | translate }}
     </button>
     <mat-menu #menu="matMenu">
         <div class="menu-panel">
             <button mat-menu-item>
                 <mat-icon class="white-icon">settings</mat-icon>
-                <span>Profile</span>
+                <span> {{'HEADER.PROFILE' | translate }}</span>
             </button>
             <button mat-menu-item>
                 <mat-icon class="white-icon">exit_to_app</mat-icon>
-                <span>Logout</span>
+                <span> {{'HEADER.LOGOUT' | translate }}</span>
             </button>
         </div>
     </mat-menu>

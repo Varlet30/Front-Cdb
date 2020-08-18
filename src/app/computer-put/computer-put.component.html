@@ -1,13 +1,13 @@
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h4 class="modal-title">Update Computer</h4>
+      <h4 class="modal-title">{{'POP-UP.TITLE_UPDATE' | translate }}</h4>
     </div>
     <div class="modal-body">
       <form [formGroup]="editForm">
         <div>
           <mat-form-field>
-            <mat-label>Computer Name</mat-label>
+            <mat-label>{{'POP-UP.NAME' | translate }}</mat-label>
             <input matInput type="text" [(ngModel)]="editedComputer.computerName" formControlName="computerName" required>
           </mat-form-field>
         </div>
@@ -15,14 +15,14 @@
 
         <div>
           <mat-form-field>
-            <mat-label>Introduced Date</mat-label>
+            <mat-label>{{'POP-UP.INTRODUCED' | translate }}</mat-label>
             <input matInput name="introduced" type="date" [(ngModel)]="editedComputer.introduced" formControlName="introduced">
           </mat-form-field>
         </div>
 
         <div>
           <mat-form-field>
-            <mat-label>Discontinued Date</mat-label>
+            <mat-label>{{'POP-UP.DISCONTINUED' | translate }}</mat-label>
             <input matInput name="discontinued" type="date" [(ngModel)]="editedComputer.discontinued" formControlName="discontinued">
           </mat-form-field>
           <h3>{{editForm.errors?.date}}</h3>
@@ -30,7 +30,7 @@
 
         <div>
           <mat-form-field>
-            <mat-label>Company {{datadialog.companyName}}</mat-label>
+            <mat-label>{{'POP-UP.COMPANY' | translate }} {{datadialog.companyName}}</mat-label>
             <mat-select name="computer.companyDTO.companyId" [(ngModel)]="editedComputer.companyDTO"
               formControlName="companyDTO">
               <div>
@@ -46,11 +46,11 @@
           </mat-form-field>
         </div>
       
-        <p>* Field mandatory</p>
+        <p>{{'POP-UP.FIELD_REQUIRED' | translate }}</p>
 
         <div class="modal-footer">
-          <button mat-button [disabled]="!editForm.valid" (click)="onSubmit()" color="primary">Update</button>
-          <button mat-button (click)="onNoClick()">Cancel</button>
+          <button mat-button [disabled]="!editForm.valid" (click)="onSubmit()" color="primary">{{'POP-UP.BUTTON_UPDATE' | translate }}</button>
+          <button mat-button (click)="onNoClick()">{{'POP-UP.BUTTON_CANCEL' | translate }}</button>
         </div>
       </form>
     </div>

@@ -1,0 +1,36 @@
+{
+    "HEADER": {
+      "USER": "Utilisateur",
+      "PROFILE": "Profil",
+      "LOGOUT" :"Déconnexion"
+    },
+
+    "BODY":{
+        "COMPUTER_FOUND" : "ordinateur trouvé",
+        "COMPUTERS_FOUND" : "ordinateurs trouvés",
+        "ADD" : "Ajouter",
+        "DELETE" : "Mode suppression",
+        "TABLE_NAME" : "Nom",
+        "TABLE_INTRODUCED" : "Introduit",
+        "TABLE_DISCONTINUED" : "Arrêt",
+        "TABLE_COMPANY" : "Nom de l'entreprise"
+    },
+
+    "POP-UP":{
+        "TITLE_ADD": "Nouvel ordinateur",
+        "TITLE_UPDATE": "Modifier l'ordinateur",
+        "NAME": "Nom",
+        "INTRODUCED" : "Date d'introduction",
+        "DISCONTINUED" : "Date d'arrêt",
+        "COMPANY" : "Entreprise",
+        "BUTTON_ADD" : "Ajouter",
+        "BUTTON_UPDATE" : "Modifier",
+        "BUTTON_CANCEL" : "Annuler",
+        "FIELD_REQUIRED" :"* Champ obligatoire"
+    },
+
+
+    "FOOTER":{
+        "TEXT" : "- Droits réservés -"
+    }
+  }

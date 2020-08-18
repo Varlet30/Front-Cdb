@@ -1,0 +1,36 @@
+{
+    "HEADER": {
+      "USER": "User",
+      "PROFILE": "Profile",
+      "LOGOUT" :"Logout"
+    },
+
+    "BODY":{
+        "COMPUTER_FOUND" : "computer found",
+        "COMPUTERS_FOUND" : "computers found",
+        "ADD" : "Add",
+        "DELETE" :"Delete Mode",
+        "TABLE_NAME" : "Name",
+        "TABLE_INTRODUCED" : "Introduced",
+        "TABLE_DISCONTINUED" : "Discontinued",
+        "TABLE_COMPANY" : "Company Name"
+
+    },
+
+    "POP-UP":{
+        "TITLE_ADD": "New computer",
+        "TITLE_UPDATE": "Update computer",
+        "NAME": "Name",
+        "INTRODUCED" : "Introduced Date",
+        "DISCONTINUED" : "Discontinued Date",
+        "COMPANY" : "Company",
+        "BUTTON_ADD" : "Add",
+        "BUTTON_UPDATE" : "Update",
+        "BUTTON_CANCEL" : "Cancel",
+        "FIELD_REQUIRED" :"* Field required"
+    },
+
+    "FOOTER":{
+        "TEXT" : "- All Rights Reserved -"
+    }
+  }

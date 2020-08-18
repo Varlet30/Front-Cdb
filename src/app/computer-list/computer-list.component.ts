@@ -23,16 +23,19 @@ export class ComputerListComponent implements OnInit {
   computers: Computer[];
   dashboard: Dashboard;
   edited = false;
-  computerNumber: string; 
+  computerNumber: string;
+  checked = false;
+  modeDelete = false;
+  computersDelete: Computer[];
 
-  @ViewChild(PaginationComponent) pagination:PaginationComponent;
-
+  @ViewChild(PaginationComponent) pagination: PaginationComponent;
 
   constructor(
-    private computerService : ComputerService, public dialog:MatDialog) { 
+    private computerService: ComputerService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
+    this.computersDelete = [];
     this.dashboard = {
       search: "",
       ascOrder: "true",
@@ -43,21 +46,21 @@ export class ComputerListComponent implements OnInit {
     this.requestComputers();
   }
 
-  requestComputers() : void{
+  requestComputers(): void {
     this.computerService.getComputersPage(this.dashboard).subscribe(
       (result: Computer[]) => {
         this.computers = result;
         this.pagination.refresh();
       },
       (error) => {
-        console.log("List Computer does not work"); 
+        console.log("List Computer does not work");
       }
     );
   }
 
-  sortData(sort: Sort){
+  sortData(sort: Sort) {
     let column: string;
-    let ascOrder: string; 
+    let ascOrder: string;
     switch (sort.direction) {
       case "asc":
         ascOrder = "true";
@@ -67,67 +70,75 @@ export class ComputerListComponent implements OnInit {
         ascOrder = "false";
         column = sort.active;
         break;
-    
+
       default:
         ascOrder = "true";
         column = "id";
         break;
     }
     this.dashboard.ascOrder = ascOrder;
-    this.dashboard.column = column;
+
+    if(column=="companyName"){
+      this.dashboard.column = "company.name";
+    }else{
+      this.dashboard.column = column;
+    }
     this.dashboard.pageNb = "1";
     this.dashboard.linesNb = this.dashboard.linesNb;
     this.requestComputers();
   }
 
-  openAddDialog():void{
+  openAddDialog(): void {
     this.dialog.closeAll();
     const dialogRef = this.dialog.open(AddComputerComponent, {
-      width:'30%',
+      width: '30%',
     });
     dialogRef.afterClosed().subscribe(
       result => {
         this.requestComputers();
-    }
+      }
     )
   }
 
-  openUpdateDialog(element):void{
+  openUpdateDialog(element): void {
     this.dialog.closeAll();
     const dialogRef = this.dialog.open(ComputerPutComponent, {
-      width:'30%',
-    data: {name: element.computerName, introduced: element.introduced, discontinued: element.discontinued, companyDTO: element.companyDTO, computerId: element.computerId}
+      width: '30%',
+      data: { name: element.computerName, introduced: element.introduced, discontinued: element.discontinued, companyDTO: element.companyDTO, computerId: element.computerId }
     }).afterClosed().subscribe(result => {
       this.changePageEvent()
     });
   }
 
-  openDeleteDialog(computer: Computer) {
+  openDeleteDialog() {
     this.dialog.closeAll();
-    const id = this.dialog.open(ComputerDeleteDialogComponent).id;
-    this.dialog.getDialogById(id).afterClosed().subscribe (
-      result => {
-      if (result) {
-        this.deleteComputer(computer);
-      }
+    if (this.computersDelete.length > 0) {
+      const id = this.dialog.open(ComputerDeleteDialogComponent).id;
+      this.dialog.getDialogById(id).afterClosed().subscribe(
+        result => {
+          if (result) {
+            this.deleteElement();
+          }
+        }
+      )
     }
-    )
   }
 
   deleteComputer(computer: Computer) {
-      this.computerService.deleteComputer(Number (computer.computerId)).subscribe(
-        () => {
-          this.requestComputers();
-        },
-        (error) => {
-          console.log("Delete omputer not working")
-        })
-    }
-  changePageEvent(){
+    this.computerService.deleteComputer(Number(computer.computerId)).subscribe(
+      () => {
+        this.requestComputers();
+        this.checked = false; 
+      },
+      (error) => {
+        console.log("Delete omputer not working")
+      })
+  }
+  changePageEvent(): void {
     this.requestComputers();
   }
 
-  onKeydownSearch(event: any){
+  onKeydownSearch(event: any): void {
     if (event.key === "Enter") {
       this.dashboard.search = event.target.value;
       this.dashboard.pageNb = "1";
@@ -135,16 +146,49 @@ export class ComputerListComponent implements OnInit {
     }
   }
 
-  search(){
-    this.edited=!this.edited;
-    if(!this.edited){
+  search(): void {
+    this.edited = !this.edited;
+    if (!this.edited) {
       this.dashboard.search = "";
       this.dashboard.pageNb = "1";
       this.requestComputers();
     }
   }
 
-  changeComputerNumber(event){
+  changeComputerNumber(event): void {
     this.computerNumber = event;
   }
+
+  deleteMode(): void {
+    this.modeDelete = !this.modeDelete;
+  }
+
+  allChecked(): void {
+    this.checked = !this.checked;
+  }
+
+  addDelete(element): void {
+    const index = this.computersDelete.indexOf(element);
+    if (index == -1) {
+      this.computersDelete.push(element);
+      console.log("1", this.computersDelete)
+    } else {
+      this.computersDelete.splice(index, 1);
+      console.log("2", this.computersDelete)
+    }
+
+  }
+
+  deleteElement(): void {
+    for (let i of this.computersDelete) {
+      this.deleteComputer(i);
+    }
+  }
+
+  deleteAll(element): void {
+    for (let i of element) {
+      this.addDelete(i);
+    }
+  }
+
 }

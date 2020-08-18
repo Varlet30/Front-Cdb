@@ -9,11 +9,6 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
 
   {
-    path: 'update/:id',
-    component: ComputerPutComponent,
-    pathMatch : 'full'
-  },
-  {
     path: 'computers',
     component: ComputerListComponent,
     pathMatch: 'full'

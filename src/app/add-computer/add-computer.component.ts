@@ -35,7 +35,7 @@ export class AddComputerComponent implements OnInit {
     this.computer = new Computer();
     this.computer.companyDTO = new Company();
     this.getCompanies();
-    this.computer.companyDTO.companyName='';
+    this.computer.companyDTO.companyName=null;
   }
   
   getCompanies(): void{

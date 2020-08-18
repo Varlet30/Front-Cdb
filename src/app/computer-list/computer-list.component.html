@@ -5,7 +5,10 @@
       <mat-icon *ngIf="!edited" (click)="edited=!edited">search</mat-icon>
       <mat-icon *ngIf="edited" (click)="search()" >close</mat-icon>
       <input *ngIf="edited" type="text" placeholder="Search &amp; enter" (keydown)="onKeydownSearch($event)">
-      <button mat-raised-button (click)="openAddDialog()" class="button">Add</button>
+      <button mat-raised-button (click)="openAddDialog()">Add</button>
+      <button mat-stroked-button (click)="deleteMode()">Delete Mode</button>
+      <mat-icon *ngIf="modeDelete" (click)="openDeleteDialog(element)" class="iconDelete"> delete </mat-icon> 
+      <mat-icon *ngIf="modeDelete" (click)="allChecked()" (click)="deleteAll(computers)" class="iconDelete">playlist_add_check</mat-icon>
     </h2>
   </div>
 </div>
@@ -15,7 +18,7 @@
   <ng-container matColumnDef="name" >
     <th mat-header-cell *matHeaderCellDef mat-sort-header > Name </th>
     <td class="name" mat-cell *matCellDef="let element"> 
-      <mat-icon (click)="openDeleteDialog(element)"> delete </mat-icon> 
+      <mat-checkbox [checked]="checked" *ngIf="modeDelete" class="checkbox" (click)="addDelete(element)" color="primary"></mat-checkbox>
       <text (click)="openUpdateDialog(element)"> {{element.computerName}}  </text>
     </td>
   </ng-container>
@@ -31,7 +34,7 @@
   </ng-container>
 
   <ng-container matColumnDef="companyName">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> CompanyName </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Company Name </th>
     <td mat-cell *matCellDef="let element"> <div *ngIf="element.companyDTO">{{element.companyDTO.companyName}} </div></td>
   </ng-container>
 

@@ -31,7 +31,7 @@
           <mat-form-field>
             <mat-label>Company</mat-label>
             <mat-select name="computer.companyDTO.companyId" [(ngModel)]="computer.companyDTO" formControlName="companyDTO">
-                <mat-option [value]="">-No company-</mat-option>
+                <mat-option [value]="null">-No company-</mat-option>
                 <mat-option *ngFor="let c of companies" [value]="c">
                   {{c.companyName}}
                 </mat-option>

@@ -9,7 +9,7 @@ import { HttpClient} from '@angular/common/http';
 })
 export class ComputerService {
 
-  private computerUrl = 'http://10.0.1.109:8080/api/computers';
+  private computerUrl = 'http://10.0.1.121:8080/api/computers';
   constructor(private httpClient: HttpClient) { }
 
   getComputers(): Observable<Computer[]> {
@@ -34,11 +34,9 @@ export class ComputerService {
   }
 
   deleteComputer(id: number): Observable<void> {
-        return this.httpClient.delete<void>( `${ this.computerUrl }/${ id }`);
-}
+    return this.httpClient.delete<void>( `${ this.computerUrl }/${ id }`);
+  }
   postComputer(computer : Computer): Observable<String>{
     return this.httpClient.post<String>(this.computerUrl,computer);
   }
-
-
 }

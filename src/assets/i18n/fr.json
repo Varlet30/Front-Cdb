@@ -9,12 +9,15 @@
 
     "HEADER": {
       "PROFILE": "Profil",
-      "LOGOUT" :"Déconnexion"
+      "LOGOUT" :"Déconnexion",
+      "COMPUTERS": "Ordinateurs",
+      "COMPANIES": "Entreprises"
     },
 
     "BODY":{
         "COMPUTER_FOUND" : "ordinateur trouvé",
         "COMPUTERS_FOUND" : "ordinateurs trouvés",
+        "COMPANIES_FOUND" : "entreprises trouvées",
         "ADD" : "Ajouter",
         "DELETE" : "Mode suppression",
         "TABLE_NAME" : "Nom",
@@ -26,6 +29,8 @@
     "POP-UP":{
         "TITLE_ADD": "Nouvel ordinateur",
         "TITLE_UPDATE": "Modifier l'ordinateur",
+        "TITLE_ADD_COMPANY": "Nouvelle entreprise",
+        "TITLE_UPDATE_COMPANY": "Modifier une entreprise",
         "NAME": "Nom",
         "INTRODUCED" : "Date d'introduction",
         "DISCONTINUED" : "Date d'arrêt",

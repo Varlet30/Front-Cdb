@@ -1,5 +1,5 @@
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ComputerPutComponent } from './computer-put/computer-put.component';
+import { ListCompaniesComponent } from './list-companies/list-companies.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,6 +12,12 @@ const routes: Routes = [
   {
     path: 'computers',
     component: ComputerListComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'companies',
+    component: ListCompaniesComponent,
     pathMatch: 'full',
     canActivate: [AuthGuardService]
   },

@@ -15,23 +15,6 @@
 
 <table mat-table [dataSource]="computers" matSort (matSortChange)="sortData($event)"  class="formComputers">
 
-
-  <ng-container *ngIf="editMode" matColumnDef="idComputer">
-    <th mat-header-cell *matHeaderCellDef>
-    
-    <span>
-    <a id="deleteSelected" [checked]="true"  (click)="openDeleteAllDialog(element)">
-    </a>
-    Selecte computers to delete
-    </span>
-    </th>
-    
-    <td mat-cell *matCellDef="let computer; let i = index">
-      <mat-checkbox *ngIf="editMode"  > </mat-checkbox>
-    </td>
-    </ng-container>
-  
-
   <ng-container matColumnDef="name" >
     <th mat-header-cell *matHeaderCellDef mat-sort-header > {{'BODY.TABLE_NAME' | translate }} </th>
     <td class="name" mat-cell *matCellDef="let element"> 

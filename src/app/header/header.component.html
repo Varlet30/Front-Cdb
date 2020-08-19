@@ -2,7 +2,6 @@
     <h2>
         Computer-database
     </h2>
-    <div>
     <span class="spacer"></span>
     <div class="languageEn">
         <img src="../../assets/img/englishFlag.png" (click)="translate.use('en')">
@@ -14,10 +13,9 @@
 
     <button *ngIf="!hidden" mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>person</mat-icon>
-        {{'HEADER.USER' | translate }}
-        welcome {{getUsername()}}
+        {{getUsername()}}
     </button>
-    </div>
+    
     <mat-menu #menu="matMenu">
         <div class="menu-panel">
             <button mat-menu-item>

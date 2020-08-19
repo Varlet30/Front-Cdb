@@ -15,7 +15,9 @@
         <mat-error *ngIf="password.hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
       </mat-form-field>
       <button mat-raised-button type="submit" [disabled]="!loginForm.valid">{{'LOGIN.BUTTON_LOGIN' | translate }}</button>
-      <p><a href="#">{{'LOGIN.REGISTER' | translate }}</a></p>
+      <p><a class="registerBtn" [routerLink]="['/register']">{{'LOGIN.REGISTER' | translate }}</a></p>
     </form>
   </div>
 </body>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <input type="hidden" formControlName="hidden"/>

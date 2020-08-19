@@ -41,7 +41,9 @@ export class LoginComponent implements OnInit {
     }
 
     const onSuccess: Function = (next) => {
-      this.router.navigate(['/computers'])
+      setTimeout(() => {
+        this.router.navigate(['/computers'])
+      }, 500);
     }
 
     this.authService.login(this.loginForm.value, onSuccess, onError);

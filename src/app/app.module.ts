@@ -22,6 +22,7 @@ import { ListCompaniesComponent } from './list-companies/list-companies.componen
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { CompanyPutComponent } from './company-put/company-put.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { CompanyPutComponent } from './company-put/company-put.component';
     ListCompaniesComponent,
     DeleteDialogComponent,
     AddCompanyComponent,
-    CompanyPutComponent
+    CompanyPutComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

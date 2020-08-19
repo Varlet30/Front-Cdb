@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { AddComputerComponent } from './../add-computer/add-computer.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PaginationComponent } from './../pagination/pagination.component';
@@ -27,11 +28,13 @@ export class ComputerListComponent implements OnInit {
   checked = false;
   modeDelete = false;
   computersDelete: Computer[];
+  isAdmin = false;
+
 
   @ViewChild(PaginationComponent) pagination: PaginationComponent;
 
   constructor(
-    private computerService: ComputerService, public dialog: MatDialog) {
+    private computerService: ComputerService, public dialog: MatDialog, private authService : AuthService ) {
   }
 
   ngOnInit(): void {
@@ -43,7 +46,11 @@ export class ComputerListComponent implements OnInit {
       pageNb: "1",
       linesNb: "10"
     };
-    this.requestComputers();
+    if (this.authService.getRoleName() === 'admin') {
+      this.isAdmin = !this.isAdmin; 
+    };  
+    console.log(this.isAdmin);
+    this.requestComputers(); 
   }
 
   requestComputers(): void {
@@ -105,7 +112,8 @@ export class ComputerListComponent implements OnInit {
     )
   }
 
-  openUpdateDialog(element): void {
+  openUpdateDialog(element,isAdmin): void {
+    if (isAdmin){
     this.dialog.closeAll();
     const dialogRef = this.dialog.open(ComputerPutComponent, {
       width: '30%',
@@ -113,6 +121,7 @@ export class ComputerListComponent implements OnInit {
     }).afterClosed().subscribe(result => {
       this.changePageEvent()
     });
+  }
   }
 
   openDeleteDialog() {

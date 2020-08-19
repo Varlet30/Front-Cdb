@@ -1,5 +1,6 @@
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ListCompaniesComponent } from './list-companies/list-companies.component';
+import { RegisterComponent } from './register/register.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -29,6 +30,11 @@ const routes: Routes = [
   {
     path: 'erreur404',
     component: PageNotFoundComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'register',
+    component : RegisterComponent,
     pathMatch: 'full'
   },
   {

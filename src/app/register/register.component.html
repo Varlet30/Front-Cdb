@@ -1,0 +1,27 @@
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <input type="hidden" formControlName="hidden"/>
+                <div class="error" *ngIf="hidden.hasError('registererror')">
+                    Username already exists
+                </div>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Username: </mat-label>
+                    <input matInput type="text" formControlName="username" required/>
+                    <mat-error *ngIf="username.invalid">This field is required</mat-error>
+                </mat-form-field>
+                <br/>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password: </mat-label>
+                    <input matInput type="password" formControlName="password" required/>
+                    <mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
+                </mat-form-field>
+                <br/>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Confirm password: </mat-label>
+                    <input matInput type="password" formControlName="confirm"  required/>
+                    <mat-error *ngIf="confirm.invalid">{{getErrorMessageConfirm()}}</mat-error>
+                    <mat-error *ngIf="registerForm.hasError('matcherror')">Passwords do not match</mat-error>
+                </mat-form-field>
+                <br/>
+                <button mat-raised-button class="registerBtn" type="submit" [disabled]="!registerForm.valid">Register</button>
+                <p>Already registered ?  <a [routerLink]="['/login']">Log in </a></p>
+            </form>

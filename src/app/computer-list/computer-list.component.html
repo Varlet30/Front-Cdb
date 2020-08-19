@@ -2,13 +2,13 @@
   <div>
     <h2>
       {{computerNumber}} {{'BODY.COMPUTERS_FOUND' | translate }}
-      <mat-icon *ngIf="!edited" (click)="edited=!edited">search</mat-icon>
+      <mat-icon *ngIf="!edited && isAdmin" (click)="edited=!edited">search</mat-icon>
       <mat-icon *ngIf="edited" (click)="search()" >close</mat-icon>
       <input *ngIf="edited" type="text" placeholder="Search &amp; enter" (keydown)="onKeydownSearch($event)">
-      <button mat-raised-button (click)="openAddDialog()">{{'BODY.ADD' | translate }}</button>
-      <button mat-stroked-button (click)="deleteMode()">{{'BODY.DELETE' | translate }}</button>
-      <mat-icon *ngIf="modeDelete" (click)="openDeleteDialog(element)" class="iconDelete"> delete </mat-icon> 
-      <mat-icon *ngIf="modeDelete" (click)="allChecked()" (click)="deleteAll(computers)" class="iconDelete">playlist_add_check</mat-icon>
+      <button *ngIf="isAdmin" mat-raised-button (click)="openAddDialog()">{{'BODY.ADD' | translate }}</button>
+      <button *ngIf="isAdmin" mat-stroked-button (click)="deleteMode()">{{'BODY.DELETE' | translate }}</button>
+      <mat-icon *ngIf="isAdmin && modeDelete" (click)="openDeleteDialog(element)" class="iconDelete"> delete </mat-icon> 
+      <mat-icon *ngIf="isAdmin && modeDelete" (click)="allChecked()" (click)="deleteAll(computers)" class="iconDelete">playlist_add_check</mat-icon>
     </h2>
   </div>
 </div>
@@ -19,7 +19,7 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header > {{'BODY.TABLE_NAME' | translate }} </th>
     <td class="name" mat-cell *matCellDef="let element"> 
       <mat-checkbox [checked]="checked" *ngIf="modeDelete" class="checkbox" (click)="addDelete(element)" color="primary"></mat-checkbox>
-      <text (click)="openUpdateDialog(element)"> {{element.computerName}}  </text>
+      <text   (click)="openUpdateDialog(element,isAdmin)" > {{element.computerName}}  </text>
     </td>
   </ng-container>
 

@@ -1,3 +1,4 @@
+import { User } from './Model/user.model';
 import { Auth } from './Model/auth.model';
 import { Injectable } from '@angular/core';
 import { Cred } from './Model/cred.model'
@@ -18,12 +19,12 @@ export class AuthService {
 
    }
 
-  private authenticate(credentials:Cred) : Observable<Auth> {
+  private authenticate(user:User) : Observable<Auth> {
 
     return this.http.post<Auth>(
        'http://10.0.1.109:8080/api/authenticate',
         JSON.stringify({
-            username:credentials.username, password:credentials.password
+            username:user.username, password:user.password
         }),
         {
             headers: new HttpHeaders({
@@ -35,18 +36,45 @@ export class AuthService {
     );
 }
 
-  public login(credentials:Cred,onSuccess: Function, onError: Function): void{
-    this.authenticate(credentials).pipe(take(1)).subscribe({
-        next : (auth:Auth) => {console.log(credentials.role);this.setSession(auth, credentials.username ); onSuccess()},
+private getRole(token : String) : Observable<User> {
+
+  return this.http.post<User>(
+     'http://10.0.1.109:8080/api/authenticate/user',
+      JSON.stringify({
+        token
+
+      }),
+      {
+          headers: new HttpHeaders({
+              'Content-Type': 'application/json'
+          }),
+          observe: 'body',
+          responseType: 'json'
+      }
+  );
+}
+
+  public login(user:User,onSuccess: Function, onError: Function): void{
+    console.log("ici Name :" + user.username);
+    console.log("ici password" + user.password);
+    this.authenticate(user).pipe(take(1)).subscribe({
+        next : (auth:Auth) => {
+          localStorage.setItem('token', auth.token);
+          this.getRole(localStorage.getItem('token')).subscribe({
+            next : (user1:User) => {
+              user.role = user1.role;
+              onSuccess(this.setSession(auth, user))},
+            error : err =>  onError(err)
+        });
+         onSuccess()},
         error : err =>  onError(err)
     })
 }
 
 
-private setSession(authResult : Auth, username: string ) {
-  localStorage.setItem('token', authResult.token);
-  localStorage.setItem('role', authResult.role);
-  localStorage.setItem('username', username);
+private setSession(authResult : Auth, user : User ) {
+  localStorage.setItem('role', user.role.name);
+  localStorage.setItem('username', user.username);
   console.log(localStorage.getItem('role'));
   console.log(localStorage.getItem('token'));
 }
@@ -59,7 +87,7 @@ public getName() : string{
   return localStorage.getItem('username');
 } 
 
-public isAdmin() : string {
+public getRoleName() : string {
   return localStorage.getItem('role');
 }
 

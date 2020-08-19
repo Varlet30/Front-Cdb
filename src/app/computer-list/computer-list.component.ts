@@ -19,7 +19,7 @@ export interface DialogData {
   styleUrls: ['./computer-list.component.scss']
 })
 export class ComputerListComponent implements OnInit {
-  displayedColumns: string[] = ['idComputer','name', 'introduced', 'discontinued', 'companyName'];
+  displayedColumns: string[] = ['name', 'introduced', 'discontinued', 'companyName'];
   computers: Computer[];
   dashboard: Dashboard;
   edited = false;

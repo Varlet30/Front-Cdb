@@ -2,11 +2,13 @@
     <h2>
         Computer-database
     </h2>
+    <div>
     <span class="spacer"></span>
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <button *ngIf="!hidden" mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>person</mat-icon>
-        User
+        welcome {{getUsername()}}
     </button>
+    </div>
     <mat-menu #menu="matMenu">
         <div class="menu-panel">
             <button mat-menu-item>
@@ -15,7 +17,7 @@
             </button>
             <button mat-menu-item>
                 <mat-icon class="white-icon">exit_to_app</mat-icon>
-                <span>Logout</span>
+                <span (click)="logout()">Logout</span>
             </button>
         </div>
     </mat-menu>

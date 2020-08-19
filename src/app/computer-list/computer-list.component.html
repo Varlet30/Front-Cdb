@@ -11,7 +11,7 @@
 </div>
 
 <table mat-table [dataSource]="computers" matSort (matSortChange)="sortData($event)"  class="formComputers">
-<-- container inutile jamais pris en compte , pq??? -->
+
 
   <ng-container *ngIf="editMode" matColumnDef="idComputer">
     <th mat-header-cell *matHeaderCellDef>

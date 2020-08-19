@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { AddComputerComponent } from './../add-computer/add-computer.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PaginationComponent } from './../pagination/pagination.component';
@@ -28,10 +29,11 @@ export class ComputerListComponent implements OnInit {
   modeDelete = false;
   computersDelete: Computer[];
 
+
   @ViewChild(PaginationComponent) pagination: PaginationComponent;
 
   constructor(
-    private computerService: ComputerService, public dialog: MatDialog) {
+    private computerService: ComputerService, public dialog: MatDialog, private authService : AuthService ) {
   }
 
   ngOnInit(): void {
@@ -44,6 +46,8 @@ export class ComputerListComponent implements OnInit {
       linesNb: "10"
     };
     this.requestComputers();
+    this.authService.isAdmin();
+    console.log("isADMIN:" + this.authService.isAdmin());
   }
 
   requestComputers(): void {

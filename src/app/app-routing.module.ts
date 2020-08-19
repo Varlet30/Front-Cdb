@@ -1,3 +1,4 @@
+import { RegisterComponent } from './register/register.component';
 import { ComputerPutComponent } from './computer-put/computer-put.component';
 
 import { NgModule } from '@angular/core';
@@ -17,6 +18,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'register',
+    component : RegisterComponent,
     pathMatch: 'full'
   },
   {

@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     ComputerDeleteDialogComponent,
     FooterComponent,
     PaginationComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

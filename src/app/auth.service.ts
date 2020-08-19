@@ -37,28 +37,34 @@ export class AuthService {
 
   public login(credentials:Cred,onSuccess: Function, onError: Function): void{
     this.authenticate(credentials).pipe(take(1)).subscribe({
-        next : (auth:Auth) => {this.setSession(auth, credentials.username); onSuccess()},
+        next : (auth:Auth) => {console.log(credentials.role);this.setSession(auth, credentials.username ); onSuccess()},
         error : err =>  onError(err)
     })
 }
 
 
-private setSession(authResult : Auth, username: string) {
-  localStorage.setItem('jwt', authResult.jwt);
+private setSession(authResult : Auth, username: string ) {
+  localStorage.setItem('token', authResult.token);
   localStorage.setItem('role', authResult.role);
   localStorage.setItem('username', username);
+  console.log(localStorage.getItem('role'));
+  console.log(localStorage.getItem('token'));
 }
 
 public isLoggedIn() : boolean {
-  return localStorage.getItem('jwt') !== null && localStorage.getItem('jwt') !== undefined;
+  return localStorage.getItem('token') !== null && localStorage.getItem('token') !== undefined;
 }
 
 public getName() : string{
   return localStorage.getItem('username');
 } 
 
+public isAdmin() : string {
+  return localStorage.getItem('role');
+}
+
 logout() {
-  localStorage.removeItem('jwt');
+  localStorage.removeItem('token');
   localStorage.removeItem('role');
   localStorage.removeItem('username');
 }

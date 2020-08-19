@@ -4,7 +4,7 @@ import { CompanyService } from './../company.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Company } from './../Model/company.model';
 import { Component, OnInit, Inject } from '@angular/core';
-import { ListCompaniesComponent } from '../list-companies/list-companies.component';
+import { CompanyListComponent } from '../company-list/company-list.component';
 
 @Component({
   selector: 'app-company-put',
@@ -17,7 +17,7 @@ export class CompanyPutComponent implements OnInit {
   editForm : FormGroup;
 
   constructor(private fb : FormBuilder, private companyService : CompanyService, 
-  public dialogRef: MatDialogRef<ListCompaniesComponent>, @Inject(MAT_DIALOG_DATA) public datadialog: DialogData ) {
+  public dialogRef: MatDialogRef<CompanyListComponent>, @Inject(MAT_DIALOG_DATA) public datadialog: DialogData ) {
     this.createForm();
   }
 

@@ -18,7 +18,7 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ListCompaniesComponent } from './list-companies/list-companies.component';
+import { CompanyListComponent } from './company-list/company-list.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { CompanyPutComponent } from './company-put/company-put.component';
@@ -37,7 +37,7 @@ import { RegisterComponent } from './register/register.component';
     PaginationComponent,
     PageNotFoundComponent,
     LoginComponent,
-    ListCompaniesComponent,
+    CompanyListComponent,
     DeleteDialogComponent,
     AddCompanyComponent,
     CompanyPutComponent,

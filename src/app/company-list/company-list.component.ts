@@ -15,11 +15,11 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-list-companies',
-  templateUrl: './list-companies.component.html',
-  styleUrls: ['./list-companies.component.scss']
+  selector: 'app-company-list',
+  templateUrl: './company-list.component.html',
+  styleUrls: ['./company-list.component.scss']
 })
-export class ListCompaniesComponent implements OnInit {
+export class CompanyListComponent implements OnInit {
   displayedColumns: string[] = ['companyName'];
   companies: Company[];
   dashboard: Dashboard;

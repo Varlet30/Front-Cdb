@@ -1,9 +1,9 @@
-import { ListCompaniesComponent } from './../list-companies/list-companies.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CompanyService } from './../company.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Company } from './../Model/company.model';
 import { Component, OnInit } from '@angular/core';
+import { CompanyListComponent } from '../company-list/company-list.component';
 
 @Component({
   selector: 'app-add-company',
@@ -14,7 +14,7 @@ export class AddCompanyComponent implements OnInit {
   company : Company;
   addForm : FormGroup;
 
-  constructor(private fb : FormBuilder, private companyService : CompanyService, public dialogRef: MatDialogRef<ListCompaniesComponent>) { 
+  constructor(private fb : FormBuilder, private companyService : CompanyService, public dialogRef: MatDialogRef<CompanyListComponent>) { 
     this.createForm();
   }
 

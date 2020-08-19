@@ -1,5 +1,5 @@
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ListCompaniesComponent } from './list-companies/list-companies.component';
+import { CompanyListComponent } from './company-list/company-list.component';
 import { RegisterComponent } from './register/register.component';
 
 import { NgModule } from '@angular/core';
@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'companies',
-    component: ListCompaniesComponent,
+    component: CompanyListComponent,
     pathMatch: 'full',
     canActivate: [AuthGuardService]
   },

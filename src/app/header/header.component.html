@@ -2,7 +2,15 @@
     <h2>
         Computer-database
     </h2>
+    <button mat-button (click)="computers()">
+        {{'HEADER.COMPUTERS' | translate }}
+    </button>
+    <button mat-button (click)="companies()">
+        {{'HEADER.COMPANIES' | translate }}
+    </button>
+
     <span class="spacer"></span>
+    
     <div class="languageEn">
         <img src="../../assets/img/englishFlag.png" (click)="translate.use('en')">
     </div>

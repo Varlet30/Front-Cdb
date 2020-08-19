@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import { RegisterComponent } from './register/register.component';
 import { ComputerPutComponent } from './computer-put/computer-put.component';
+=======
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CompanyListComponent } from './company-list/company-list.component';
+import { RegisterComponent } from './register/register.component';
+>>>>>>> 5b3b4977d5d2c4e7f274449ee37e2d8f022cbe4d
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -16,18 +22,32 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
+    path: 'companies',
+    component: CompanyListComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]
+  },
+  {
     path: 'login',
     component: LoginComponent,
     pathMatch: 'full'
   },
   {
+<<<<<<< HEAD
+=======
+    path: 'erreur404',
+    component: PageNotFoundComponent,
+    pathMatch: 'full'
+  },
+  {
+>>>>>>> 5b3b4977d5d2c4e7f274449ee37e2d8f022cbe4d
     path: 'register',
     component : RegisterComponent,
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: 'login',
+    redirectTo: 'erreur404',
     pathMatch: 'full'
   }
 ]

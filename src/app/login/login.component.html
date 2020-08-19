@@ -1,4 +1,26 @@
+<body>
+  <div class="main">
+    <p class="sign">{{'LOGIN.SIGN_IN' | translate }}</p>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form1">
+      <input type="hidden" formControlName="hidden"/> 
+      <mat-form-field class="un ">
+        <mat-label>{{'LOGIN.USERNAME' | translate }} </mat-label>
+        <input matInput type="text" formControlName="username" required/>
+        <mat-error *ngIf="username.hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field class="pass">
+        <mat-label>{{'LOGIN.PASSWORD' | translate }} </mat-label>
+        <input matInput type="password" formControlName="password" required/>
+        <mat-error *ngIf="password.hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
+      </mat-form-field>
+      <button mat-raised-button type="submit" [disabled]="!loginForm.valid">{{'LOGIN.BUTTON_LOGIN' | translate }}</button>
+      <p><a class="registerBtn" [routerLink]="['/register']">{{'LOGIN.REGISTER' | translate }}</a></p>
+    </form>
+  </div>
+</body>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<<<<<<< HEAD
   <input type="hidden" formControlName="hidden"/>
 
 
@@ -18,3 +40,6 @@
  </form>
 
  <a class="registerBtn" [routerLink]="['/register']">Create an account</a>
+=======
+  <input type="hidden" formControlName="hidden"/>
+>>>>>>> 5b3b4977d5d2c4e7f274449ee37e2d8f022cbe4d

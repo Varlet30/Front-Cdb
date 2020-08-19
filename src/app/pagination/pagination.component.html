@@ -1,5 +1,5 @@
-
-    <div class="button-row">
+<table>
+    <tr align="center" class="button-row">
         <button mat-stroked-button [disabled]="!prev" (click)="firstPage()"><<</button>
         <button mat-stroked-button [disabled]="!prev" (click)="previousPage()"><</button>
         <span *ngFor="let page of pages; let indexOfelement=index;">
@@ -7,12 +7,13 @@
         </span>
         <button mat-stroked-button [disabled]="!next" (click)="nextPage()">></button> 
         <button mat-stroked-button [disabled]="!next" (click)="lastPage()">>></button> 
-    </div>
+    </tr>
 
-    <div class=right>
-    <mat-button-toggle-group class="linesNb" [(ngModel)]="linesNb">
-        <mat-button-toggle value="10" (change)="changeLinesNb()" ngDefaultControl>10</mat-button-toggle>
-        <mat-button-toggle value="50" (change)="changeLinesNb()">50</mat-button-toggle>
-        <mat-button-toggle value="100" (change)="changeLinesNb()">100</mat-button-toggle>
-    </mat-button-toggle-group>
-    </div>
+    <tr class=right>
+        <mat-button-toggle-group class="linesNb" [(ngModel)]="linesNb">
+            <mat-button-toggle value="10" (change)="changeLinesNb()" ngDefaultControl>10</mat-button-toggle>
+            <mat-button-toggle value="50" (change)="changeLinesNb()">50</mat-button-toggle>
+            <mat-button-toggle value="100" (change)="changeLinesNb()">100</mat-button-toggle>
+        </mat-button-toggle-group>
+    </tr>
+</table>

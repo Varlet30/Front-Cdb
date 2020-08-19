@@ -6,15 +6,16 @@
     <div class="modal-body">
       <form [formGroup]="editForm">
         <div>
-          <mat-form-field>
+          <mat-form-field class="margin">
             <mat-label>{{'POP-UP.NAME' | translate }}</mat-label>
             <input matInput type="text" [(ngModel)]="editedComputer.computerName" formControlName="computerName" required>
+            <mat-error *ngIf="editForm.get('computerName').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
           </mat-form-field>
         </div>
 
 
         <div>
-          <mat-form-field>
+          <mat-form-field class="margin">
             <mat-label>{{'POP-UP.INTRODUCED' | translate }}</mat-label>
             <input matInput name="introduced" type="date" [(ngModel)]="editedComputer.introduced" formControlName="introduced">
           </mat-form-field>
@@ -45,8 +46,6 @@
             </mat-select>
           </mat-form-field>
         </div>
-      
-        <p>{{'POP-UP.FIELD_REQUIRED' | translate }}</p>
 
         <div class="modal-footer">
           <button mat-button [disabled]="!editForm.valid" (click)="onSubmit()" color="primary">{{'POP-UP.BUTTON_UPDATE' | translate }}</button>

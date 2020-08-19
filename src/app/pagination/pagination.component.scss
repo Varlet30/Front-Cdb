@@ -1,20 +1,22 @@
 .button-row {
-  margin:auto;
-  margin-left:31%;
+  position: relative;;
+  top : -150px;
+}
+
+table{
+  width:100%;
 }
 
 .right {
   float:right;
-  margin-right: 15%;
   position:relative;
-  top: -30px;
+  top:-150px;
+  left:-15%;
   
 }
 
 .button-row, .mat-button-base, .linesNb { 
   border-radius: 20px;
-  position:relative;
-  top:-90px;
 }
 
 .mat-raised-button.mat-primary{
@@ -31,4 +33,7 @@
   border-radius: 20px;
 }
 
+.mat-stroked-button{
+  background-color: rgb(201, 195, 195);
+  }
 

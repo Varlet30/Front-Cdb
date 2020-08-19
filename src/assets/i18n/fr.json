@@ -1,35 +1,61 @@
 {
+    "LOGIN":{
+        "SIGN_IN" : "Connexion",
+        "USERNAME" : "Nom d'utilisateur",
+        "PASSWORD" : "Mot de passe",
+        "BUTTON_LOGIN" : "Connexion",
+        "REGISTER" : "Créer un compte"
+    },
+
     "HEADER": {
       "PROFILE": "Profil",
-      "LOGOUT" :"Déconnexion"
+      "LOGOUT" :"Déconnexion",
+      "COMPUTERS": "Ordinateurs",
+      "COMPANIES": "Entreprises"
     },
 
     "BODY":{
         "COMPUTER_FOUND" : "ordinateur trouvé",
         "COMPUTERS_FOUND" : "ordinateurs trouvés",
+        "COMPANIES_FOUND" : "entreprises trouvées",
         "ADD" : "Ajouter",
         "DELETE" : "Mode suppression",
         "TABLE_NAME" : "Nom",
-        "TABLE_INTRODUCED" : "Introduit",
-        "TABLE_DISCONTINUED" : "Arrêt",
+        "TABLE_INTRODUCED" : "Entrée sur le marché",
+        "TABLE_DISCONTINUED" : "Sortie du marché",
         "TABLE_COMPANY" : "Nom de l'entreprise"
     },
 
     "POP-UP":{
         "TITLE_ADD": "Nouvel ordinateur",
         "TITLE_UPDATE": "Modifier l'ordinateur",
+        "TITLE_ADD_COMPANY": "Nouvelle entreprise",
+        "TITLE_UPDATE_COMPANY": "Modifier une entreprise",
         "NAME": "Nom",
         "INTRODUCED" : "Date d'introduction",
         "DISCONTINUED" : "Date d'arrêt",
         "COMPANY" : "Entreprise",
         "BUTTON_ADD" : "Ajouter",
         "BUTTON_UPDATE" : "Modifier",
-        "BUTTON_CANCEL" : "Annuler",
-        "FIELD_REQUIRED" :"* Champ obligatoire"
+        "BUTTON_CANCEL" : "Annuler"
     },
 
 
     "FOOTER":{
         "TEXT" : "- Droits réservés -"
+    },
+
+    "DELETE":{
+        "TITLE" : "Voulez-vous vraiment supprimer ce/ces ordinateur(s) ?",
+        "MESSAGE" : "Vous ne serez plus capable de revenir en arrière.",
+        "BUTTON_OK" : "Oui, supprimer",
+        "BUTTON_CANCEL" : "Annuler"
+    },
+
+    "ERROR":{
+        "MESSAGE" : "Page non trouvée",
+        "DASHBOARD" : "Tableau de bord",
+        "REQUIRED" : "Champ obligatoire",
+        "DATE" : "Doit être après la date d'introduction"
     }
   }

@@ -22,6 +22,7 @@ export class PaginationComponent implements OnInit {
   buttonColors: ThemePalette[] = new Array(5);
   buttonDisplay: boolean[] = new Array(5);
   linesNb: String;
+  totalPages: number;
 
   constructor(private computerService: ComputerService) { }
 
@@ -32,10 +33,10 @@ export class PaginationComponent implements OnInit {
     this.computerService.getComputersNumber(this.dashboard).subscribe(
       (totalComputers: number)=>{
         this.changeComputerNumber.emit(totalComputers);
-        let totalPages = Math.ceil( +totalComputers/ +this.dashboard.linesNb);
+        this.totalPages = Math.ceil( +totalComputers/ +this.dashboard.linesNb);
         for (let i = 0; i < this.pages.length; i++) {
-          let pageIterator = this.adjustPageIterator(totalPages);
-          if ((pageIterator +i) > totalPages) {
+          let pageIterator = this.adjustPageIterator();
+          if ((pageIterator +i) > this.totalPages) {
             this.buttonDisplay[i] = false;
             continue;
           }
@@ -47,13 +48,13 @@ export class PaginationComponent implements OnInit {
             this.buttonColors[i] = "primary";
           }
         }
-        this.updateNext(totalPages);
+        this.updateNext();
       }
     );
     this.linesNb = this.dashboard.linesNb;
   }
-  updateNext(totalPages: number){
-    if(+this.dashboard.pageNb >= totalPages){
+  updateNext(){
+    if(+this.dashboard.pageNb >= this.totalPages){
       this.next = false;
     }
     else{
@@ -68,13 +69,13 @@ export class PaginationComponent implements OnInit {
       this.prev = true;
     }
   }
-  adjustPageIterator(totalPages: number): number{
+  adjustPageIterator(): number{
     let pageIterator = +this.dashboard.pageNb -2;
     if(pageIterator < 2){
       pageIterator = 1;
     }
-    if(totalPages >= 5 && pageIterator >= (totalPages - 4)){
-      pageIterator = totalPages -4;
+    if(this.totalPages >= 5 && pageIterator >= (this.totalPages - 4)){
+      pageIterator = this.totalPages -4;
     }
     return pageIterator;
   }
@@ -94,5 +95,11 @@ export class PaginationComponent implements OnInit {
     this.dashboard.pageNb = "1";
     this.dashboard.linesNb = this.linesNb +"";
     this.changePageEvent.emit();
+  }
+  firstPage(){
+    this.changePage(1);
+  }
+  lastPage(){
+    this.changePage(this.totalPages);
   }
 }

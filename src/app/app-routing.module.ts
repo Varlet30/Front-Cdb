@@ -4,14 +4,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ComputerListComponent } from './computer-list/computer-list.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from '../app/auth-guard.service';
 
 
 const routes: Routes = [
-
   {
     path: 'computers',
     component: ComputerListComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]
   },
   {
     path: 'login',

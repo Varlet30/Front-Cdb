@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from './../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +10,51 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private authService : AuthService, private router:Router) { }
 
   loginForm = new FormGroup({
     username: new FormControl(''),
-    password: new FormControl('')
+    password: new FormControl(''),
+    hidden: new FormControl('')
   });
 
+    get username() {
+      return this.loginForm.get('username')
+    }
+  
+    get password() {
+      return this.loginForm.get('password')
+    }
+
+    get hidden(){
+      return this.loginForm.get('hidden');
+    }
+
+  
   ngOnInit(): void {
   }
 
   onSubmit(){
+    const onError: Function = (err) => {
+      this.hidden.setValue('loginerror')
+    }
+
+    const onSuccess: Function = (next) => {
+      this.router.navigate(['/computers'])
+    }
+
+    this.authService.login(this.loginForm.value, onSuccess, onError);
+
   
+  }
+
+  getErrorMessageUsername(): string{
+    return this.username.hasError('required') ? "This field is required" : ''
+  }
+
+  getErrorMessagePassword(): string{
+    return this.password.hasError('required') ? "This field is required" : ''
   }
   
 }

@@ -124,6 +124,35 @@ export class ComputerListComponent implements OnInit {
     }
   }
 
+  openDeleteAllDialog(computers: Computer[]) {
+    const id = this.dialog.open(ComputerDeleteDialogComponent).id;
+
+    this.dialog.getDialogById(id).afterClosed().subscribe (
+      result => {
+      if (result) {
+        this.deleteAllComputer(computers);
+      }
+    }
+    )
+  }
+
+  editedMode(){
+
+  }
+
+  deleteAllComputer(computers: Computer[]) {
+    computers.forEach ( computer =>
+    this.computerService.deleteComputer(Number (computer.computerId)).subscribe(
+      () => {
+        var index=this.computers.indexOf(computer);
+        this.computers.splice(index, 1);
+        this.requestComputers();
+      },
+      (error) => {
+      })
+    );
+  }
+
   deleteComputer(computer: Computer) {
     this.computerService.deleteComputer(Number(computer.computerId)).subscribe(
       () => {

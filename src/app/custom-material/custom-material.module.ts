@@ -12,8 +12,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu'; 
 import {MatSortModule} from '@angular/material/sort';
 import {MatIconModule} from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog'; 
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [],
@@ -33,7 +35,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatSortModule,
     MatIconModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRadioModule
 
   ],
   exports:[
@@ -51,7 +54,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatFormFieldModule,
     MatSortModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRadioModule
   ]
 })
 export class CustomMaterialModule { }

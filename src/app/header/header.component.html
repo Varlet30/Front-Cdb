@@ -2,7 +2,7 @@
     <h2>
         Computer-database
     </h2>
-
+    <div>
     <span class="spacer"></span>
     <div class="languageEn">
         <img src="../../assets/img/englishFlag.png" (click)="translate.use('en')">
@@ -12,10 +12,12 @@
         <img src="../../assets/img/frenchFlag.png" (click)="translate.use('fr')">
     </div>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <button *ngIf="!hidden" mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>person</mat-icon>
         {{'HEADER.USER' | translate }}
+        welcome {{getUsername()}}
     </button>
+    </div>
     <mat-menu #menu="matMenu">
         <div class="menu-panel">
             <button mat-menu-item>
@@ -24,7 +26,7 @@
             </button>
             <button mat-menu-item>
                 <mat-icon class="white-icon">exit_to_app</mat-icon>
-                <span> {{'HEADER.LOGOUT' | translate }}</span>
+                <span (click)="logout()">{{'HEADER.LOGOUT' | translate }}</span>
             </button>
         </div>
     </mat-menu>

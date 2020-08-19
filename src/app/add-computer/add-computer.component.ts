@@ -41,7 +41,11 @@ export class AddComputerComponent implements OnInit {
   getCompanies(): void{
   this.companyService.getCompanies().subscribe(
     (result: Company[]) => {
-        this.companies = result;
+        this.companies = result.sort(function(x,y){
+          let a = x.companyName;
+          let b = y.companyName;
+          return a == b ? 0 : a>b ? 1 : -1;
+        });
     },
     (error) => {
         console.log("Add a computer : List companies does not work");
@@ -68,5 +72,4 @@ export class AddComputerComponent implements OnInit {
       }
     }
   }
-
 }

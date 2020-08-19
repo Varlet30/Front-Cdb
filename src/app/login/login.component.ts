@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     get username() {
       return this.loginForm.get('username')
     }
-  
+
     get password() {
       return this.loginForm.get('password')
     }
@@ -47,14 +47,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value, onSuccess, onError);
 
   
-  }
-
-  getErrorMessageUsername(): string{
-    return this.username.hasError('required') ? "This field is required" : ''
-  }
-
-  getErrorMessagePassword(): string{
-    return this.password.hasError('required') ? "This field is required" : ''
   }
   
 }

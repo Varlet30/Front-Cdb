@@ -1,8 +1,8 @@
 <div class="diaDel">
-    <h1 mat-dialog-title>Do you really want to delete this/these computer(s) ?</h1>
-<div mat-dialog-content>You won't be able to revert this. </div>
+    <h1 mat-dialog-title>{{'DELETE.TITLE' | translate }}</h1>
+<div mat-dialog-content>{{'DELETE.MESSAGE' | translate }}</div>
 <div mat-dialog-actions >
-    <button mat-button (click)="closeOk()">Yes, delete</button>
-    <button mat-button (click)="onNoClick()">Close</button>
+    <button mat-button (click)="closeOk()">{{'DELETE.BUTTON_OK' | translate }}</button>
+    <button mat-button (click)="onNoClick()">{{'DELETE.BUTTON_CANCEL' | translate }}</button>
 </div>
 </div>

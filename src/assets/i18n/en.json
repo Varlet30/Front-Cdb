@@ -1,4 +1,12 @@
 {
+    "LOGIN":{
+        "SIGN_IN" : "Sign in",
+        "USERNAME" : "Username",
+        "PASSWORD" : "Password",
+        "BUTTON_LOGIN" : "Login",
+        "REGISTER" : "Create a new account"
+    },
+
     "HEADER": {
       "PROFILE": "Profile",
       "LOGOUT" :"Logout"
@@ -25,11 +33,24 @@
         "COMPANY" : "Company",
         "BUTTON_ADD" : "Add",
         "BUTTON_UPDATE" : "Update",
-        "BUTTON_CANCEL" : "Cancel",
-        "FIELD_REQUIRED" :"* Field required"
+        "BUTTON_CANCEL" : "Cancel"
     },
 
     "FOOTER":{
         "TEXT" : "- All Rights Reserved -"
+    },
+
+    "DELETE":{
+        "TITLE" : "Do you really want to delete this/these computer(s) ?",
+        "MESSAGE" : "You won't be able to revert this.",
+        "BUTTON_OK" : "Yes, delete",
+        "BUTTON_CANCEL" : "Cancel"
+    },
+
+    "ERROR":{
+        "MESSAGE" : "Page not found",
+        "DASHBOARD" : "Dashboard",
+        "REQUIRED" : "This field is required",
+        "DATE" : "Must be after introduced date"
     }
   }

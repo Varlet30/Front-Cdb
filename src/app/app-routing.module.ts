@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ComputerPutComponent } from './computer-put/computer-put.component';
 
 import { NgModule } from '@angular/core';
@@ -20,8 +21,13 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'erreur404',
+    component: PageNotFoundComponent,
+    pathMatch: 'full'
+  },
+  {
     path: '**',
-    redirectTo: 'login',
+    redirectTo: 'erreur404',
     pathMatch: 'full'
   }
 ]

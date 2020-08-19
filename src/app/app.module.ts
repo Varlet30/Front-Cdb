@@ -13,11 +13,14 @@ import { FooterComponent } from './footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { ComputerDeleteDialogComponent } from './computer-delete-dialog/computer-delete-dialog.component';
 import { LoginComponent } from './login/login.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { ListCompaniesComponent } from './list-companies/list-companies.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { AddCompanyComponent } from './add-company/add-company.component';
+import { CompanyPutComponent } from './company-put/company-put.component';
 
 
 @NgModule({
@@ -28,10 +31,13 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     ComputerPutComponent,
     AddComputerComponent,
     PaginationComponent,
-    ComputerDeleteDialogComponent,
     FooterComponent,
     PaginationComponent,
-    LoginComponent
+    LoginComponent,
+    ListCompaniesComponent,
+    DeleteDialogComponent,
+    AddCompanyComponent,
+    CompanyPutComponent
   ],
   imports: [
     BrowserModule,

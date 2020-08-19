@@ -1,0 +1,24 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{'POP-UP.TITLE_UPDATE_COMPANY' | translate }}</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm">
+          <div>
+            <mat-form-field>
+              <mat-label>{{'POP-UP.NAME' | translate }}</mat-label>
+              <input matInput type="text" [(ngModel)]="editedCompany.companyName" formControlName="companyName" required>
+            </mat-form-field>
+          </div>
+        
+          <p>{{'POP-UP.FIELD_REQUIRED' | translate }}</p>
+  
+          <div class="modal-footer">
+            <button mat-button [disabled]="!editForm.valid" (click)="onSubmit()" color="primary">{{'POP-UP.BUTTON_UPDATE' | translate }}</button>
+            <button mat-button (click)="onNoClick()">{{'POP-UP.BUTTON_CANCEL' | translate }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

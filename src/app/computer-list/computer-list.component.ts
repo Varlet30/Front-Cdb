@@ -5,7 +5,7 @@ import { Dashboard } from './../Model/dashboard.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ComputerService } from '../computer.service';
 import { Computer } from '../Model/computer.model';
-import { ComputerDeleteDialogComponent } from '../computer-delete-dialog/computer-delete-dialog.component';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { Sort } from '@angular/material/sort';
 import { ComputerPutComponent } from '../computer-put/computer-put.component';
 
@@ -23,7 +23,7 @@ export class ComputerListComponent implements OnInit {
   computers: Computer[];
   dashboard: Dashboard;
   edited = false;
-  computerNumber: string;
+  computersNumber: string;
   checked = false;
   modeDelete = false;
   computersDelete: Computer[];
@@ -47,6 +47,11 @@ export class ComputerListComponent implements OnInit {
   }
 
   requestComputers(): void {
+    this.computerService.getComputersNumber(this.dashboard).subscribe(
+      (totalComputers: number)=>{
+        this.pagination.totalElements = totalComputers;
+        this.computersNumber = totalComputers+"";
+      });
     this.computerService.getComputersPage(this.dashboard).subscribe(
       (result: Computer[]) => {
         this.computers = result;
@@ -113,7 +118,7 @@ export class ComputerListComponent implements OnInit {
   openDeleteDialog() {
     this.dialog.closeAll();
     if (this.computersDelete.length > 0) {
-      const id = this.dialog.open(ComputerDeleteDialogComponent).id;
+      const id = this.dialog.open(DeleteDialogComponent).id;
       this.dialog.getDialogById(id).afterClosed().subscribe(
         result => {
           if (result) {
@@ -125,7 +130,7 @@ export class ComputerListComponent implements OnInit {
   }
 
   openDeleteAllDialog(computers: Computer[]) {
-    const id = this.dialog.open(ComputerDeleteDialogComponent).id;
+    const id = this.dialog.open(DeleteDialogComponent).id;
 
     this.dialog.getDialogById(id).afterClosed().subscribe (
       result => {
@@ -134,10 +139,6 @@ export class ComputerListComponent implements OnInit {
       }
     }
     )
-  }
-
-  editedMode(){
-
   }
 
   deleteAllComputer(computers: Computer[]) {
@@ -160,7 +161,7 @@ export class ComputerListComponent implements OnInit {
         this.checked = false; 
       },
       (error) => {
-        console.log("Delete omputer not working")
+        console.log("Delete computer not working")
       })
   }
   changePageEvent(): void {
@@ -182,10 +183,6 @@ export class ComputerListComponent implements OnInit {
       this.dashboard.pageNb = "1";
       this.requestComputers();
     }
-  }
-
-  changeComputerNumber(event): void {
-    this.computerNumber = event;
   }
 
   deleteMode(): void {

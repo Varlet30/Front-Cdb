@@ -1,7 +1,7 @@
 <div class="multi_ar">
   <div>
     <h2>
-      {{computerNumber}} {{'BODY.COMPUTERS_FOUND' | translate }}
+      {{computersNumber}} {{'BODY.COMPUTERS_FOUND' | translate }}
       <mat-icon *ngIf="!edited" (click)="edited=!edited">search</mat-icon>
       <mat-icon *ngIf="edited" (click)="search()" >close</mat-icon>
       <input *ngIf="edited" type="text" placeholder="Search &amp; enter" (keydown)="onKeydownSearch($event)">
@@ -42,4 +42,4 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<app-pagination class="pagination" [dashboard]=dashboard (changeComputerNumber)="changeComputerNumber($event)" (changePageEvent)="changePageEvent()"></app-pagination>
+<app-pagination class="pagination" [dashboard]=dashboard (changePageEvent)="changePageEvent()"></app-pagination>

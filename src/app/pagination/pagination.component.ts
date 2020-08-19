@@ -14,7 +14,7 @@ export class PaginationComponent implements OnInit {
   @Output()
   changePageEvent = new EventEmitter();
   @Output()
-  changeComputerNumber = new EventEmitter();
+  changeTotalNumber = new EventEmitter();
 
   next: boolean;
   prev: boolean;
@@ -23,34 +23,30 @@ export class PaginationComponent implements OnInit {
   buttonDisplay: boolean[] = new Array(5);
   linesNb: String;
   totalPages: number;
+  totalElements: number;
 
-  constructor(private computerService: ComputerService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
   refresh(){
     this.updatePrev();
-    this.computerService.getComputersNumber(this.dashboard).subscribe(
-      (totalComputers: number)=>{
-        this.changeComputerNumber.emit(totalComputers);
-        this.totalPages = Math.ceil( +totalComputers/ +this.dashboard.linesNb);
-        for (let i = 0; i < this.pages.length; i++) {
-          let pageIterator = this.adjustPageIterator();
-          if ((pageIterator +i) > this.totalPages) {
-            this.buttonDisplay[i] = false;
-            continue;
-          }
-          this.buttonDisplay[i] = true;
-          this.pages[i] = pageIterator+i;
-          if (pageIterator +i === +this.dashboard.pageNb) {
-            this.buttonColors[i] = "warn";
-          } else {
-            this.buttonColors[i] = "primary";
-          }
-        }
-        this.updateNext();
+    this.totalPages = Math.ceil( this.totalElements/ +this.dashboard.linesNb);
+    for (let i = 0; i < this.pages.length; i++) {
+      let pageIterator = this.adjustPageIterator();
+      if ((pageIterator +i) > this.totalPages) {
+        this.buttonDisplay[i] = false;
+        continue;
       }
-    );
+      this.buttonDisplay[i] = true;
+      this.pages[i] = pageIterator+i;
+      if (pageIterator +i === +this.dashboard.pageNb) {
+        this.buttonColors[i] = "warn";
+      } else {
+        this.buttonColors[i] = "primary";
+      }
+    }
+    this.updateNext();
     this.linesNb = this.dashboard.linesNb;
   }
   updateNext(){

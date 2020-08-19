@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  otherListingLink: string = "Companies";
+  linkListing = "companies";
+
   constructor(private authSerivce : AuthService , private route: Router, public translate: TranslateService) {
     translate.addLangs(['en', 'fr']);
     const browserLang = translate.getBrowserLang();
@@ -30,6 +33,13 @@ export class HeaderComponent implements OnInit {
 
   getUsername(){
     return this.authSerivce.getName();
+  }
+
+  computers(){
+    this.route.navigate(['computers']);
+  }
+  companies(){
+    this.route.navigate(['companies']);
   }
 
 }

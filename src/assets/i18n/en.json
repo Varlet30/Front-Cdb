@@ -1,12 +1,15 @@
 {
     "HEADER": {
       "PROFILE": "Profile",
-      "LOGOUT" :"Logout"
+      "LOGOUT" :"Logout",
+      "COMPUTERS": "Computers",
+      "COMPANIES": "Companies"
     },
 
     "BODY":{
         "COMPUTER_FOUND" : "computer found",
         "COMPUTERS_FOUND" : "computers found",
+        "COMPANIES_FOUND" : "companies found",
         "ADD" : "Add",
         "DELETE" :"Delete Mode",
         "TABLE_NAME" : "Name",
@@ -19,6 +22,8 @@
     "POP-UP":{
         "TITLE_ADD": "New computer",
         "TITLE_UPDATE": "Update computer",
+        "TITLE_ADD_COMPANY": "New company",
+        "TITLE_UPDATE_COMPANY": "Update company",
         "NAME": "Name",
         "INTRODUCED" : "Introduced Date",
         "DISCONTINUED" : "Discontinued Date",

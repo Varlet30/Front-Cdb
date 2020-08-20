@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
   computers(){
     this.route.navigate(['computers']);
   }
-  companies(){
+  companies(isAdmin){
     this.route.navigate(['companies']);
   }
 

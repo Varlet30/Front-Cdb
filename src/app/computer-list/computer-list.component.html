@@ -1,11 +1,7 @@
 <div class="multi_ar">
   <div>
     <h2>
-<<<<<<< HEAD
-      {{computerNumber}} {{'BODY.COMPUTERS_FOUND' | translate }}
-=======
       {{computersNumber}} {{'BODY.COMPUTERS_FOUND' | translate }}
->>>>>>> 5b3b4977d5d2c4e7f274449ee37e2d8f022cbe4d
       <mat-icon *ngIf="!edited && isAdmin" (click)="edited=!edited">search</mat-icon>
       <mat-icon *ngIf="edited" (click)="search()" >close</mat-icon>
       <input *ngIf="edited" type="text" placeholder="Search &amp; enter" (keydown)="onKeydownSearch($event)">

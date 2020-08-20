@@ -17,15 +17,13 @@ import { LoginComponent } from './login/login.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-<<<<<<< HEAD
-=======
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CompanyListComponent } from './company-list/company-list.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { CompanyPutComponent } from './company-put/company-put.component';
->>>>>>> 5b3b4977d5d2c4e7f274449ee37e2d8f022cbe4d
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -35,20 +33,16 @@ import { RegisterComponent } from './register/register.component';
     ComputerListComponent,
     ComputerPutComponent,
     AddComputerComponent,
-    PaginationComponent,
     FooterComponent,
     PaginationComponent,
-<<<<<<< HEAD
-    LoginComponent,
-=======
     PageNotFoundComponent,
     LoginComponent,
     CompanyListComponent,
     DeleteDialogComponent,
     AddCompanyComponent,
     CompanyPutComponent,
->>>>>>> 5b3b4977d5d2c4e7f274449ee37e2d8f022cbe4d
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -48,8 +48,7 @@ export class UserListComponent implements OnInit {
     };
     if (this.authService.getRoleName() === 'admin') {
       this.isAdmin = !this.isAdmin; 
-    };  
-    console.log(this.isAdmin);
+    };
     this.requestUsers(); 
   }
 

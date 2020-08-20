@@ -14,14 +14,25 @@ export class HeaderComponent implements OnInit {
 
   currentActiveTab : ThemePalette[] = new Array(3);
 
-  constructor(private authService : AuthService , private route: Router, public translate: TranslateService,public dialog: MatDialog) {
-    this.changeTab(1);
+  constructor(private authService : AuthService , private route: Router, public translate: TranslateService, public dialog: MatDialog) {
+    this.changeTab(0);
     translate.addLangs(['en', 'fr']);
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
   }
   
   ngOnInit(): void {
+    switch (window.location.pathname) {
+      case "/companies":
+        this.changeTab(1);
+        break;
+      case "/users":
+        this.changeTab(2);
+        break;
+      default:
+        this.changeTab(0);
+        break;
+    }
   }
 
   logout(){
@@ -54,7 +65,7 @@ export class HeaderComponent implements OnInit {
 
   changeTab(index) {
     this.dialog.closeAll();
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 0; i < 3; i++) {
         if(i==index){
           this.currentActiveTab[index] = "primary";
         }

@@ -12,6 +12,7 @@ import { take } from 'rxjs/operators';
 export class AuthService {
   private currentUserSubject: BehaviorSubject<Cred>;
   public currentUser: Observable<Cred>;
+  errorMessage : String;
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<Cred>(JSON.parse(localStorage.getItem('currentUser')));
@@ -64,7 +65,7 @@ private getRole(token : String) : Observable<User> {
             error : err =>  onError(err)
         });
          onSuccess()},
-        error : err =>  onError(err)
+        error : err =>  onError(this.messageError(err.status))
     })
 }
 
@@ -90,5 +91,10 @@ logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('role');
   localStorage.removeItem('username');
+}
+
+
+messageError(message) : void {
+    this.errorMessage= "Bad credentials";
 }
 }

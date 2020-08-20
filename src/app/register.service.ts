@@ -8,6 +8,8 @@ import { take } from 'rxjs/operators';
 })
 export class RegisterService {
 
+  errorMessage : String;
+
   constructor(private http: HttpClient) { }
 
   public registerUser(credentials: Cred, onSuccess: Function, onError:Function): void{
@@ -31,7 +33,12 @@ export class RegisterService {
         }
     ).pipe(take(1)).subscribe({
         next: x => onSuccess(),
-        error: error => onError(error)
+        error: error => onError(this.messageError(error.status))
     });
 }
+
+messageError(message) : void {
+  this.errorMessage = "This username is already used";
+}
+
 }

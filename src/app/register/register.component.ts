@@ -10,6 +10,8 @@ import { RegisterService } from '../register.service';
 })
 export class RegisterComponent implements OnInit {
 
+  error: String;
+
   constructor(private router : Router , private registerService : RegisterService) { }
 
   ngOnInit(): void {
@@ -50,8 +52,8 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['/login'])
     }
 
-    this.registerService.registerUser(this.registerForm.value, onSuccess, onError)
-    
+    this.registerService.registerUser(this.registerForm.value, onSuccess, onError);
+    this.error=this.registerService.errorMessage;
   }
 
   getErrorMessagePassword(): string{

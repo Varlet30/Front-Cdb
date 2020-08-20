@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  error: String;
 
   constructor(private authService : AuthService, private router:Router) { }
 
@@ -47,7 +48,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.login(this.loginForm.value, onSuccess, onError);
-
+    this.error=this.authService.errorMessage;
   
   }
   

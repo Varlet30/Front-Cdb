@@ -1,0 +1,34 @@
+<div class="multi_ar">
+    <div>
+        <h2>
+        {{usersNumber}} {{'BODY.USERS_FOUND' | translate }}
+        <mat-icon *ngIf="!edited" (click)="edited=!edited">search</mat-icon>
+        <mat-icon *ngIf="edited" (click)="search()" >close</mat-icon>
+        <input *ngIf="edited" type="text" placeholder="Search &amp; enter" (keydown)="onKeydownSearch($event)">
+        <button mat-stroked-button (click)="deleteMode()">{{'BODY.DELETE' | translate }}</button>
+        <mat-icon *ngIf="modeDelete" (click)="openDeleteDialog(element)" class="iconDelete"> delete </mat-icon> 
+        <mat-icon *ngIf="modeDelete" (click)="allChecked()" (click)="deleteAll(companies)" class="iconDelete">playlist_add_check</mat-icon>
+        </h2>
+    </div>
+</div>
+
+<table mat-table [dataSource]="users" matSort (matSortChange)="sortData($event)"  class="formUsers">
+
+    <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'BODY.TABLE_USERNAME' | translate }} </th>
+        <td class="username" mat-cell *matCellDef="let element"> 
+            <mat-checkbox [checked]="checked" *ngIf="modeDelete" class="checkbox" (click)="addDelete(element)" color="primary"></mat-checkbox>
+            <text> {{element.username}}  </text>
+        </td>        
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'BODY.TABLE_ROLE' | translate }} </th>
+      <td mat-cell *matCellDef="let element"> {{element.role.name}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<app-pagination class="pagination" [dashboard]=dashboard (changePageEvent)="changePageEvent()"></app-pagination>

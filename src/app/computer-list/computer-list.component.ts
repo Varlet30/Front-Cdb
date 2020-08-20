@@ -31,7 +31,6 @@ export class ComputerListComponent implements OnInit {
   isAdmin = false;
   computersMultiple = false;
 
-
   @ViewChild(PaginationComponent) pagination: PaginationComponent;
 
   constructor(

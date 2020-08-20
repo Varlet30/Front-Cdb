@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   currentActiveTab : ThemePalette[] = new Array(3);
 
-  constructor(private authSerivce : AuthService , private route: Router, public translate: TranslateService,public dialog: MatDialog) {
+  constructor(private authService : AuthService , private route: Router, public translate: TranslateService,public dialog: MatDialog) {
     this.changeTab(1);
     translate.addLangs(['en', 'fr']);
     const browserLang = translate.getBrowserLang();
@@ -25,16 +25,20 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-    this.authSerivce.logout();
+    this.authService.logout();
     this.route.navigate(['/login'])
   }
 
   get hidden(): boolean {
-    return !this.authSerivce.isLoggedIn()
+    return !this.authService.isLoggedIn()
   }
 
   getUsername(){
-    return this.authSerivce.getName();
+    return this.authService.getName();
+  }
+
+  isAdmin(): boolean {
+    return this.authService.getRoleName() === 'admin';
   }
 
   computers(){
@@ -43,6 +47,9 @@ export class HeaderComponent implements OnInit {
 
   companies(){
     this.route.navigate(['companies']);
+  }
+  users(){
+    this.route.navigate(['users']);
   }
 
   changeTab(index) {

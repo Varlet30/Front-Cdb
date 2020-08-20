@@ -11,19 +11,23 @@
       "PROFILE": "Profil",
       "LOGOUT" :"Déconnexion",
       "COMPUTERS": "Ordinateurs",
-      "COMPANIES": "Entreprises"
+      "COMPANIES": "Entreprises",
+      "USERS": "Utilisateurs"
     },
 
     "BODY":{
         "COMPUTER_FOUND" : "ordinateur trouvé",
         "COMPUTERS_FOUND" : "ordinateurs trouvés",
         "COMPANIES_FOUND" : "entreprises trouvées",
+        "USERS_FOUND" : "utilisateurs trouvés",
         "ADD" : "Ajouter",
         "DELETE" : "Mode suppression",
         "TABLE_NAME" : "Nom",
         "TABLE_INTRODUCED" : "Entrée sur le marché",
         "TABLE_DISCONTINUED" : "Sortie du marché",
-        "TABLE_COMPANY" : "Nom de l'entreprise"
+        "TABLE_COMPANY" : "Nom de l'entreprise",
+        "TABLE_ROLE": "Rôle",
+        "TABLE_USERNAME": "Nom d'utilisateur"
     },
 
     "POP-UP":{
@@ -38,11 +42,6 @@
         "BUTTON_ADD" : "Ajouter",
         "BUTTON_UPDATE" : "Modifier",
         "BUTTON_CANCEL" : "Annuler"
-    },
-
-
-    "FOOTER":{
-        "TEXT" : "- Droits réservés -"
     },
 
     "DELETE":{

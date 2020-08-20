@@ -3,7 +3,7 @@ import { Auth } from './Model/auth.model';
 import { Injectable } from '@angular/core';
 import { Cred } from './Model/cred.model'
 import { Observable, BehaviorSubject } from 'rxjs';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class AuthService {
   private authenticate(user:User) : Observable<Auth> {
 
     return this.http.post<Auth>(
-       'http://10.0.1.109:8080/api/authenticate',
+       'http://10.0.1.121:8080/api/authenticate',
         JSON.stringify({
             username:user.username, password:user.password
         }),
@@ -39,10 +39,9 @@ export class AuthService {
 private getRole(token : String) : Observable<User> {
 
   return this.http.post<User>(
-     'http://10.0.1.109:8080/api/authenticate/user',
+     'http://10.0.1.121:8080/api/authenticate/user',
       JSON.stringify({
         token
-
       }),
       {
           headers: new HttpHeaders({

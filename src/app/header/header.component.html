@@ -11,6 +11,9 @@
         (click)="changeTab(2)">
         {{'HEADER.COMPANIES' | translate }}
     </button>
+    <button mat-button (click)="users()" *ngIf="isAdmin()">
+        {{'HEADER.USERS' | translate }}
+    </button>
 
     <span class="spacer"></span>
 

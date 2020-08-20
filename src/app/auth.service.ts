@@ -22,7 +22,7 @@ export class AuthService {
   private authenticate(user:User) : Observable<Auth> {
 
     return this.http.post<Auth>(
-       'http://10.0.1.121:8080/api/authenticate',
+       'http://10.0.1.60:8082/api/authenticate',
         JSON.stringify({
             username:user.username, password:user.password
         }),
@@ -39,7 +39,7 @@ export class AuthService {
 private getRole(token : String) : Observable<User> {
 
   return this.http.post<User>(
-     'http://10.0.1.121:8080/api/authenticate/user',
+     'http://10.0.1.60:8082/api/authenticate/user',
       JSON.stringify({
         token
       }),
@@ -54,14 +54,12 @@ private getRole(token : String) : Observable<User> {
 }
 
   public login(user:User,onSuccess: Function, onError: Function): void{
-    console.log("ici Name :" + user.username);
-    console.log("ici password" + user.password);
     this.authenticate(user).pipe(take(1)).subscribe({
         next : (auth:Auth) => {
           localStorage.setItem('token', auth.token);
           this.getRole(localStorage.getItem('token')).subscribe({
             next : (user1:User) => {
-              user.role = user1.role;
+              user= user1;
               onSuccess(this.setSession(auth, user))},
             error : err =>  onError(err)
         });
@@ -75,8 +73,11 @@ private setSession(authResult : Auth, user : User ) {
   localStorage.setItem('role', user.role.name);
   localStorage.setItem('username', user.username);
   localStorage.setItem('id', user.userId);
+  localStorage.setItem('roleId',user.role.id);
+  console.log(localStorage.getItem('id'));
   console.log(localStorage.getItem('role'));
   console.log(localStorage.getItem('token'));
+
 }
 
 public isLoggedIn() : boolean {
@@ -88,12 +89,25 @@ public getName() : string{
 } 
 
 public getId() : string{
+  console.log(localStorage.getItem('id'))
   return localStorage.getItem('id');
 }
 
 public getRoleName() : string {
   return localStorage.getItem('role');
 }
+
+public getRoleId() : string {
+  return localStorage.getItem('roleId');
+}
+
+public getToken() : string {
+  return localStorage.getItem('token');
+}
+
+
+
+
 
 logout() {
   localStorage.removeItem('token');

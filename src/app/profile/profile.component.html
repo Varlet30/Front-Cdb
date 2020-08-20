@@ -1,10 +1,17 @@
-<p> Hello {{getUsername()}}</p>
-
-<p> What do you want to do ? </p>
-
-<button (click)="openUpdateDialog()">Update your profile </button>
-
-<button> Delete your Account </button>
-
-
-
+<mat-card class="main">
+    <mat-card-header>
+      <div mat-card-avatar  class="example-header-image"></div>
+      <mat-card-title style="text-align: center;">{{getUsername()}}</mat-card-title>
+      <mat-card-subtitle>Role : {{getRoleName()}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <strong>
+        What do you want to do ?
+      </strong>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="openUpdateDialog()">Update your profile</button>
+      <button mat-stroked-button (click)="openDeleteDialog()"> Delete your Account </button>
+    </mat-card-actions>
+  </mat-card>
+  

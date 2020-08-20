@@ -9,7 +9,6 @@
             <mat-form-field class="margin">
               <mat-label>Username</mat-label>
               <input matInput type="text" [(ngModel)]="editedUser.username" formControlName="username" required>
-              <mat-error *ngIf="editUserForm.get('Username').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
             </mat-form-field>
           </div>
   

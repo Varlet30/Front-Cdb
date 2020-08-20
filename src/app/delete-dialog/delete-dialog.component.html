@@ -2,7 +2,7 @@
     <h1 mat-dialog-title>{{'DELETE.TITLE' | translate }}</h1>
 <div mat-dialog-content>{{'DELETE.MESSAGE' | translate }}</div>
 <div mat-dialog-actions >
-    <button mat-button (click)="closeOk()">{{'DELETE.BUTTON_OK' | translate }}</button>
-    <button mat-button (click)="onNoClick()">{{'DELETE.BUTTON_CANCEL' | translate }}</button>
+    <button mat-raised-button color= "warn" (click)="closeOk()">{{'DELETE.BUTTON_OK' | translate }}</button>
+    <button mat-button color= "warn" (click)="onNoClick()">{{'DELETE.BUTTON_CANCEL' | translate }}</button>
 </div>
 </div>

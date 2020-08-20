@@ -12,7 +12,7 @@ export class RegisterService {
 
   public registerUser(credentials: Cred, onSuccess: Function, onError:Function): void{
     this.http.post(
-      'http://10.0.1.109:8080/api/users',
+      'http://10.0.1.121:8080/api/users',
         JSON.stringify({
             username:credentials.username,
             password:credentials.password,

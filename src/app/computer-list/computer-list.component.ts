@@ -30,7 +30,6 @@ export class ComputerListComponent implements OnInit {
   computersDelete: Computer[];
   isAdmin = false;
 
-
   @ViewChild(PaginationComponent) pagination: PaginationComponent;
 
   constructor(

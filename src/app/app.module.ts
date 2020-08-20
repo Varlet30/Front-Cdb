@@ -24,6 +24,8 @@ import { AddCompanyComponent } from './add-company/add-company.component';
 import { CompanyPutComponent } from './company-put/company-put.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserPutComponent } from './user-put/user-put.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { ProfileComponent } from './profile/profile.component';
     AddCompanyComponent,
     CompanyPutComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserListComponent,
+    UserPutComponent
   ],
   imports: [
     BrowserModule,

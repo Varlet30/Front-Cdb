@@ -18,12 +18,14 @@
         "COMPUTER_FOUND" : "computer found",
         "COMPUTERS_FOUND" : "computers found",
         "COMPANIES_FOUND" : "companies found",
+        "USERS_FOUND" : "users found",
         "ADD" : "Add",
         "DELETE" :"Delete Mode",
         "TABLE_NAME" : "Name",
         "TABLE_INTRODUCED" : "Introduced",
         "TABLE_DISCONTINUED" : "Discontinued",
-        "TABLE_COMPANY" : "Company Name"
+        "TABLE_COMPANY" : "Company Name",
+        "TABLE_ROLE": "Role"
 
     },
 

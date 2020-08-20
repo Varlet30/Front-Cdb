@@ -26,7 +26,9 @@
         "TABLE_INTRODUCED" : "Introduced",
         "TABLE_DISCONTINUED" : "Discontinued",
         "TABLE_COMPANY" : "Company Name",
-        "TABLE_ROLE": "Role"
+        "TABLE_ROLE": "Role",
+        "TABLE_USERNAME": "Username"
+
 
     },
 
@@ -42,10 +44,6 @@
         "BUTTON_ADD" : "Add",
         "BUTTON_UPDATE" : "Update",
         "BUTTON_CANCEL" : "Cancel"
-    },
-
-    "FOOTER":{
-        "TEXT" : "- All Rights Reserved -"
     },
 
     "DELETE":{

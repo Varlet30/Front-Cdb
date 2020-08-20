@@ -15,7 +15,7 @@
 <table mat-table [dataSource]="users" matSort (matSortChange)="sortData($event)"  class="formUsers">
 
     <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'BODY.TABLE_COMPANY' | translate }} </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'BODY.TABLE_USERNAME' | translate }} </th>
         <td class="username" mat-cell *matCellDef="let element"> 
             <mat-checkbox [checked]="checked" *ngIf="modeDelete" class="checkbox" (click)="addDelete(element)" color="primary"></mat-checkbox>
             <text> {{element.username}}  </text>

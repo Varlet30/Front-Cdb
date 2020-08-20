@@ -8,7 +8,7 @@
     <button mat-button (click)="companies()">
         {{'HEADER.COMPANIES' | translate }}
     </button>
-    <button mat-button (click)="users()">
+    <button mat-button (click)="users()" *ngIf="isAdmin()">
         {{'HEADER.USERS' | translate }}
     </button>
 

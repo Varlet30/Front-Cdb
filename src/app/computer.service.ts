@@ -29,7 +29,6 @@ export class ComputerService {
   }
 
   putComputer(computer : Computer): Observable<Computer>{
-    console.log(computer);
     return this.httpClient.put<Computer>(this.computerUrl,computer);
   }
 

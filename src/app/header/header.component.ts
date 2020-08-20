@@ -10,10 +10,6 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  otherListingLink: string = "Companies";
-  linkListing = "companies";
-  isAdmin = false;
-
   constructor(private authService : AuthService , private route: Router, public translate: TranslateService) {
     translate.addLangs(['en', 'fr']);
     const browserLang = translate.getBrowserLang();
@@ -34,6 +30,10 @@ export class HeaderComponent implements OnInit {
 
   getUsername(){
     return this.authService.getName();
+  }
+
+  isAdmin(): boolean {
+    return this.authService.getRoleName() === 'admin';
   }
 
   computers(){

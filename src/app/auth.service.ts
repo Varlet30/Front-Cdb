@@ -74,6 +74,7 @@ private getRole(token : String) : Observable<User> {
 private setSession(authResult : Auth, user : User ) {
   localStorage.setItem('role', user.role.name);
   localStorage.setItem('username', user.username);
+  localStorage.setItem('id', user.userId);
   console.log(localStorage.getItem('role'));
   console.log(localStorage.getItem('token'));
 }
@@ -86,6 +87,10 @@ public getName() : string{
   return localStorage.getItem('username');
 } 
 
+public getId() : string{
+  return localStorage.getItem('id');
+}
+
 public getRoleName() : string {
   return localStorage.getItem('role');
 }
@@ -94,5 +99,6 @@ logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('role');
   localStorage.removeItem('username');
+  localStorage.removeItem('id');
 }
 }

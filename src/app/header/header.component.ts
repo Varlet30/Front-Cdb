@@ -34,12 +34,16 @@ export class HeaderComponent implements OnInit {
   getUsername(){
     return this.authSerivce.getName();
   }
-
+  profile(){
+    this.route.navigate(['profile']);
+  }
   computers(){
     this.route.navigate(['computers']);
   }
-  companies(isAdmin){
+  companies(){
     this.route.navigate(['companies']);
   }
+
+
 
 }

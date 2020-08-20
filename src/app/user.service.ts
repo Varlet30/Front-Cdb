@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  private userUrl = 'http://10.0.1.121:8080/api/users';
+  private userUrl = 'http://10.0.1.109:8080/api/users';
 
   constructor(private httpClient: HttpClient) { }
   

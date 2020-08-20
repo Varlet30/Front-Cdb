@@ -26,7 +26,7 @@
     
     <mat-menu #menu="matMenu">
         <div class="menu-panel">
-            <button mat-menu-item>
+            <button mat-menu-item (click)=profile()>
                 <mat-icon class="white-icon">settings</mat-icon>
                 <span> {{'HEADER.PROFILE' | translate }}</span>
             </button>

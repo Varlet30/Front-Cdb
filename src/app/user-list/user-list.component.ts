@@ -29,6 +29,7 @@ export class UserListComponent implements OnInit {
   modeDelete = false;
   usersDelete: User[];
   isAdmin = false;
+  usersMultiple = false;
 
   @ViewChild(PaginationComponent) pagination: PaginationComponent;
 
@@ -63,6 +64,11 @@ export class UserListComponent implements OnInit {
       (result: User[]) => {
         this.users = result;
         this.pagination.refresh();
+        if (this.users.length > 1) {
+          this.usersMultiple = true;
+        } else {
+          this.usersMultiple = false;
+        }
       },
       (error) => {
         console.log("List User does not work");

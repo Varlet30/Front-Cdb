@@ -1,7 +1,8 @@
 <div class="multi_ar">
     <div>
         <h2>
-        {{usersNumber}} {{'BODY.USERS_FOUND' | translate }}
+        <span *ngIf="!usersMultiple">{{usersNumber}} {{'BODY.USER_FOUND' | translate }}</span>
+        <span *ngIf="usersMultiple">{{usersNumber}} {{'BODY.USERS_FOUND' | translate }}</span>
         <mat-icon *ngIf="!edited" (click)="edited=!edited">search</mat-icon>
         <mat-icon *ngIf="edited" (click)="search()" >close</mat-icon>
         <input *ngIf="edited" type="text" placeholder="Search &amp; enter" (keydown)="onKeydownSearch($event)">

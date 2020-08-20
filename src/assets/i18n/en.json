@@ -18,7 +18,9 @@
     "BODY":{
         "COMPUTER_FOUND" : "computer found",
         "COMPUTERS_FOUND" : "computers found",
+        "COMPANY_FOUND" : "company found",
         "COMPANIES_FOUND" : "companies found",
+        "USER_FOUND" : "user found",
         "USERS_FOUND" : "users found",
         "ADD" : "Add",
         "DELETE" :"Delete Mode",
@@ -47,7 +49,7 @@
     },
 
     "DELETE":{
-        "TITLE" : "Do you really want to delete this/these computer(s) ?",
+        "TITLE" : "Do you really want to delete ?",
         "MESSAGE" : "You won't be able to revert this.",
         "BUTTON_OK" : "Yes, delete",
         "BUTTON_CANCEL" : "Cancel"

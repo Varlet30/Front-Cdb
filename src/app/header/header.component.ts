@@ -54,7 +54,7 @@ export class HeaderComponent implements OnInit {
 
   changeTab(index) {
     this.dialog.closeAll();
-    for (let i = 0; i < 3; i++) {
+    for (let i = 1; i <= 3; i++) {
         if(i==index){
           this.currentActiveTab[index] = "primary";
         }

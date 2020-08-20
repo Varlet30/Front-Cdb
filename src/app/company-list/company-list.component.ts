@@ -28,6 +28,7 @@ export class CompanyListComponent implements OnInit {
   modeDelete = false;
   companiesDelete: Company[];
   edited = false;
+  companiesMultiple = false;
 
   @ViewChild(PaginationComponent) pagination: PaginationComponent;
 
@@ -56,6 +57,11 @@ export class CompanyListComponent implements OnInit {
       (result: Company[]) => {
         this.companies = result;
         this.pagination.refresh();
+        if (this.companies.length > 1) {
+          this.companiesMultiple = true;
+        } else {
+          this.companiesMultiple = false;
+        }
       },
       (error) => {
         console.log("List Company does not work");

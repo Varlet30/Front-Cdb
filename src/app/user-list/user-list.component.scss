@@ -8,7 +8,7 @@
   }
 
 h2{
-    margin-left: 18%;
+    margin-left: 16%;
     margin-bottom: 3%;
     color: white;
     padding-right: 2%;
@@ -21,17 +21,9 @@ h2{
   top:-210px;
 }
 
-.mat-raised-button{
-  float:right;
-  margin-right: 15%;
-  background: rgb(67, 173, 223);
-  color:white;
-  border-radius: 20px;
-}
-
 .mat-stroked-button{
   float:right;
-  margin-right: 1%;
+  margin-right: 15%;
   color:white;
   border-radius: 20px;
   border-color: white;
@@ -47,7 +39,8 @@ h2{
 
 
 input{
-  font-size:0.5em;
+  font-size:0.45em;
+  width:18%;
   position:relative;
   top: -5px;
   right: -5px;

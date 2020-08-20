@@ -18,7 +18,9 @@
     "BODY":{
         "COMPUTER_FOUND" : "ordinateur trouvé",
         "COMPUTERS_FOUND" : "ordinateurs trouvés",
+        "COMPANY_FOUND" : "entreprise trouvée",
         "COMPANIES_FOUND" : "entreprises trouvées",
+        "USER_FOUND" : "utilisateur trouvé",
         "USERS_FOUND" : "utilisateurs trouvés",
         "ADD" : "Ajouter",
         "DELETE" : "Mode suppression",
@@ -45,7 +47,7 @@
     },
 
     "DELETE":{
-        "TITLE" : "Voulez-vous vraiment supprimer ce/ces ordinateur(s) ?",
+        "TITLE" : "Voulez-vous vraiment supprimer ?",
         "MESSAGE" : "Vous ne serez plus capable de revenir en arrière.",
         "BUTTON_OK" : "Oui, supprimer",
         "BUTTON_CANCEL" : "Annuler"

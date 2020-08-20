@@ -23,6 +23,8 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { CompanyPutComponent } from './company-put/company-put.component';
 import { RegisterComponent } from './register/register.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserPutComponent } from './user-put/user-put.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { RegisterComponent } from './register/register.component';
     DeleteDialogComponent,
     AddCompanyComponent,
     CompanyPutComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserListComponent,
+    UserPutComponent
   ],
   imports: [
     BrowserModule,

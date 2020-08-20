@@ -18,12 +18,14 @@
         "COMPUTER_FOUND" : "ordinateur trouvé",
         "COMPUTERS_FOUND" : "ordinateurs trouvés",
         "COMPANIES_FOUND" : "entreprises trouvées",
+        "USERS_FOUND" : "utilisateurs trouvés",
         "ADD" : "Ajouter",
         "DELETE" : "Mode suppression",
         "TABLE_NAME" : "Nom",
         "TABLE_INTRODUCED" : "Entrée sur le marché",
         "TABLE_DISCONTINUED" : "Sortie du marché",
-        "TABLE_COMPANY" : "Nom de l'entreprise"
+        "TABLE_COMPANY" : "Nom de l'entreprise",
+        "TABLE_ROLE": "Rôle"
     },
 
     "POP-UP":{

@@ -11,7 +11,8 @@
       "PROFILE": "Profile",
       "LOGOUT" :"Logout",
       "COMPUTERS": "Computers",
-      "COMPANIES": "Companies"
+      "COMPANIES": "Companies",
+      "USERS": "Users"
     },
 
     "BODY":{

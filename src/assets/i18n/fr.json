@@ -11,7 +11,8 @@
       "PROFILE": "Profil",
       "LOGOUT" :"Déconnexion",
       "COMPUTERS": "Ordinateurs",
-      "COMPANIES": "Entreprises"
+      "COMPANIES": "Entreprises",
+      "USERS": "Utilisateurs"
     },
 
     "BODY":{

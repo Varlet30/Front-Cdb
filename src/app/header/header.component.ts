@@ -12,8 +12,9 @@ export class HeaderComponent implements OnInit {
 
   otherListingLink: string = "Companies";
   linkListing = "companies";
+  isAdmin = false;
 
-  constructor(private authSerivce : AuthService , private route: Router, public translate: TranslateService) {
+  constructor(private authService : AuthService , private route: Router, public translate: TranslateService) {
     translate.addLangs(['en', 'fr']);
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
@@ -23,16 +24,16 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-    this.authSerivce.logout();
+    this.authService.logout();
     this.route.navigate(['/login'])
   }
 
   get hidden(): boolean {
-    return !this.authSerivce.isLoggedIn()
+    return !this.authService.isLoggedIn()
   }
 
   getUsername(){
-    return this.authSerivce.getName();
+    return this.authService.getName();
   }
   profile(){
     this.route.navigate(['profile']);
@@ -42,6 +43,9 @@ export class HeaderComponent implements OnInit {
   }
   companies(){
     this.route.navigate(['companies']);
+  }
+  users(){
+    this.route.navigate(['users']);
   }
 
 

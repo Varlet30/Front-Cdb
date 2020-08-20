@@ -48,7 +48,6 @@ export class ComputerListComponent implements OnInit {
     if (this.authService.getRoleName() === 'admin') {
       this.isAdmin = !this.isAdmin; 
     };  
-    console.log(this.isAdmin);
     this.requestComputers(); 
   }
 

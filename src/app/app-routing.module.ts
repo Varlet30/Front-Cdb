@@ -1,3 +1,4 @@
+import { UserListComponent } from './user-list/user-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CompanyListComponent } from './company-list/company-list.component';
 import { RegisterComponent } from './register/register.component';
@@ -20,6 +21,12 @@ const routes: Routes = [
   {
     path: 'companies',
     component: CompanyListComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'users',
+    component: UserListComponent,
     pathMatch: 'full',
     canActivate: [AuthGuardService]
   },

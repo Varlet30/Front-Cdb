@@ -6,9 +6,7 @@
     flex: 1 1 auto;
   }
   
-.white-icon {
-    color: white;
-}
+
 
 a{
     color:white;
@@ -17,6 +15,16 @@ a{
 a:hover{
     cursor:pointer;
     color: rgb(67, 173, 223);
+}
+
+.white-icon{
+    color: white;
+}
+
+.mat-stroked-button.mat-primary{
+    color: rgb(94, 223, 255);
+    border-color: rgb(94, 223, 255);
+    border-radius: 20px;
 }
 
 button.mat-menu-item{

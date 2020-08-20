@@ -8,10 +8,18 @@
   }
 
 h2{
-    margin-left: 18%;
+    margin-left: 16%;
     margin-bottom: 3%;
     color: white;
     padding-right: 2%;
+}
+
+a{
+  color: white;
+}
+
+a:hover{
+  color: rgb(67, 173, 223);
 }
 
 .formComputers{
@@ -47,7 +55,8 @@ h2{
 
 
 input{
-  font-size:0.5em;
+  font-size:0.45em;
+  width:18%;
   position:relative;
   top: -5px;
   right: -5px;
@@ -67,4 +76,5 @@ input{
 
 .pagination{
   width:100%;
+  
 }

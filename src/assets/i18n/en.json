@@ -4,7 +4,7 @@
         "USERNAME" : "Username",
         "PASSWORD" : "Password",
         "BUTTON_LOGIN" : "Login",
-        "REGISTER" : "Create a new account"
+        "REGISTER" : "Sign up"
     },
 
     "HEADER": {

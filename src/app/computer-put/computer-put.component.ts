@@ -2,10 +2,8 @@ import { CompanyService } from './../company.service';
 import { ComputerService } from './../computer.service';
 import { Component, OnInit, Inject} from '@angular/core';
 import { Computer } from '../Model/computer.model';
-import { ActivatedRoute } from '@angular/router';
 import { Company } from '../Model/company.model';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ComputerListComponent, DialogData } from '../computer-list/computer-list.component';
 
@@ -34,7 +32,7 @@ export class ComputerPutComponent implements OnInit {
         introduced: new FormControl(''),
         discontinued: new FormControl(''),
         companyDTO : new FormControl('')
-      }, {validator: this.dateValidator} );
+      });
     }
 
   ngOnInit(): void {
@@ -70,12 +68,12 @@ export class ComputerPutComponent implements OnInit {
     this.dialogRef.close(false);
   }
 
-  dateValidator(form: FormGroup){
-    const condition = Date.parse(form.get('introduced').value) > Date.parse(form.get('discontinued').value);
-    if(condition){
-      return {
-        date: "Must be after introduced date"
-      }
+  dateValidator() {
+    const condition = Date.parse(this.editForm.get('introduced').value) >= Date.parse(this.editForm.get('discontinued').value);
+    if (condition) {
+      this.editForm.get('discontinued').setErrors({
+        invalid: true,
+      });
     }
   }
 

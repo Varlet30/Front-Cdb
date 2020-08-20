@@ -1,18 +1,14 @@
-.button-row {
-  position: relative;;
-  top : -150px;
-}
 
 table{
   width:100%;
+  position: relative;
+  top : -150px;
 }
 
 .right {
   float:right;
   position:relative;
-  top:-150px;
   left:-15%;
-  
 }
 
 .button-row, .mat-button-base, .linesNb { 

@@ -1,16 +1,19 @@
 <mat-toolbar color="primary">
-    <h2>
-        Computer-database
-    </h2>
-    <button mat-button (click)="computers()">
+    <a routerLink="/computers">
+        <h2>Computer-database</h2>
+    </a>
+    <span class="spacer"></span>
+    <button mat-stroked-button *ngIf="!hidden" (click)="computers()" [color]="currentActiveTab[1]"
+        (click)="changeTab(1)">
         {{'HEADER.COMPUTERS' | translate }}
     </button>
-    <button mat-button (click)="companies()">
+    <button mat-stroked-button *ngIf="!hidden" (click)="companies()" [color]="currentActiveTab[2]"
+        (click)="changeTab(2)">
         {{'HEADER.COMPANIES' | translate }}
     </button>
 
     <span class="spacer"></span>
-    
+
     <div class="languageEn">
         <img src="../../assets/img/englishFlag.png" (click)="translate.use('en')">
     </div>
@@ -23,16 +26,16 @@
         <mat-icon>person</mat-icon>
         {{getUsername()}}
     </button>
-    
+
     <mat-menu #menu="matMenu">
         <div class="menu-panel">
             <button mat-menu-item>
                 <mat-icon class="white-icon">settings</mat-icon>
                 <span> {{'HEADER.PROFILE' | translate }}</span>
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item (click)="logout()">
                 <mat-icon class="white-icon">exit_to_app</mat-icon>
-                <span (click)="logout()">{{'HEADER.LOGOUT' | translate }}</span>
+                <span>{{'HEADER.LOGOUT' | translate }}</span>
             </button>
         </div>
     </mat-menu>

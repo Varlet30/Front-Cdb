@@ -9,10 +9,9 @@
             <mat-form-field>
               <mat-label>{{'POP-UP.NAME' | translate }}</mat-label>
               <input matInput name="companyName" type="text" formControlName="companyName" required>
+              <mat-error *ngIf="addForm.get('companyName').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
             </mat-form-field>
           </div>
-  
-          <p>{{'POP-UP.FIELD_REQUIRED' | translate }}</p>
   
           <div class="modal-footer">
             <button mat-button [disabled]="!addForm.valid" (click)="onSubmit()" color="primary">{{'POP-UP.BUTTON_ADD' | translate }}</button>

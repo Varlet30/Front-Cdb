@@ -6,6 +6,10 @@
     border-color: rgb(0, 116, 194) !important;
 }
 
+.mat-form-field{
+    margin-bottom: 20px;
+}
+
 ::ng-deep .mat-focused .mat-form-field-label {
     color: rgb(67, 173, 223) !important;
 }

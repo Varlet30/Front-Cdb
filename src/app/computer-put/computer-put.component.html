@@ -24,9 +24,9 @@
         <div>
           <mat-form-field>
             <mat-label>{{'POP-UP.DISCONTINUED' | translate }}</mat-label>
-            <input matInput name="discontinued" type="date" [(ngModel)]="editedComputer.discontinued" formControlName="discontinued">
+            <input matInput name="discontinued" type="date" [(ngModel)]="editedComputer.discontinued" formControlName="discontinued" (change)="dateValidator()">
+            <mat-error *ngIf="editForm.get('discontinued').hasError('invalid')">{{'ERROR.DATE' | translate}}</mat-error>
           </mat-form-field>
-          <h3>{{editForm.errors?.date}}</h3>
         </div>
 
         <div>

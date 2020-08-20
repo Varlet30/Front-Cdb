@@ -29,12 +29,13 @@ export class ComputerListComponent implements OnInit {
   modeDelete = false;
   computersDelete: Computer[];
   isAdmin = false;
+  computersMultiple = false;
 
 
   @ViewChild(PaginationComponent) pagination: PaginationComponent;
 
   constructor(
-    private computerService: ComputerService, public dialog: MatDialog, private authService : AuthService ) {
+    private computerService: ComputerService, public dialog: MatDialog, private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -47,22 +48,26 @@ export class ComputerListComponent implements OnInit {
       linesNb: "10"
     };
     if (this.authService.getRoleName() === 'admin') {
-      this.isAdmin = !this.isAdmin; 
-    };  
-    console.log(this.isAdmin);
-    this.requestComputers(); 
+      this.isAdmin = !this.isAdmin;
+    };
+    this.requestComputers();
   }
 
   requestComputers(): void {
     this.computerService.getComputersNumber(this.dashboard).subscribe(
-      (totalComputers: number)=>{
+      (totalComputers: number) => {
         this.pagination.totalElements = totalComputers;
-        this.computersNumber = totalComputers+"";
+        this.computersNumber = totalComputers + "";
       });
     this.computerService.getComputersPage(this.dashboard).subscribe(
       (result: Computer[]) => {
         this.computers = result;
         this.pagination.refresh();
+        if (this.computers.length > 1) {
+          this.computersMultiple = true;
+        } else {
+          this.computersMultiple = false;
+        }
       },
       (error) => {
         console.log("List Computer does not work");
@@ -90,9 +95,9 @@ export class ComputerListComponent implements OnInit {
     }
     this.dashboard.ascOrder = ascOrder;
 
-    if(column=="companyName"){
+    if (column == "companyName") {
       this.dashboard.column = "company.name";
-    }else{
+    } else {
       this.dashboard.column = column;
     }
     this.dashboard.pageNb = "1";
@@ -112,16 +117,16 @@ export class ComputerListComponent implements OnInit {
     )
   }
 
-  openUpdateDialog(element,isAdmin): void {
-    if (isAdmin){
-    this.dialog.closeAll();
-    const dialogRef = this.dialog.open(ComputerPutComponent, {
-      width: '30%',
-      data: { name: element.computerName, introduced: element.introduced, discontinued: element.discontinued, companyDTO: element.companyDTO, computerId: element.computerId }
-    }).afterClosed().subscribe(result => {
-      this.changePageEvent()
-    });
-  }
+  openUpdateDialog(element, isAdmin): void {
+    if (this.isAdmin) {
+      this.dialog.closeAll();
+      const dialogRef = this.dialog.open(ComputerPutComponent, {
+        width: '30%',
+        data: { name: element.computerName, introduced: element.introduced, discontinued: element.discontinued, companyDTO: element.companyDTO, computerId: element.computerId }
+      }).afterClosed().subscribe(result => {
+        this.changePageEvent()
+      });
+    }
   }
 
   openDeleteDialog() {
@@ -141,25 +146,25 @@ export class ComputerListComponent implements OnInit {
   openDeleteAllDialog(computers: Computer[]) {
     const id = this.dialog.open(DeleteDialogComponent).id;
 
-    this.dialog.getDialogById(id).afterClosed().subscribe (
+    this.dialog.getDialogById(id).afterClosed().subscribe(
       result => {
-      if (result) {
-        this.deleteAllComputer(computers);
+        if (result) {
+          this.deleteAllComputer(computers);
+        }
       }
-    }
     )
   }
 
   deleteAllComputer(computers: Computer[]) {
-    computers.forEach ( computer =>
-    this.computerService.deleteComputer(Number (computer.computerId)).subscribe(
-      () => {
-        var index=this.computers.indexOf(computer);
-        this.computers.splice(index, 1);
-        this.requestComputers();
-      },
-      (error) => {
-      })
+    computers.forEach(computer =>
+      this.computerService.deleteComputer(Number(computer.computerId)).subscribe(
+        () => {
+          var index = this.computers.indexOf(computer);
+          this.computers.splice(index, 1);
+          this.requestComputers();
+        },
+        (error) => {
+        })
     );
   }
 
@@ -167,7 +172,7 @@ export class ComputerListComponent implements OnInit {
     this.computerService.deleteComputer(Number(computer.computerId)).subscribe(
       () => {
         this.requestComputers();
-        this.checked = false; 
+        this.checked = false;
       },
       (error) => {
         console.log("Delete computer not working")

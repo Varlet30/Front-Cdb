@@ -1,3 +1,5 @@
+import { MatDialog } from '@angular/material/dialog';
+import { ThemePalette } from '@angular/material/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,10 +12,10 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  otherListingLink: string = "Companies";
-  linkListing = "companies";
+  currentActiveTab : ThemePalette[] = new Array(3);
 
-  constructor(private authSerivce : AuthService , private route: Router, public translate: TranslateService) {
+  constructor(private authSerivce : AuthService , private route: Router, public translate: TranslateService,public dialog: MatDialog) {
+    this.changeTab(1);
     translate.addLangs(['en', 'fr']);
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
@@ -38,8 +40,20 @@ export class HeaderComponent implements OnInit {
   computers(){
     this.route.navigate(['computers']);
   }
+
   companies(){
     this.route.navigate(['companies']);
   }
 
+  changeTab(index) {
+    this.dialog.closeAll();
+    for (let i = 0; i < 3; i++) {
+        if(i==index){
+          this.currentActiveTab[index] = "primary";
+        }
+        else{
+          this.currentActiveTab[i] = null;
+        }
+      }
+   }
 }

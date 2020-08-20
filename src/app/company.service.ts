@@ -8,7 +8,7 @@ import { Dashboard } from './Model/dashboard.model';
   providedIn: 'root'
 })
 export class CompanyService {
-  private companyUrl = 'http://10.0.1.121:8080/api/companies';
+  private companyUrl = 'http://10.0.1.109:8080/api/companies';
 
   constructor(private httpClient: HttpClient) { }
   

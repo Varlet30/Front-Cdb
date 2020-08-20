@@ -55,8 +55,6 @@ private getRole(token : String) : Observable<User> {
 }
 
   public login(user:User,onSuccess: Function, onError: Function): void{
-    console.log("ici Name :" + user.username);
-    console.log("ici password" + user.password);
     this.authenticate(user).pipe(take(1)).subscribe({
         next : (auth:Auth) => {
           localStorage.setItem('token', auth.token);
@@ -75,8 +73,6 @@ private getRole(token : String) : Observable<User> {
 private setSession(authResult : Auth, user : User ) {
   localStorage.setItem('role', user.role.name);
   localStorage.setItem('username', user.username);
-  console.log(localStorage.getItem('role'));
-  console.log(localStorage.getItem('token'));
 }
 
 public isLoggedIn() : boolean {

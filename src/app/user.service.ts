@@ -15,7 +15,7 @@ export class UserService {
   deleteUser(id: number): Observable<void> {
     return this.httpClient.delete<void>( `${ this.userUrl }/${ id }`);
   }
-    
+  
   getUsersPage(dashboard: Dashboard): Observable<User[]> {
     return this.httpClient.post<User[]>(`${ this.userUrl }/page`, dashboard);
   }
@@ -23,11 +23,7 @@ export class UserService {
   getUsersNumber(dashbaord: Dashboard): Observable<number> {
     return this.httpClient.post<number>(`${ this.userUrl }/number`, dashbaord);
   }
-
-  postUser(user : User): Observable<String>{
-    return this.httpClient.post<String>(this.userUrl, user);
-  }
-
+  
   putUser(user : User): Observable<User>{
     console.log(user);
     return this.httpClient.put<User>(this.userUrl, user);

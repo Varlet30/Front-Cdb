@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cred } from './Model/cred.model';
@@ -10,11 +11,11 @@ export class RegisterService {
 
   errorMessage : String;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,public translate: TranslateService) { }
 
   public registerUser(credentials: Cred, onSuccess: Function, onError:Function): void{
     this.http.post(
-      'http://10.0.1.121:8080/api/users',
+      'http://10.0.1.109:8080/api/users',
         JSON.stringify({
             username:credentials.username,
             password:credentials.password,
@@ -38,7 +39,7 @@ export class RegisterService {
 }
 
 messageError(message) : void {
-  this.errorMessage = "This username is already used";
+  this.errorMessage = this.translate.instant('ERROR.REGISTER_USERNAME');
 }
 
 }

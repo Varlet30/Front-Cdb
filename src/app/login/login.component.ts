@@ -1,3 +1,5 @@
+import { RegisterComponent } from './../register/register.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from './../auth.service';
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   error: String;
 
-  constructor(private authService : AuthService, private router:Router) { }
+  constructor(private authService : AuthService, private router:Router, public dialog : MatDialog) { }
 
   loginForm = new FormGroup({
     username: new FormControl(''),
@@ -38,7 +40,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     const onError: Function = (err) => {
-      this.hidden.setValue('loginerror')
+      this.hidden.setValue('loginerror');
+      this.error=this.authService.errorMessage;
     }
 
     const onSuccess: Function = (next) => {
@@ -48,8 +51,13 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.login(this.loginForm.value, onSuccess, onError);
-    this.error=this.authService.errorMessage;
-  
   }
+
+  openRegisterDialog():void{
+    this.dialog.closeAll();
+    const dialogRef=this.dialog.open(RegisterComponent, {
+      width: '35%'
+    });
+}
   
 }

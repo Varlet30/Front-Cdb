@@ -7,6 +7,16 @@
         "REGISTER" : "Créer un compte"
     },
 
+    "REGISTER":{
+        "TITLE" : "Nouveau compte",
+        "USERNAME" :"Nom d'utilisateur",
+        "PASSWORD" : "Mot de passe",
+        "CONFIRM" : "Confirmer le mot de passe",
+        "REGISTER" : "Création",
+        "CANCEL" : "Annuler",
+        "LOGIN" : "Déjà un compte ? Connexion"
+    },
+
     "HEADER": {
       "PROFILE": "Profil",
       "LOGOUT" :"Déconnexion",
@@ -57,6 +67,10 @@
         "MESSAGE" : "Page non trouvée",
         "DASHBOARD" : "Tableau de bord",
         "REQUIRED" : "Champ obligatoire",
-        "DATE" : "Doit être après la date d'introduction"
+        "DATE" : "Doit être après la date d'introduction",
+        "LOGIN" : "Connexion impossible",
+        "REGISTER_USERNAME" : "Ce nom d'utilisateur est déjà pris",
+        "REGISTER_PASSWORD" : "Les mots de passe ne correspondent pas",
+        "PASSWORD_MINLENGTH" : "Le mot de passe doit avoir au moins 4 caractères"
     }
   }

@@ -7,6 +7,16 @@
         "REGISTER" : "Sign up"
     },
 
+    "REGISTER":{
+        "TITLE" : "New account",
+        "USERNAME" :"Username",
+        "PASSWORD" : "Password",
+        "CONFIRM" : "Confirm password",
+        "REGISTER" : "Register",
+        "CANCEL" : "Cancel",
+        "LOGIN" : "Already registered ?  Log in"
+    },
+
     "HEADER": {
       "PROFILE": "Profile",
       "LOGOUT" :"Logout",
@@ -59,6 +69,10 @@
         "MESSAGE" : "Page not found",
         "DASHBOARD" : "Dashboard",
         "REQUIRED" : "This field is required",
-        "DATE" : "Must be after introduced date"
+        "DATE" : "Must be after introduced date",
+        "LOGIN" : "Bad credentials",
+        "REGISTER_USERNAME" : "This username is already used",
+        "REGISTER_PASSWORD" : "Passwords do not match",
+        "PASSWORD_MINLENGTH" : "Password must have at least 4 characters"
     }
   }

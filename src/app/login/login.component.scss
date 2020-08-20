@@ -15,11 +15,10 @@ body {
 }
 
 .sign {
-    padding-top: 30px;
+    padding-top: 20px;
     color: #4e04c7;
     font-weight: bold;
     font-size: 23px;
-    margin-left: 35%;
 }
 
 .un {
@@ -29,7 +28,6 @@ font-weight: 700;
 font-size: 14px;
 letter-spacing: 1px;
 padding: 10px 20px;
-border-radius: 20px;
 box-sizing: border-box;
 margin-bottom: 10px;
 margin-left: 46px;
@@ -68,7 +66,7 @@ text-align: center;
     padding-right: 40px;
     padding-bottom: 5px;
     padding-top: 5px;
-    margin-left: 30%;
+    margin-left: 34%;
     margin-bottom: 5%;
     border-radius: 20px;
   }
@@ -76,7 +74,7 @@ text-align: center;
 a {
     text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
     color: grey;
-    margin-left: 34%;
+    margin-left: 38%;
 }  
 
 ::ng-deep .mat-focused .mat-form-field-label {
@@ -89,4 +87,12 @@ a {
   
 ::ng-deep.mat-form-field-ripple {
    background-color:  #4e04c7 !important;
+}
+
+p{
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    margin-left: 35%;
+    color: red;
+    font-weight: 700;
+    font-size: 14px;
 }

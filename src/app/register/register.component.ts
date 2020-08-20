@@ -1,3 +1,5 @@
+import { LoginComponent } from './../login/login.component';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -11,8 +13,9 @@ import { RegisterService } from '../register.service';
 export class RegisterComponent implements OnInit {
 
   error: String;
+  noMatch = true;
 
-  constructor(private router : Router , private registerService : RegisterService) { }
+  constructor(private router : Router , private registerService : RegisterService, public dialogRef: MatDialogRef<LoginComponent>) { }
 
   ngOnInit(): void {
   }
@@ -44,8 +47,8 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
 
     const onError: Function = (err) => {
-      this.hidden.setValue('registererror')
-      console.warn("error")
+      this.hidden.setValue('registererror');
+      this.error=this.registerService.errorMessage;
     }
 
     const onSuccess: Function = (next) => {
@@ -53,15 +56,15 @@ export class RegisterComponent implements OnInit {
     }
 
     this.registerService.registerUser(this.registerForm.value, onSuccess, onError);
-    this.error=this.registerService.errorMessage;
   }
 
-  getErrorMessagePassword(): string{
-    return this.password.hasError('required') ? "This field is required" : ''
+  onNoClick() :void{
+    this.dialogRef.close(false);
   }
 
-  getErrorMessageConfirm(): string{
-    return this.confirm.hasError('required') ? "This field is required" : ''
+  matcher():void {
+    if(this.password.value != this.confirm.value){
+      this.noMatch= !this.noMatch;
+    }
   }
-
 }

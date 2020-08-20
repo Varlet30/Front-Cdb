@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { User } from './Model/user.model';
 import { Auth } from './Model/auth.model';
 import { Injectable } from '@angular/core';
@@ -14,7 +15,7 @@ export class AuthService {
   public currentUser: Observable<Cred>;
   errorMessage : String;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public translate: TranslateService) {
     this.currentUserSubject = new BehaviorSubject<Cred>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
 
@@ -23,7 +24,7 @@ export class AuthService {
   private authenticate(user:User) : Observable<Auth> {
 
     return this.http.post<Auth>(
-       'http://10.0.1.121:8080/api/authenticate',
+       'http://10.0.1.109:8080/api/authenticate',
         JSON.stringify({
             username:user.username, password:user.password
         }),
@@ -73,6 +74,7 @@ private getRole(token : String) : Observable<User> {
 private setSession(authResult : Auth, user : User ) {
   localStorage.setItem('role', user.role.name);
   localStorage.setItem('username', user.username);
+  localStorage.setItem('roleId',user.role.id);
 }
 
 public isLoggedIn() : boolean {
@@ -87,6 +89,14 @@ public getRoleName() : string {
   return localStorage.getItem('role');
 }
 
+public getRoleId() : string { 
+  return localStorage.getItem('roleId'); 
+}
+
+public getToken() : string { 
+  return localStorage.getItem('token');
+ }
+
 logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('role');
@@ -95,6 +105,7 @@ logout() {
 
 
 messageError(message) : void {
-    this.errorMessage= "Bad credentials";
+    this.errorMessage = this.translate.instant('ERROR.LOGIN');
 }
+
 }

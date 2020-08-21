@@ -22,7 +22,7 @@ export class AuthService {
   private authenticate(user:User) : Observable<Auth> {
 
     return this.http.post<Auth>(
-       'http://10.0.1.60:8082/api/authenticate',
+       'http://10.0.1.109:8080/api/authenticate',
         JSON.stringify({
             username:user.username, password:user.password
         }),
@@ -39,7 +39,7 @@ export class AuthService {
 private getRole(token : String) : Observable<User> {
 
   return this.http.post<User>(
-     'http://10.0.1.60:8082/api/authenticate/user',
+     'http://10.0.1.109:8080/api/authenticate/userInfo',
       JSON.stringify({
         token
       }),

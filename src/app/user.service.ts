@@ -9,8 +9,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  private userSelfUrl = 'http://10.0.1.60:8082/api/users/self/';
-  private userUrl = 'http://10.0.1.60:8082/api/users';
+  private userSelfUrl = 'http://10.0.1.109:8080/api/authenticate/profile';
+  private userUrl = 'http://10.0.1.109:8080/api/users';
 
   constructor(private httpClient: HttpClient, private authService : AuthService) { }
   

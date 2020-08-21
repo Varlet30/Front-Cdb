@@ -1,3 +1,13 @@
+
+.multi_ar {
+    position: relative;
+    padding-top: 2%;
+    width: 100%;
+    height: 300px;
+    background:url(../../assets/img/numerique-1.jpg);
+    box-shadow: inset 50px 50px 50px black;
+  }
+
 .main{
     margin-left : 30%;
     margin-right : 30%;
@@ -10,3 +20,16 @@ mat-card-header{
     color : blue ;
 
 }
+
+mat-raised-button {
+    color : greenyellow;
+}
+
+.example-button-row {
+    display: table-cell;
+    width: 490px;
+  }
+  
+  .example-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }

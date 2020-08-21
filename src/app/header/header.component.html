@@ -1,13 +1,13 @@
 <mat-toolbar color="primary">
     <h2>Computer-database</h2>
     <span class="spacer"></span>
-    <button mat-stroked-button *ngIf="!hidden" (click)="computers()" [color]="currentActiveTab[0]" (click)="changeTab(0)">
+    <button mat-stroked-button *ngIf="!hidden" (click)="computers()" [color]="currentActiveTab[0]">
         {{'HEADER.COMPUTERS' | translate }}
     </button>
-    <button mat-stroked-button *ngIf="!hidden" (click)="companies()" [color]="currentActiveTab[1]" (click)="changeTab(1)">
+    <button mat-stroked-button *ngIf="!hidden" (click)="companies()" [color]="currentActiveTab[1]">
         {{'HEADER.COMPANIES' | translate }}
     </button>
-    <button mat-stroked-button *ngIf="isAdmin()" (click)="users()" [color]="currentActiveTab[2]" (click)="changeTab(2)" >
+    <button mat-stroked-button *ngIf="isAdmin()" (click)="users()" [color]="currentActiveTab[2]">
         {{'HEADER.USERS' | translate }}
     </button>
 

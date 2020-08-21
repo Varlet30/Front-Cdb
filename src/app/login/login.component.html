@@ -15,8 +15,13 @@
         <input matInput type="password" formControlName="password" required/>
         <mat-error *ngIf="password.hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
       </mat-form-field>
-      <button mat-raised-button type="submit" [disabled]="!loginForm.valid">{{'LOGIN.BUTTON_LOGIN' | translate }}</button>
-      <a class="registerBtn" (click)="openRegisterDialog()">{{'LOGIN.REGISTER' | translate }}</a>
+      <div class="login">
+        <button mat-raised-button type="submit" [disabled]="!loginForm.valid">{{'LOGIN.BUTTON_LOGIN' | translate }}</button>
+      </div>
+      <div class="login">
+        <a class="registerBtn" (click)="openRegisterDialog()">{{'LOGIN.REGISTER' | translate }}</a>
+      </div>
+      
     </form>
   </div>
 </body>

@@ -18,20 +18,28 @@
    background-color: rgb(67, 173, 223) !important;
 }
 
-.margin{
+.registerField {
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 10px 20px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .mat-button.mat-primary{
     background: linear-gradient(to right, #4e04c7, rgb(67, 173, 223));
     color: white;
     border-radius: 20px;
+    margin-left:5%;
   }
 
   .mat-button{
     background: rgb(167, 167, 167);
     color:white;
     border-radius: 20px;
+    margin-left:5%;
   }
 
 h3{
@@ -40,6 +48,8 @@ h3{
 }
 
 p{
+    margin-top:2%;
+    margin-left:10%;
     color:grey;
     font-size: 0.8em;
 }

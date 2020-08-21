@@ -41,7 +41,7 @@ export class AuthService {
 private getRole(token : String) : Observable<User> {
 
   return this.http.post<User>(
-     'http://10.0.1.121:8080/api/authenticate/user',
+     'http://10.0.1.109:8080/api/authenticate/user',
       JSON.stringify({
         token
       }),

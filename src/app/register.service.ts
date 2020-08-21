@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -11,7 +12,7 @@ export class RegisterService {
 
   errorMessage : String;
 
-  constructor(private http: HttpClient,public translate: TranslateService) { }
+  constructor(private http: HttpClient,public translate: TranslateService, private authService: AuthService) { }
 
   public registerUser(credentials: Cred, onSuccess: Function, onError:Function): void{
     this.http.post(
@@ -25,13 +26,8 @@ export class RegisterService {
           }
         }),
         
-        {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json'
-            }),
-            observe: 'body',
-            responseType: 'text'
-        }
+        { headers: new HttpHeaders() .set('Content-Type', 'application/json') .set('Authorization', 'Bearer '+ this.authService.getToken()) }
+
     ).pipe(take(1)).subscribe({
         next: x => onSuccess(),
         error: error => onError(this.messageError(error.status))

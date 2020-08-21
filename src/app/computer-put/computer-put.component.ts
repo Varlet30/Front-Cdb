@@ -60,7 +60,7 @@ export class ComputerPutComponent implements OnInit {
     }
 
   onSubmit(){
-    this.computerService.putComputer(this.editedComputer).subscribe(result => console.log(result));
+    this.computerService.putComputer(this.editedComputer).subscribe();
     this.dialogRef.close(true);
   }
 

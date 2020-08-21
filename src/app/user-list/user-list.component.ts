@@ -100,16 +100,15 @@ export class UserListComponent implements OnInit {
     this.requestUsers();
   }
 
-  openUpdateDialog(element,isAdmin): void {
-    if (isAdmin){
+  openUpdateDialog(element): void {
+    console.log(element);
     this.dialog.closeAll();
     const dialogRef = this.dialog.open(UserPutComponent, {
       width: '30%',
-      data: { name: element.userName, introduced: element.introduced, discontinued: element.discontinued, companyDTO: element.companyDTO, userId: element.userId }
+      data: { self: false, name: element.username, role: element.role.name, userId: element.userId }
     }).afterClosed().subscribe(result => {
-      this.changePageEvent()
+      this.changePageEvent();
     });
-  }
   }
 
   openDeleteDialog() {

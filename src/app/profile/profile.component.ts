@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
   this.dialog.closeAll();
   const dialogRef = this.dialog.open(UserPutComponent, {
     width: '30%',
-    data: { id : this.getId(), name: this.getUsername(), roleId : this.getRoleId() , roleName: this.getRoleName() }
+    data: { self: true, id : this.getId(), name: this.getUsername(), roleId : this.getRoleId() , roleName: this.getRoleName() }
   })
   }
 

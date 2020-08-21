@@ -14,7 +14,11 @@ export class CompanyService {
   constructor(private httpClient: HttpClient , private authService : AuthService) { }
   
   deleteCompany(id: number): Observable<void> {
-    return this.httpClient.delete<void>( `${ this.companyUrl }/${ id }`, );
+    return this.httpClient.delete<void>( `${ this.companyUrl }/${ id }`, 
+    { headers:  new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', 'Bearer '+ this.authService.getToken())
+  } );
   }
     
   getCompaniesPage(dashboard: Dashboard): Observable<Company[]> {

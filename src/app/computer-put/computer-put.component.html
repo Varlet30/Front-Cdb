@@ -38,7 +38,7 @@
                 <mat-option *ngIf="editedComputer.companyDTO" [value]=editedComputer.companyDTO>
                   {{editedComputer.companyDTO.companyName}}
                 </mat-option>
-                <mat-option [value]="null">-No company-</mat-option>
+                <mat-option value="null">-No company-</mat-option>
                 <mat-option *ngFor="let c of companies" [value]="c">
                   {{c.companyName}}
                 </mat-option>

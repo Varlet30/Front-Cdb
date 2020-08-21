@@ -8,7 +8,7 @@
         <input *ngIf="edited" type="text" placeholder="Search &amp; enter" (keydown)="onKeydownSearch($event)">
         <button mat-stroked-button (click)="deleteMode()">{{'BODY.DELETE' | translate }}</button>
         <mat-icon *ngIf="modeDelete" (click)="openDeleteDialog(element)" class="iconDelete"> delete </mat-icon> 
-        <mat-icon *ngIf="modeDelete" (click)="allChecked()" (click)="deleteAll(companies)" class="iconDelete">playlist_add_check</mat-icon>
+        <mat-icon *ngIf="modeDelete" (click)="allChecked()" (click)="deleteAll(users)" class="iconDelete">playlist_add_check</mat-icon>
         </h2>
     </div>
 </div>
@@ -17,9 +17,9 @@
 
     <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'BODY.TABLE_USERNAME' | translate }} </th>
-        <td class="username" mat-cell *matCellDef="let element"> 
+        <td class="username" mat-cell *matCellDef="let element" (click)="openUpdateDialog(element)"> 
             <mat-checkbox [checked]="checked" *ngIf="modeDelete" class="checkbox" (click)="addDelete(element)" color="primary"></mat-checkbox>
-            <text> {{element.username}}  </text>
+            <text> {{element.username}} </text>
         </td>        
     </ng-container>
 

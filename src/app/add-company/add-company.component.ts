@@ -30,7 +30,7 @@ export class AddCompanyComponent implements OnInit {
 
   onSubmit(){
     this.company.companyName = this.addForm.get('companyName').value;
-    this.companyService.postCompany(this.company).subscribe(result => console.log(result)); 
+    this.companyService.postCompany(this.company).subscribe(); 
     this.dialogRef.close(true);
   }
 

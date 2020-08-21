@@ -34,7 +34,7 @@ export class CompanyPutComponent implements OnInit {
   }
 
   onSubmit(){
-    this.companyService.putCompany(this.editedCompany).subscribe(result => console.log(result));
+    this.companyService.putCompany(this.editedCompany).subscribe();
     this.dialogRef.close(true);
   }
 

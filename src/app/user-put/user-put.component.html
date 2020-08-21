@@ -15,7 +15,7 @@
   
   
           <div>
-            <mat-form-field class="userForm">
+            <mat-form-field *ngIf="self" class="userForm">
               <mat-label>{{'REGISTER.PASSWORD' | translate }}</mat-label>
               <input matInput name=password type="password"  minlength="4" formControlName="password" [(ngModel)]="editedUser.password" required>
               <mat-error *ngIf="editUserForm.get('password').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
@@ -24,12 +24,23 @@
           </div>
   
           <div>
-            <mat-form-field class="userForm">
+            <mat-form-field *ngIf="self" class="userForm">
               <mat-label>{{'REGISTER.CONFIRM' | translate }} </mat-label>
               <input matInput name="confirmpassword" type="password"  formControlName="confirmpassword" required>
               <mat-error *ngIf="editUserForm.get('confirmpassword').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
             </mat-form-field>
             <mat-error *ngIf="!match"> {{'ERROR.REGISTER_PASSWORD' | translate }} </mat-error>
+          </div>
+
+          <div>
+            <mat-form-field *ngIf="!self" class="userForm">
+              <mat-label>Role</mat-label>
+              <mat-select name="roleName" [(ngModel)]="editedUserRole.name" formControlName="roleName" required>
+                <mat-option value="admin">Admin</mat-option>
+                <mat-option value="user">User</mat-option>
+            </mat-select>
+            <mat-error *ngIf="editUserForm.get('roleName').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
+            </mat-form-field>
           </div>
   
           <div class="modal-footer">

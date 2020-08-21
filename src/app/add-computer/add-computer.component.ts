@@ -56,7 +56,7 @@ export class AddComputerComponent implements OnInit {
     this.computer.computerName = this.addForm.get('computerName').value;
     this.computer.introduced = this.addForm.get('introduced').value;
     this.computer.discontinued = this.addForm.get('discontinued').value;
-    this.computerService.postComputer(this.computer).subscribe(result => console.log(result));
+    this.computerService.postComputer(this.computer).subscribe();
     this.dialogRef.close(true);
   }
 

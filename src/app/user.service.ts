@@ -22,6 +22,14 @@ export class UserService {
   } );
   }
 
+  deleteSelfUser(id: number): Observable<void> {
+    return this.httpClient.delete<void>( `http://10.0.1.109:8080/api/authenticate/${ id }`,
+    { headers:  new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', 'Bearer '+ this.authService.getToken())
+  } );
+  }
+
   getUsersPage(dashboard: Dashboard): Observable<User[]> {
     return this.httpClient.post<User[]>(`${ this.userUrl }/page`, dashboard,
     { headers:  new HttpHeaders()

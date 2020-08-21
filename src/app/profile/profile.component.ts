@@ -42,7 +42,8 @@ export class ProfileComponent implements OnInit {
   const dialogRef = this.dialog.open(UserPutComponent, {
     width: '30%',
     data: { id : this.getId(), name: this.getUsername(), roleId : this.getRoleId() , roleName: this.getRoleName() }
-  }).afterClosed().subscribe(result => {
+  }).afterClosed().subscribe( () => {
+    this.route.navigate(['login']);
   },
     (error) => {
       console.log("cannot update , sorry !")
@@ -64,7 +65,7 @@ export class ProfileComponent implements OnInit {
   
 
   deleteUser(id) {
-    this.userService.deleteUser(Number(id)).subscribe(
+    this.userService.deleteSelfUser(Number(id)).subscribe(
       () => {
         this.route.navigate(['login']);
       },

@@ -1,35 +1,40 @@
 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Update Profile</h4>
+        <h4 class="modal-title">{{'PROFILE.UPDATE_TITLE' | translate }}</h4>
       </div>
       <div class="modal-body">
-        <form [formGroup]="editUserForm">
+        <form [formGroup]="editUserForm"  (ngSubmit)="onSubmit()">
           <div>
-            <mat-form-field class="margin">
-              <mat-label>Username</mat-label>
-              <input matInput type="text" [(ngModel)]="editedUser.username" formControlName="username" required>
+            <mat-form-field class="userForm">
+              <mat-label>{{'REGISTER.USERNAME' | translate }}</mat-label>
+              <input matInput type="text" formControlName="username" required>
+              <mat-error *ngIf="editUserForm.get('username').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
             </mat-form-field>
           </div>
   
   
           <div>
-            <mat-form-field class="margin">
-              <mat-label>password</mat-label>
-              <input matInput name=password type="password" [(ngModel)]="editedUser.password" formControlName="password">
+            <mat-form-field class="userForm">
+              <mat-label>{{'REGISTER.PASSWORD' | translate }}</mat-label>
+              <input matInput name=password type="password"  minlength="4" formControlName="password" required>
+              <mat-error *ngIf="editUserForm.get('password').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
+              <mat-error *ngIf="editUserForm.get('password').hasError('minlength')">{{'ERROR.PASSWORD_MINLENGTH' | translate}}</mat-error>
             </mat-form-field>
           </div>
   
           <div>
-            <mat-form-field>
-              <mat-label>Confirm your password : </mat-label>
-              <input matInput name="discontinued" type="password"  formControlName="confirmpassword">
+            <mat-form-field class="userForm">
+              <mat-label>{{'REGISTER.CONFIRM' | translate }} </mat-label>
+              <input matInput name="discontinued" type="password"  formControlName="confirmpassword" required>
+              <mat-error *ngIf="editUserForm.get('confirmpassword').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
             </mat-form-field>
+            <mat-error *ngIf="noMatch"> {{'ERROR.REGISTER_PASSWORD' | translate }} </mat-error>
           </div>
   
           <div class="modal-footer">
-            <button mat-button [disabled]="!editUserForm.valid" (click)="onSubmit()" color="primary">Submit</button>
-            <button mat-button (click)="onNoClick()">Cancel</button>
+            <button mat-button [disabled]="!editUserForm.valid" (click)="matcher()" color="primary">{{'POP-UP.BUTTON_UPDATE' | translate }}</button>
+            <button mat-button (click)="onNoClick()">{{'POP-UP.BUTTON_CANCEL' | translate }}</button>
           </div>
         </form>
       </div>

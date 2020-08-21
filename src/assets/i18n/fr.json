@@ -72,5 +72,12 @@
         "REGISTER_USERNAME" : "Ce nom d'utilisateur est déjà pris",
         "REGISTER_PASSWORD" : "Les mots de passe ne correspondent pas",
         "PASSWORD_MINLENGTH" : "Le mot de passe doit avoir au moins 4 caractères"
+    },
+
+    "PROFILE":{
+        "MESSAGE" : "Que voulez-vous faire ?",
+        "UPDATE" : "Modifier votre profil",
+        "DELETE" : "Supprimer votre compte",
+        "UPDATE_TITLE" : "Modifier le profil"
     }
   }

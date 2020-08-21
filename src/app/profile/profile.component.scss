@@ -21,8 +21,36 @@ mat-card-header{
 
 }
 
-mat-raised-button {
-    color : greenyellow;
+::ng-deep .mat-focused .mat-form-field-label {
+  color: rgb(67, 173, 223) !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  background-color: rgb(67, 173, 223) !important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+ background-color: rgb(67, 173, 223) !important;
+}
+
+
+.mat-card-content{
+  text-align: center;
+}
+
+.button_row{
+  text-align: center;
+}
+
+.mat-raised-button.mat-primary{
+  background: rgb(67, 173, 223);
+  color: white;
+  border-radius: 20px;
+}
+
+.mat-raised-button{
+  color:white;
+  border-radius: 20px;
 }
 
 .example-button-row {

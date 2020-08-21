@@ -55,6 +55,7 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['/login'])
     }
     this.registerService.registerUser(this.registerForm.value, onSuccess, onError);
+    this.dialogRef.close(false);
   }
 
   onNoClick() :void{

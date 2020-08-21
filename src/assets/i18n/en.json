@@ -74,5 +74,12 @@
         "REGISTER_USERNAME" : "This username is already used",
         "REGISTER_PASSWORD" : "Passwords do not match",
         "PASSWORD_MINLENGTH" : "Password must have at least 4 characters"
+    },
+
+    "PROFILE":{
+        "MESSAGE" : "What do you want to do ?",
+        "UPDATE" : "Update your profile",
+        "DELETE" : "Delete your account",
+        "UPDATE_TITLE" : "Update profile"
     }
   }

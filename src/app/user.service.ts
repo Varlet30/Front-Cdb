@@ -47,7 +47,6 @@ export class UserService {
   }
   
   putUser(user : User): Observable<User>{
-    console.log(user);
     return this.httpClient.put<User>(this.userUrl, user,
       { headers:  new HttpHeaders()
         .set('Content-Type', 'application/json')
@@ -56,7 +55,6 @@ export class UserService {
   }
 
   putUserSelf(user : User): Observable<User>{
-    console.log(user);
     return this.httpClient.put<User>(this.userSelfUrl, user,
       { headers:  new HttpHeaders()
         .set('Content-Type', 'application/json')

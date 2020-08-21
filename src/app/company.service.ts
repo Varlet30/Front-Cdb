@@ -51,7 +51,6 @@ export class CompanyService {
   }
 
   putCompany(company : Company): Observable<Company>{
-    console.log(company);
     return this.httpClient.put<Company>(this.companyUrl, company ,
       { headers:  new HttpHeaders()
         .set('Content-Type', 'application/json')

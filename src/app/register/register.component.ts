@@ -71,6 +71,5 @@ export class RegisterComponent implements OnInit {
     } else {
       this.match = true;
     }
-    console.log(this.match)
   }
 }

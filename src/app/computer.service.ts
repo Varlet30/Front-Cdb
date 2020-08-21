@@ -42,7 +42,6 @@ export class ComputerService {
   }
 
   putComputer(computer : Computer): Observable<Computer>{
-    console.log(computer);
     return this.httpClient.put<Computer>(this.computerUrl,computer, { headers:  new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Authorization', 'Bearer '+ this.authService.getToken())

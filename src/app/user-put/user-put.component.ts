@@ -7,6 +7,7 @@ import { DialogData } from '../user-list/user-list.component';
 import { User } from '../Model/user.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Role } from '../Model/role.model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-user-put',
@@ -20,14 +21,14 @@ export class UserPutComponent implements OnInit {
   editedUserRole = new Role();
   match = true;
 
-  constructor(public dialogRef: MatDialogRef<ProfileComponent>, @Inject(MAT_DIALOG_DATA) public datadialog: DialogData, private userService : UserService, private router : Router) {
+  constructor(private authService : AuthService, private route: Router, public dialogRef: MatDialogRef<ProfileComponent>, @Inject(MAT_DIALOG_DATA) public datadialog: DialogData, private userService : UserService, private router : Router) {
     this.createForm();
    }
 
   ngOnInit(): void {
     this.editedUser = new User();
-    this.editedUser.username = this.datadialog.username;
-    this.editedUser.password= this.datadialog.password;
+    this.editedUser.username = this.datadialog.name;
+    this.editedUser.password;
     this.editedUser.userId = this.datadialog.id;
     this.editedUserRole.id = this.datadialog.roleId;
     this.editedUserRole.name = this.datadialog.roleName;
@@ -46,6 +47,8 @@ export class UserPutComponent implements OnInit {
       if (this.match){
         this.userService.putUserSelf(this.editedUser).subscribe(result => console.log(result));
         this.dialogRef.close(true);
+        this.authService.logout();
+        this.route.navigate(['login']);
       }
     }
   
@@ -54,7 +57,6 @@ export class UserPutComponent implements OnInit {
     }
 
     matcher():void {
-      console.log("iciiii")
       if(this.editUserForm.get('password').value != this.editUserForm.get('confirmpassword').value){
         this.match = false;
       }else{

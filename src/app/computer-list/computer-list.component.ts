@@ -210,10 +210,8 @@ export class ComputerListComponent implements OnInit {
     const index = this.computersDelete.indexOf(element);
     if (index == -1) {
       this.computersDelete.push(element);
-      console.log("1", this.computersDelete)
     } else {
       this.computersDelete.splice(index, 1);
-      console.log("2", this.computersDelete)
     }
 
   }

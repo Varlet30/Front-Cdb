@@ -4,7 +4,7 @@
         <h4 class="modal-title">{{'PROFILE.UPDATE_TITLE' | translate }}</h4>
       </div>
       <div class="modal-body">
-        <form [formGroup]="editUserForm"  (ngSubmit)="onSubmit()">
+        <form [formGroup]="editUserForm">
           <div>
             <mat-form-field class="userForm">
               <mat-label>{{'REGISTER.USERNAME' | translate }}</mat-label>
@@ -33,7 +33,7 @@
           </div>
   
           <div class="modal-footer">
-            <button mat-button [disabled]="!editUserForm.valid" (click)="matcher()" color="primary">{{'POP-UP.BUTTON_UPDATE' | translate }}</button>
+            <button mat-button [disabled]="!editUserForm.valid" (click)="matcher()" (click)="onSubmit()" color="primary">{{'POP-UP.BUTTON_UPDATE' | translate }}</button>
             <button mat-button (click)="onNoClick()">{{'POP-UP.BUTTON_CANCEL' | translate }}</button>
           </div>
         </form>

@@ -87,7 +87,6 @@ public getName() : string{
 } 
 
 public getId() : string{
-  console.log(localStorage.getItem('id'))
   return localStorage.getItem('id');
 }
 

@@ -194,10 +194,8 @@ export class UserListComponent implements OnInit {
     const index = this.usersDelete.indexOf(element);
     if (index == -1) {
       this.usersDelete.push(element);
-      console.log("1", this.usersDelete)
     } else {
       this.usersDelete.splice(index, 1);
-      console.log("2", this.usersDelete)
     }
 
   }

@@ -188,10 +188,8 @@ export class CompanyListComponent implements OnInit {
     const index = this.companiesDelete.indexOf(element);
     if (index == -1) {
       this.companiesDelete.push(element);
-      console.log("1", this.companiesDelete)
     } else {
       this.companiesDelete.splice(index, 1);
-      console.log("2", this.companiesDelete)
     }
   }
   deleteElement(): void {

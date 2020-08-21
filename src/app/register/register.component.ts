@@ -53,10 +53,11 @@ export class RegisterComponent implements OnInit {
 
     const onSuccess: Function = (next) => {
       this.router.navigate(['/login'])
+      this.dialogRef.close(false);
     }
+
     if (this.match){
       this.registerService.registerUser(this.registerForm.value, onSuccess, onError);
-      this.dialogRef.close(false);
     }
   }
 

@@ -54,13 +54,13 @@ export class UserPutComponent implements OnInit {
         this.route.navigate(['login']);
       }
       if (this.self == false){
-        if (this.editedUserRole.name == "admin"){
-          this.editedUserRole.id = "2";
-        } else{
+        if (this.editedUserRole.name == "user"){
           this.editedUserRole.id = "1";
+        } else{
+          this.editedUserRole.id = "2";
         }
         this.editedUser.userId = this.datadialog.userId;
-        this.userService.putUser(this.editedUser).subscribe(result => console.log(result));
+        this.userService.putUser(this.editedUser).subscribe();
         this.dialogRef.close(true);
       }
     }

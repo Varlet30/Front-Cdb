@@ -1,1 +1,37 @@
-<p>user-put works!</p>
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Update Profile</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editUserForm">
+          <div>
+            <mat-form-field class="margin">
+              <mat-label>Username</mat-label>
+              <input matInput type="text" [(ngModel)]="editedUser.username" formControlName="username" required>
+            </mat-form-field>
+          </div>
+  
+  
+          <div>
+            <mat-form-field class="margin">
+              <mat-label>password</mat-label>
+              <input matInput name=password type="password" [(ngModel)]="editedUser.password" formControlName="password">
+            </mat-form-field>
+          </div>
+  
+          <div>
+            <mat-form-field>
+              <mat-label>Confirm your password : </mat-label>
+              <input matInput name="discontinued" type="password"  formControlName="confirmpassword">
+            </mat-form-field>
+          </div>
+  
+          <div class="modal-footer">
+            <button mat-button [disabled]="!editUserForm.valid" (click)="onSubmit()" color="primary">Submit</button>
+            <button mat-button (click)="onNoClick()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

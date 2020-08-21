@@ -23,6 +23,7 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { CompanyPutComponent } from './company-put/company-put.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserPutComponent } from './user-put/user-put.component';
 
@@ -34,7 +35,6 @@ import { UserPutComponent } from './user-put/user-put.component';
     ComputerListComponent,
     ComputerPutComponent,
     AddComputerComponent,
-    PaginationComponent,
     FooterComponent,
     PaginationComponent,
     PageNotFoundComponent,
@@ -44,6 +44,7 @@ import { UserPutComponent } from './user-put/user-put.component';
     AddCompanyComponent,
     CompanyPutComponent,
     RegisterComponent,
+    ProfileComponent,
     UserListComponent,
     UserPutComponent
   ],

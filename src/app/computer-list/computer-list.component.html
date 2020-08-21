@@ -6,10 +6,10 @@
       <mat-icon *ngIf="!edited" (click)="edited=!edited">search</mat-icon>
       <mat-icon *ngIf="edited" (click)="search()" >close</mat-icon>
       <input *ngIf="edited" type="text" placeholder="Search &amp; enter" (keydown)="onKeydownSearch($event)">
-      <button mat-raised-button (click)="openAddDialog()">{{'BODY.ADD' | translate }}</button>
-      <button mat-stroked-button (click)="deleteMode()">{{'BODY.DELETE' | translate }}</button>
-      <mat-icon *ngIf="modeDelete" (click)="openDeleteDialog(element)" class="iconDelete"> delete </mat-icon> 
-      <mat-icon *ngIf="modeDelete" (click)="allChecked()" (click)="deleteAll(computers)" class="iconDelete">playlist_add_check</mat-icon>
+      <button mat-raised-button *ngIf="isAdmin" (click)="openAddDialog()">{{'BODY.ADD' | translate }}</button>
+      <button mat-stroked-button *ngIf="isAdmin" (click)="deleteMode()">{{'BODY.DELETE' | translate }}</button>
+      <mat-icon *ngIf="modeDelete && isAdmin " (click)="openDeleteDialog(element)" class="iconDelete"> delete </mat-icon> 
+      <mat-icon *ngIf="modeDelete && isAdmin" (click)="allChecked()" (click)="deleteAll(computers)" class="iconDelete">playlist_add_check</mat-icon>
     </h2>
   </div>
 </div>

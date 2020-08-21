@@ -52,6 +52,9 @@ export class HeaderComponent implements OnInit {
     return this.authService.getRoleName() === 'admin';
   }
 
+  profile(){
+    this.route.navigate(['profile']);
+  }
   computers(){
     this.route.navigate(['computers']);
   }

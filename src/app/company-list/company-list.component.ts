@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { CompanyPutComponent } from './../company-put/company-put.component';
 import { AddCompanyComponent } from './../add-company/add-company.component';
 import { AddComputerComponent } from './../add-computer/add-computer.component';
@@ -29,11 +30,12 @@ export class CompanyListComponent implements OnInit {
   companiesDelete: Company[];
   edited = false;
   companiesMultiple = false;
+  isAdmin = false;
 
   @ViewChild(PaginationComponent) pagination: PaginationComponent;
 
   constructor(
-    private companyService: CompanyService, public dialog: MatDialog
+    private companyService: CompanyService, public dialog: MatDialog , private authService : AuthService
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +46,9 @@ export class CompanyListComponent implements OnInit {
       column: "id",
       pageNb: "1",
       linesNb: "10"
+    };
+    if (this.authService.getRoleName() === 'admin') {
+      this.isAdmin = !this.isAdmin; 
     };
     this.requestCompanies();
   }
@@ -112,6 +117,7 @@ export class CompanyListComponent implements OnInit {
     )
   }
   openUpdateDialog(element): void {
+    if (this.isAdmin){
     this.dialog.closeAll();
     const dialogRef = this.dialog.open(CompanyPutComponent, {
       width: '30%',
@@ -119,6 +125,7 @@ export class CompanyListComponent implements OnInit {
     }).afterClosed().subscribe(result => {
       this.changePageEvent()
     });
+  }
   }
   openDeleteAllDialog(companies: Company[]) {
     const id = this.dialog.open(DeleteDialogComponent).id;

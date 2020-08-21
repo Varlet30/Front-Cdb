@@ -16,6 +16,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog'; 
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import {MatRadioModule} from '@angular/material/radio';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [],
@@ -36,7 +37,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatIconModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCardModule
 
   ],
   exports:[
@@ -55,7 +57,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatSortModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCardModule
   ]
 })
 export class CustomMaterialModule { }

@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
+    this.computers();
     this.authService.logout();
     this.route.navigate(['/login'])
   }
@@ -54,13 +55,16 @@ export class HeaderComponent implements OnInit {
 
   computers(){
     this.route.navigate(['computers']);
+    this.changeTab(0);
   }
 
   companies(){
     this.route.navigate(['companies']);
+    this.changeTab(1);
   }
   users(){
     this.route.navigate(['users']);
+    this.changeTab(2);
   }
 
   changeTab(index) {

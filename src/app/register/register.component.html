@@ -24,7 +24,7 @@
                     <input matInput type="password" formControlName="confirm"  required/>
                     <mat-error *ngIf="registerForm.get('confirm').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
                 </mat-form-field>
-                <mat-error *ngIf="!noMatch"> {{'ERROR.REGISTER_PASSWORD' | translate }} </mat-error>
+                <mat-error *ngIf="!match"> {{'ERROR.REGISTER_PASSWORD' | translate }} </mat-error>
                 <br/>
                 <button mat-button color="primary" type="submit" (click)="matcher()" [disabled]="!registerForm.valid">{{'REGISTER.REGISTER' | translate }}</button>
                 <button mat-button (click)="onNoClick()">{{'REGISTER.CANCEL' | translate }}</button>

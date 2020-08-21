@@ -8,7 +8,7 @@
           <div>
             <mat-form-field class="userForm">
               <mat-label>{{'REGISTER.USERNAME' | translate }}</mat-label>
-              <input matInput type="text" formControlName="username" required>
+              <input matInput type="text" formControlName="username" [(ngModel)]="editedUser.username" required>
               <mat-error *ngIf="editUserForm.get('username').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
             </mat-form-field>
           </div>
@@ -17,7 +17,7 @@
           <div>
             <mat-form-field class="userForm">
               <mat-label>{{'REGISTER.PASSWORD' | translate }}</mat-label>
-              <input matInput name=password type="password"  minlength="4" formControlName="password" required>
+              <input matInput name=password type="password"  minlength="4" formControlName="password" [(ngModel)]="editedUser.password" required>
               <mat-error *ngIf="editUserForm.get('password').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
               <mat-error *ngIf="editUserForm.get('password').hasError('minlength')">{{'ERROR.PASSWORD_MINLENGTH' | translate}}</mat-error>
             </mat-form-field>
@@ -26,10 +26,10 @@
           <div>
             <mat-form-field class="userForm">
               <mat-label>{{'REGISTER.CONFIRM' | translate }} </mat-label>
-              <input matInput name="discontinued" type="password"  formControlName="confirmpassword" required>
+              <input matInput name="confirmpassword" type="password"  formControlName="confirmpassword" required>
               <mat-error *ngIf="editUserForm.get('confirmpassword').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>
             </mat-form-field>
-            <mat-error *ngIf="noMatch"> {{'ERROR.REGISTER_PASSWORD' | translate }} </mat-error>
+            <mat-error *ngIf="!match"> {{'ERROR.REGISTER_PASSWORD' | translate }} </mat-error>
           </div>
   
           <div class="modal-footer">

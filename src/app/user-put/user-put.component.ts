@@ -18,7 +18,7 @@ export class UserPutComponent implements OnInit {
   editedUser : User;
   editUserForm : FormGroup;
   editedUserRole = new Role();
-  noMatch = true;
+  match = true;
 
   constructor(public dialogRef: MatDialogRef<ProfileComponent>, @Inject(MAT_DIALOG_DATA) public datadialog: DialogData, private userService : UserService, private router : Router) {
     this.createForm();
@@ -43,8 +43,10 @@ export class UserPutComponent implements OnInit {
     })};
 
     onSubmit(){
-      this.userService.putUserSelf(this.editedUser).subscribe(result => console.log(result));
-      this.dialogRef.close(true);
+      if (this.match){
+        this.userService.putUserSelf(this.editedUser).subscribe(result => console.log(result));
+        this.dialogRef.close(true);
+      }
     }
   
     onNoClick(): void {
@@ -54,9 +56,9 @@ export class UserPutComponent implements OnInit {
     matcher():void {
       console.log("iciiii")
       if(this.editUserForm.get('password').value != this.editUserForm.get('confirmpassword').value){
-        console.log(this.editUserForm.get('password').value);
-        console.log(this.editUserForm.get('confirmpassword').value);
-        this.noMatch= !this.noMatch;
+        this.match = false;
+      }else{
+        this.match = true;
       }
     }
 

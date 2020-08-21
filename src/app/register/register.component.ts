@@ -13,7 +13,7 @@ import { RegisterService } from '../register.service';
 export class RegisterComponent implements OnInit {
 
   error: String;
-  noMatch = true;
+  match = true;
 
   constructor(private router : Router , private registerService : RegisterService, public dialogRef: MatDialogRef<LoginComponent>) { }
 
@@ -54,8 +54,10 @@ export class RegisterComponent implements OnInit {
     const onSuccess: Function = (next) => {
       this.router.navigate(['/login'])
     }
-    this.registerService.registerUser(this.registerForm.value, onSuccess, onError);
-    this.dialogRef.close(false);
+    if (this.match){
+      this.registerService.registerUser(this.registerForm.value, onSuccess, onError);
+      this.dialogRef.close(false);
+    }
   }
 
   onNoClick() :void{
@@ -63,8 +65,12 @@ export class RegisterComponent implements OnInit {
   }
 
   matcher():void {
+    
     if(this.password.value != this.confirm.value){
-      this.noMatch= !this.noMatch;
+      this.match = false;
+    } else {
+      this.match = true;
     }
+    console.log(this.match)
   }
 }

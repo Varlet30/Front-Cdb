@@ -15,7 +15,7 @@
   
   
           <div>
-            <mat-form-field *ngIf="self" class="userForm">
+            <mat-form-field class="userForm">
               <mat-label>{{'REGISTER.PASSWORD' | translate }}</mat-label>
               <input matInput name=password type="password"  minlength="4" formControlName="password" [(ngModel)]="editedUser.password" required>
               <mat-error *ngIf="editUserForm.get('password').hasError('required')">{{'ERROR.REQUIRED' | translate}}</mat-error>

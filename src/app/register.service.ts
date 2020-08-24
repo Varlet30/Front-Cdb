@@ -35,11 +35,11 @@ export class RegisterService {
 
     ).pipe(take(1)).subscribe({
         next: x => onSuccess(),
-        error: error => onError(this.messageError(error.status))
+        error: error => onError(this.messageError())
     });
 }
 
-messageError(message) : void {
+messageError() : void {
   this.errorMessage = this.translate.instant('ERROR.REGISTER_USERNAME');
 }
 
